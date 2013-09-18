@@ -1,0 +1,23 @@
+//
+// Prefix header for all source files of the 'TrainTicketQuery' target in the 'TrainTicketQuery' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+
+    #define         alipayFinished                              @"AlipayFinished"
+
+    #define         appScheme                                   @"OPENQUERYAPP"
+
+    #define         TrainOrderServiceURL                        @"http://www.114piaowu.com:8043/axis2/services/trainOrderService"
+    #define         UserServiceURL                              @"http://www.114piaowu.com:8043/axis2/services/userService"
+    #define         NotificationAppConfigRecived                @"ReceiveAppConfig"
+    #define         NotificationAppConfigRecivedFailed          @"ReceiveAppConfigFailed"
+#endif
