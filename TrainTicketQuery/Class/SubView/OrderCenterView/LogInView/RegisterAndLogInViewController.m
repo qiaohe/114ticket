@@ -138,7 +138,7 @@
     userName.keyboardType = UIKeyboardTypeEmailAddress;
     //userName.textAlignment = NSTextAlignmentCenter;
     [userName setBackgroundColor:[UIColor clearColor]];
-    [userName setText:@"18211913910"];
+    //[userName setText:@"18211913910"];
     userName.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     [userName setFont:[UIFont fontWithName:@"HelveticaNeue" size:15]];
     [self.view addSubview:userName];
@@ -156,7 +156,7 @@
     passWord.keyboardType = UIKeyboardTypeEmailAddress;
     //userName.textAlignment = NSTextAlignmentCenter;
     [passWord setBackgroundColor:[UIColor clearColor]];
-    [passWord setText:@"w5998991"];
+    //[passWord setText:@"w5998991"];
     passWord.secureTextEntry = YES;
     passWord.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     [passWord setFont:[UIFont fontWithName:@"HelveticaNeue" size:15]];
@@ -285,6 +285,7 @@
             OrderFillInViewController *fillInView = [[OrderFillInViewController alloc]initWithTrainOrder:trainOrder];
             fillInView.codeAndPrice = codeAndPrice;
             [[Model shareModel] pushView:fillInView options:ViewTrasitionEffectMoveLeft completion:^{
+                [[Model shareModel].viewControllers removeObject:self];
                 [[Model shareModel].viewControllers addObject:fillInView];
             }];
         }else{

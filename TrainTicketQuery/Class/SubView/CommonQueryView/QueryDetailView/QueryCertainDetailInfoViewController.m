@@ -160,7 +160,7 @@
     self.distanceLabel = [self getLabelWithFrame:CGRectMake(15, 40, 120, 30) textAlignment:NSTextAlignmentLeft backGroundColor:[UIColor clearColor] textColor:[UIColor darkGrayColor] title:nil font:[UIFont fontWithName:@"HelveticaNeue" size:13]];
     [self.view addSubview:distanceLabel];
     
-    CGRect costTimeFrame = CGRectMake(distanceLabel.frame.origin.x + distanceLabel.frame.size.width, distanceLabel.frame.origin.y, distanceLabel.frame.size.width, distanceLabel.frame.size.height);
+    CGRect costTimeFrame = CGRectMake(distanceLabel.frame.origin.x + distanceLabel.frame.size.width, distanceLabel.frame.origin.y, self.view.frame.size.width - distanceLabel.frame.origin.x - distanceLabel.frame.size.width, distanceLabel.frame.size.height);
     self.costTimeLabel = [self getLabelWithFrame:costTimeFrame textAlignment:NSTextAlignmentLeft backGroundColor:[UIColor clearColor] textColor:[UIColor darkGrayColor] title:nil font:[UIFont fontWithName:@"HelveticaNeue" size:13]];
     [self.view addSubview:costTimeLabel];
 }

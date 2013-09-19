@@ -209,11 +209,8 @@
                               @"checkTicketStatus",          @"requestType",
                               nil];
     
-    
+    [[Model shareModel] showActivityIndicator:YES frame:CGRectMake(0, 40, selfViewFrame.size.width, selfViewFrame.size.height - 40) belowView:nil enabled:NO];
     [self sendRequestWithURL:urlString params:params requestMethod:RequestGet userInfo:userInfo];
-    
-    
-    
 }
 
 - (void)ticketReserve

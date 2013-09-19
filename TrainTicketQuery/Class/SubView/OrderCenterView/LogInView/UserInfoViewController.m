@@ -102,12 +102,16 @@
 - (void)parserStringFinished:(NSString *)_string request:(ASIHTTPRequest *)request
 {
     NSDictionary *dic = [_string JSONValue];
+    NSLog(@"response = %@",_string);
 
     NSString *requestType = [request.userInfo objectForKey:@"requestType"];
     
     if ([requestType isEqualToString:@"updateUser"]) {
         if ([[dic objectForKey:@"performStatus"] isEqualToString:@"success"]) {
             [[Model shareModel] showPromptBoxWithText:[dic objectForKey:@"performStatus"] modal:NO];
+            [UserDefaults shareUserDefault].realName = userName.text;
+            [UserDefaults shareUserDefault].email    = mailAddress.text;
+            [UserDefaults shareUserDefault].sex      = sex.text;
         }
     }
     else if([requestType isEqualToString:@"getUser"]){
@@ -175,7 +179,8 @@
     [userNameButton.titleLabel setFont:[UIFont systemFontOfSize:14]];
     [userNameButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
     [userNameButton setContentEdgeInsets:UIEdgeInsetsMake(0, 15, 0, 0)];
-    [userNameButton setEnabled:NO];
+    [userNameButton addTarget:self action:@selector(clearKeyboard) forControlEvents:UIControlEventTouchUpInside];
+    //[userNameButton setEnabled:NO];
     userName = [[UITextField alloc]initWithFrame:CGRectMake(10, 20 + 40, self.view.frame.size.width - 20, 45)];
     [userName setBackgroundColor:[UIColor clearColor]];
     [userName setBackground:imageNameAndType(@"userlabel", @"png")];
@@ -202,7 +207,8 @@
     [mailAddressButton.titleLabel setFont:[UIFont systemFontOfSize:14]];
     [mailAddressButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
     [mailAddressButton setContentEdgeInsets:UIEdgeInsetsMake(0, 15, 0, 0)];
-    [mailAddressButton setEnabled:NO];
+    [mailAddressButton addTarget:self action:@selector(clearKeyboard) forControlEvents:UIControlEventTouchUpInside];
+    //[mailAddressButton setEnabled:NO];
     mailAddress = [[UITextField alloc]initWithFrame:CGRectMake(userName.frame.origin.x, userName.frame.origin.y + userName.frame.size.height - 1, userName.frame.size.width, userName.frame.size.height)];
     [mailAddress setBackgroundColor:[UIColor clearColor]];
     [mailAddress setBackground:imageNameAndType(@"userlabel", @"png")];
@@ -215,7 +221,8 @@
     [sexButton.titleLabel setFont:[UIFont systemFontOfSize:14]];
     [sexButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
     [sexButton setContentEdgeInsets:UIEdgeInsetsMake(0, 15, 0, 0)];
-    [sexButton setEnabled:NO];
+    [sexButton addTarget:self action:@selector(clearKeyboard) forControlEvents:UIControlEventTouchUpInside];
+    //[sexButton setEnabled:NO];
     sex = [[UITextField alloc]initWithFrame:CGRectMake(mailAddress.frame.origin.x, mailAddress.frame.origin.y + mailAddress.frame.size.height - 1, mailAddress.frame.size.width, mailAddress.frame.size.height)];
     [sex setBackgroundColor:[UIColor clearColor]];
     [sex setBackground:imageNameAndType(@"userlabel", @"png")];

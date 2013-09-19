@@ -279,7 +279,7 @@
     [againPassword setBackground:imageNameAndType(@"userlabel", @"png")];
     againPassword.leftView = userNameButton;
     [againPassword setDelegate:self];
-    [newsPassword setSecureTextEntry:YES];
+    [againPassword setSecureTextEntry:YES];
     againPassword.leftViewMode = UITextFieldViewModeAlways;
     [againPassword setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
     [self.view addSubview:againPassword];

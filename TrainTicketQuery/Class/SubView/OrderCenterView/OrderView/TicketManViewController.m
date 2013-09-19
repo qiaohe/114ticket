@@ -77,7 +77,7 @@
         [[Model shareModel] showPromptBoxWithText:@"姓名不能为空" modal:NO];
         return;
     }
-    
+    /*
     if ([passenger.certificateType integerValue] == 0) {
         if ([Utils isValidateIdNum:idCardNum.text]) {
             passenger.certificateNumber = idCardNum.text;
@@ -87,7 +87,12 @@
         }
     }else{
         passenger.certificateNumber = idCardNum.text;
+    }*/
+    if ([Utils textIsEmpty:idCardNum.text]) {
+        [[Model shareModel] showPromptBoxWithText:@"身份证号码不能为空" modal:NO];
+        return;
     }
+    passenger.certificateNumber = idCardNum.text;
     
     if (!passenger.birthDate) {
         [[Model shareModel] showPromptBoxWithText:@"请选择出生日期" modal:NO];
@@ -341,23 +346,24 @@
 //        passenger.certificateType = textField.text;
 //    }
     if (textField == idCardNum){
-        if (idCardNum.text != nil && ![idCardNum.text isEqualToString:@""]) {
-            if ([idCardType.titleLabel.text isEqualToString:@"身份证"]) {
-                if ([Utils isValidateIdNum:idCardNum.text]) {
-                    passenger.certificateNumber = textField.text;
-                }else{
-                    [[Model shareModel]showPromptBoxWithText:@"证件号码不正确" modal:NO];
-                }
-            }else if ([idCardType.titleLabel.text isEqualToString:@"护照"]) {
-                if ([Utils isValidatePassportNum:idCardNum.text]) {
-                    passenger.certificateNumber = textField.text;
-                }else{
-                    [[Model shareModel]showPromptBoxWithText:@"证件号码不正确" modal:NO];
-                }
-            }else if ([idCardType.titleLabel.text isEqualToString:@"港澳通行证"]) {
-                passenger.certificateNumber = textField.text;
-            }
-        }
+//        if (idCardNum.text != nil && ![idCardNum.text isEqualToString:@""]) {
+//            if ([idCardType.titleLabel.text isEqualToString:@"身份证"]) {
+//                if ([Utils isValidateIdNum:idCardNum.text]) {
+//                    passenger.certificateNumber = textField.text;
+//                }else{
+//                    [[Model shareModel]showPromptBoxWithText:@"证件号码不正确" modal:NO];
+//                }
+//            }else if ([idCardType.titleLabel.text isEqualToString:@"护照"]) {
+//                if ([Utils isValidatePassportNum:idCardNum.text]) {
+//                    passenger.certificateNumber = textField.text;
+//                }else{
+//                    [[Model shareModel]showPromptBoxWithText:@"证件号码不正确" modal:NO];
+//                }
+//            }else if ([idCardType.titleLabel.text isEqualToString:@"港澳通行证"]) {
+//                passenger.certificateNumber = textField.text;
+//            }
+//        }
+        passenger.certificateNumber = textField.text;
     }
 //    else if (textField == birthDay){
 //        passenger.birthDate = textField.text;

@@ -95,14 +95,14 @@
     userName = [[UITextField alloc]initWithFrame:CGRectMake(label1.frame.origin.x + label1.frame.size.width + 10, label1.frame.origin.y, baseImage1.frame.size.width - label1.frame.size.width - 10, label1.frame.size.height)];
     userName.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     [userName setPlaceholder:@"请输入乘客姓名"];
-    userName.text = @"18211913910";
+    //userName.text = @"18211913910";
     userName.clearButtonMode = UITextFieldViewModeWhileEditing;
     [self.view addSubview:userName];
     
     passWord = [[UITextField alloc]initWithFrame:CGRectMake(label2.frame.origin.x + label2.frame.size.width + 10, label2.frame.origin.y, baseImage2.frame.size.width - label2.frame.size.width - 10, label2.frame.size.height)];
     passWord.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     [passWord setPlaceholder:@"请输入乘客姓名"];
-    passWord.text = @"w5998991";
+    //passWord.text = @"w5998991";
     passWord.secureTextEntry = YES;
     passWord.clearButtonMode = UITextFieldViewModeWhileEditing;
     [self.view addSubview:passWord];
@@ -110,7 +110,7 @@
     againPassWord = [[UITextField alloc]initWithFrame:CGRectMake(label3.frame.origin.x + label3.frame.size.width + 10, label3.frame.origin.y, baseImage3.frame.size.width - label3.frame.size.width - 10, label3.frame.size.height)];
     againPassWord.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     [againPassWord setPlaceholder:@"请输入乘客姓名"];
-    againPassWord.text = @"w5998991";
+    //againPassWord.text = @"w5998991";
     againPassWord.secureTextEntry = YES;
     againPassWord.clearButtonMode = UITextFieldViewModeWhileEditing;
     [self.view addSubview:againPassWord];
@@ -179,6 +179,12 @@
 {
     NSDictionary *dic = [_string JSONValue];
     [[Model shareModel] showPromptBoxWithText:[dic objectForKey:@"performResult"] modal:YES];
+    if ([[dic objectForKey:@"performStatus"] isEqualToString:@"success"]) {
+        BaseUIViewController *prevView = [[Model shareModel].viewControllers objectAtIndex:([[Model shareModel].viewControllers indexOfObject:self] - 1)];
+        [[Model shareModel] pushView:prevView options:ViewTrasitionEffectMoveRight completion:^{
+            [[Model shareModel].viewControllers removeObject:self];
+        }];
+    }
 }
 
 - (void)requestError:(ASIHTTPRequest *)request

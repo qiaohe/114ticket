@@ -244,6 +244,8 @@
     
     if (selectedInsure) {
         amount.premiumAmount = [selectedInsure.inSureType doubleValue] * [order.trainOrderDetails count];
+    }else{
+        amount.premiumAmount = 0.0f;
     }
     switch (codeAndPrice.selectSeatType) {
         case SeatTypeYZ:
@@ -283,6 +285,8 @@
     }
     if (selectedInsure) {
         amount.premiumAmount = [selectedInsure.inSureType doubleValue] * [order.trainOrderDetails count];
+    }else{
+        amount.premiumAmount = 0.0f;
     }
     switch (codeAndPrice.selectSeatType) {
         case SeatTypeYZ:
@@ -561,7 +565,7 @@
     subjoinService.frame = CGRectMake(leftBtn.frame.origin.x + leftBtn.frame.size.width + 20, subjoinServiceBackImage.frame.origin.y + 5.0f, (subjoinServiceBackImage.frame.size.width - 20)*3/5,subjoinServiceBackImage.frame.size.height - 10);
     [subjoinService setBackgroundImage:imageNameAndType(@"registered_normal", @"png") forState:UIControlStateNormal];
     [subjoinService setBackgroundImage:imageNameAndType(@"registered_press", @"png") forState:UIControlStateHighlighted];
-    [subjoinService setTitle:@"假一包赔100" forState:UIControlStateNormal];
+    [subjoinService setTitle:@"请选择保险类型(默认0元)" forState:UIControlStateNormal];
     [subjoinService setTag:101];
     [subjoinService.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:12]];
     [subjoinService setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
