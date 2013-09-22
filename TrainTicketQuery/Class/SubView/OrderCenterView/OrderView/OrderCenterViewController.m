@@ -313,6 +313,14 @@
     for (UITabBarItem *item in theTabBar.items) {
         item.enabled = NO;
     }
+    
+    UIImageView *imageView1 = (UIImageView*)[self.view viewWithTag:201];
+    UIImageView *imageView2 = (UIImageView*)[self.view viewWithTag:202];
+    UIImageView *imageView3 = (UIImageView*)[self.view viewWithTag:203];
+    
+    imageView1.highlighted  = NO;
+    imageView2.highlighted  = NO;
+    imageView3.highlighted  = NO;
     self.ThreeMonthAgo.highlighted = YES;
     self.ThreeMonth.highlighted    = NO;
     
@@ -326,6 +334,30 @@
     }
     self.ThreeMonthAgo.highlighted = NO;
     self.ThreeMonth.highlighted    = YES;
+    
+    UIImageView *imageView1 = (UIImageView*)[self.view viewWithTag:201];
+    UIImageView *imageView2 = (UIImageView*)[self.view viewWithTag:202];
+    UIImageView *imageView3 = (UIImageView*)[self.view viewWithTag:203];
+    switch (orderStatus) {
+        case OrderWaitPay:{
+            imageView1.highlighted  = YES;
+            imageView2.highlighted  = NO;
+            imageView3.highlighted  = NO;
+            break;
+        }case OrderProcess:{
+            imageView1.highlighted = NO;
+            imageView2.highlighted = YES;
+            imageView3.highlighted = NO;
+            break;
+        }case OrderFinished:{
+            imageView1.highlighted = NO;
+            imageView2.highlighted = NO;
+            imageView3.highlighted = YES;
+            break;
+        }
+        default:
+            break;
+    }
     
     orderDate = OrderThreeMonth;
     [self requestOrderListWithDate:orderDate status:orderStatus];

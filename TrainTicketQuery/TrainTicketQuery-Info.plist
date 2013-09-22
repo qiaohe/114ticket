@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>LSHasLocalizedDisplayName</key>
-	<true/>
 	<key>CFBundleIconFiles</key>
 	<array>
 		<string>Icon.png</string>
@@ -11,42 +9,27 @@
 		<string>Icon-72.png</string>
 		<string>Icon-72@2x.png</string>
 	</array>
-	<key>CFBundleGetInfoString</key>
-	<array>
-		<string></string>
-	</array>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
+	<string>zh_CN</string>
+	<key>CFBundleDisplayName</key>
+	<string>114票务</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIdentifier</key>
 	<string>cn.mobiledaily.ccbn</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>114票务</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>OPEN114TICKETQUERY</string>
-			</array>
-		</dict>
-	</array>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
-	<key>LSApplicationCategoryType</key>
-	<string></string>
 	<key>LSRequiresIPhoneOS</key>
-	<true/>
-	<key>UIPrerenderedIcon</key>
 	<true/>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
@@ -55,21 +38,9 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-	</array>
-	<key>UISupportedInterfaceOrientations~ipad</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>Partner</key>
-	<string>2088701022287876</string>
-	<key>Seller</key>
-	<string>piaow114@163.com</string>
-	<key>RSA private key</key>
-	<string>MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAN5EoZVTU/UuQEwuXx6Eg9v4k2LrnIdmz2hYdqCJi9NlNSYfn1EQrWx5/p+dskiOqmfHbLKcsVBIuTty8V3BNAVAKwBjYLunEicXHMAW8ki8eDUiGDh9IJ4rkOfFVfaQWprOilhXNrraq6glU7A7WMnfXdnrfNTxhzzXjEvJ4DIrAgMBAAECgYAG+RA4pwyTPIg325yQUIfydrHpAItAlDEdjOjr0GTalOo97/AHkwZdyNX8G+5j6FXgO5llYRUO97kX7Fs2HcGL+aVy002sIuNG0s498rFPiW49R0d1bNJYXxAlUObcMGT/RFLHulDAJkNiM3+POYT0IamWiJ/1JzYXskfPnSatQQJBAPch60MEVV49WdqX7eRhufLIKc/y0MZrmLEN1fs0WCjD1CJsjJxPJG9a7P7vwpNZh2xnnre0bF1XLLwhg/3PXCcCQQDmPlDMoDRox6Oje8MjtyDf4QOpNr/VnXbcEPfCo3mkNDQUc/Pvo4uVtUe9lGYNFHhpSOJF5pGF1oyTAvMCEYhdAkEAmAbpryRvT7X2HJ7x3VixB0VTU3VQMX/nQqP8Srh8szckvLiCF3YoN8h7mqjrzbF5uZpU7TW0pAcIogMMK4rwaQJAIsqBzRncMYURPg/igdAXQJ0wv24NeMrtff12YsvvApf80qZe0vREkF+vMn9tGEbilw4zWtqnXLD51vEYJVTe5QJAKXfTdXdfEtJF1mUdBfR8xH+N96egq5oouRrL1MfDaSxaqBJ0HuLXjmc5JQhfbEmson22NoGZVJhSfWURZX8nvQ==</string>
-	<key>RSA public key</key>
-	<string>MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDeRKGVU1P1LkBMLl8ehIPb+JNi65yHZs9oWHagiYvTZTUmH59REK1sef6fnbJIjqpnx2yynLFQSLk7cvFdwTQFQCsAY2C7pxInFxzAFvJIvHg1Ihg4fSCeK5DnxVX2kFqazopYVza62quoJVOwO1jJ313Z63zU8Yc814xLyeAyKwIDAQAB</string>
 </dict>
 </plist>

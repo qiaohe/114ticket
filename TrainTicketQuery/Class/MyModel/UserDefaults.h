@@ -20,7 +20,7 @@
 @property (retain, nonatomic, getter = mobile,   setter = setMobile:)   NSString        *mobile;
 @property (retain, nonatomic, getter = email,    setter = setEmail:)    NSString        *email;
 @property (retain, nonatomic, getter = sex,      setter = getSex:)      NSString        *sex;
-@property (retain, nonatomic, getter = contacts, setter = setContacts:) NSMutableArray  *contacts;
+@property (retain, nonatomic)                                           NSMutableArray  *contacts;
 @property (assign, nonatomic)                                           BOOL            getUserInfo;
 
 - (void)clearDefaults;

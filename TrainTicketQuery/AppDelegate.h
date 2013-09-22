@@ -2,7 +2,7 @@
 //  AppDelegate.h
 //  TrainTicketQuery
 //
-//  Created by M J on 13-8-20.
+//  Created by M J on 13-9-22.
 //  Copyright (c) 2013年 M J. All rights reserved.
 //
 

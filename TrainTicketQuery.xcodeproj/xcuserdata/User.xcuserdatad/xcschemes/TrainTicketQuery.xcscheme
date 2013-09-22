@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CED2AD4B17C32C7E00E6F0AA"
+               BlueprintIdentifier = "CEAEFACE17EEF7D20056421D"
                BuildableName = "TrainTicketQuery.app"
                BlueprintName = "TrainTicketQuery"
                ReferencedContainer = "container:TrainTicketQuery.xcodeproj">
@@ -32,7 +32,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CED2AD4B17C32C7E00E6F0AA"
+            BlueprintIdentifier = "CEAEFACE17EEF7D20056421D"
             BuildableName = "TrainTicketQuery.app"
             BlueprintName = "TrainTicketQuery"
             ReferencedContainer = "container:TrainTicketQuery.xcodeproj">
@@ -51,7 +51,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CED2AD4B17C32C7E00E6F0AA"
+            BlueprintIdentifier = "CEAEFACE17EEF7D20056421D"
             BuildableName = "TrainTicketQuery.app"
             BlueprintName = "TrainTicketQuery"
             ReferencedContainer = "container:TrainTicketQuery.xcodeproj">
@@ -69,7 +69,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CED2AD4B17C32C7E00E6F0AA"
+            BlueprintIdentifier = "CEAEFACE17EEF7D20056421D"
             BuildableName = "TrainTicketQuery.app"
             BlueprintName = "TrainTicketQuery"
             ReferencedContainer = "container:TrainTicketQuery.xcodeproj">

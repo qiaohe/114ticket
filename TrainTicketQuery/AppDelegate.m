@@ -2,18 +2,16 @@
 //  AppDelegate.m
 //  TrainTicketQuery
 //
-//  Created by M J on 13-8-20.
+//  Created by M J on 13-9-22.
 //  Copyright (c) 2013年 M J. All rights reserved.
 //
 
 #import "AppDelegate.h"
 #import "TransitionController.h"
 #import <sys/utsname.h>
-//#import "AlixPay.h"
-//#import "AlixPayResult.h"
-//#import "DataVerifier.h"
 
 @implementation AppDelegate
+
 
 @synthesize transitionController;
 
@@ -65,51 +63,50 @@
 }
 
 - (void)parseURL:(NSURL *)url application:(UIApplication *)application {/*
-	AlixPay *alixpay = [AlixPay shared];
-	AlixPayResult *result = [alixpay handleOpenURL:url];
-    NSLog(@"result = %@",result.resultString);
-    [[NSNotificationCenter defaultCenter] postNotificationName:alipayFinished object:result];
-    
-	if (result) {
-		//是否支付成功
-		if (9000 == result.statusCode) {
-			
-			 //用公钥验证签名
-			 
-			id<DataVerifier> verifier = CreateRSADataVerifier([[NSBundle mainBundle] objectForInfoDictionaryKey:@"RSA public key"]);
-			if ([verifier verifyString:result.resultString withSign:result.signString]) {
-				UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-																	 message:result.statusMessage
-																	delegate:nil
-														   cancelButtonTitle:@"确定"
-														   otherButtonTitles:nil];
-				[alertView show];
-				[alertView release];
-			}//验签错误
-			else {
-				UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-																	 message:@"签名错误"
-																	delegate:nil
-														   cancelButtonTitle:@"确定"
-														   otherButtonTitles:nil];
-				[alertView show];
-				[alertView release];
-			}
-		}
-		//如果支付失败,可以通过result.statusCode查询错误码
-		else {
-			UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-																 message:result.statusMessage
-																delegate:nil
-													   cancelButtonTitle:@"确定"
-													   otherButtonTitles:nil];
-			[alertView show];
-			[alertView release];
-		}
-		
-	}*/
+                                                                         AlixPay *alixpay = [AlixPay shared];
+                                                                         AlixPayResult *result = [alixpay handleOpenURL:url];
+                                                                         NSLog(@"result = %@",result.resultString);
+                                                                         [[NSNotificationCenter defaultCenter] postNotificationName:alipayFinished object:result];
+                                                                         
+                                                                         if (result) {
+                                                                         //是否支付成功
+                                                                         if (9000 == result.statusCode) {
+                                                                         
+                                                                         //用公钥验证签名
+                                                                         
+                                                                         id<DataVerifier> verifier = CreateRSADataVerifier([[NSBundle mainBundle] objectForInfoDictionaryKey:@"RSA public key"]);
+                                                                         if ([verifier verifyString:result.resultString withSign:result.signString]) {
+                                                                         UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                                         message:result.statusMessage
+                                                                         delegate:nil
+                                                                         cancelButtonTitle:@"确定"
+                                                                         otherButtonTitles:nil];
+                                                                         [alertView show];
+                                                                         [alertView release];
+                                                                         }//验签错误
+                                                                         else {
+                                                                         UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                                         message:@"签名错误"
+                                                                         delegate:nil
+                                                                         cancelButtonTitle:@"确定"
+                                                                         otherButtonTitles:nil];
+                                                                         [alertView show];
+                                                                         [alertView release];
+                                                                         }
+                                                                         }
+                                                                         //如果支付失败,可以通过result.statusCode查询错误码
+                                                                         else {
+                                                                         UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                                         message:result.statusMessage
+                                                                         delegate:nil
+                                                                         cancelButtonTitle:@"确定"
+                                                                         otherButtonTitles:nil];
+                                                                         [alertView show];
+                                                                         [alertView release];
+                                                                         }
+                                                                         
+                                                                         }*/
 }
-
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
@@ -136,11 +133,6 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-}
-
-- (void)applicationDidFinishLaunching:(UIApplication*)application
-{
-    
 }
 
 @end

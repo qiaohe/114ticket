@@ -20,4 +20,5 @@
     #define         UserServiceURL                              @"http://www.114piaowu.com:8043/axis2/services/userService"
     #define         NotificationAppConfigRecived                @"ReceiveAppConfig"
     #define         NotificationAppConfigRecivedFailed          @"ReceiveAppConfigFailed"
+
 #endif
