@@ -9,9 +9,9 @@
 #import "AppDelegate.h"
 #import "TransitionController.h"
 #import <sys/utsname.h>
-#import "AlixPay.h"
-#import "AlixPayResult.h"
-#import "DataVerifier.h"
+//#import "AlixPay.h"
+//#import "AlixPayResult.h"
+//#import "DataVerifier.h"
 
 @implementation AppDelegate
 
@@ -64,7 +64,7 @@
 	return YES;
 }
 
-- (void)parseURL:(NSURL *)url application:(UIApplication *)application {
+- (void)parseURL:(NSURL *)url application:(UIApplication *)application {/*
 	AlixPay *alixpay = [AlixPay shared];
 	AlixPayResult *result = [alixpay handleOpenURL:url];
     NSLog(@"result = %@",result.resultString);
@@ -107,7 +107,7 @@
 			[alertView release];
 		}
 		
-	}
+	}*/
 }
 
 

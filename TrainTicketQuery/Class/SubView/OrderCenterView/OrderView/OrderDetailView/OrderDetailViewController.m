@@ -11,9 +11,9 @@
 #import "PassengerInfo.h"
 #import "PaymentTypeViewController.h"
 #import "Utils.h"
-#import "DataSigner.h"
-#import "AlixPayOrder.h"
-#import "AlixPay.h"
+//#import "DataSigner.h"
+//#import "AlixPayOrder.h"
+//#import "AlixPay.h"
 
 @interface OrderDetailViewController ()
 
@@ -152,7 +152,7 @@
 
 - (void)pressConfirmButton:(UIButton*)sender
 {
-    NSString *partner = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Partner"];
+    /*NSString *partner = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Partner"];
     NSString *seller = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Seller"];
 	
 	//partner和seller获取失败,提示
@@ -203,7 +203,7 @@
         else if (ret == kSPErrorSignError) {
             NSLog(@"签名错误！");
         }
-    }
+    }*/
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -215,8 +215,8 @@
 
 - (void)alipayFinish:(NSObject*)object
 {
-    AlixPayResult *result = (AlixPayResult*)object;
-    NSLog(@"pay status = %@",result.statusMessage);
+    /*AlixPayResult *result = (AlixPayResult*)object;
+    NSLog(@"pay status = %@",result.statusMessage);*/
 }
 
 #pragma mark - view init
@@ -322,9 +322,9 @@
         }else{
             certificateType = @"港澳通行证";
         }
-        NSString *type = [orderDetail seatType];
+        //NSString *type = [orderDetail seatType];
         
-        NSString *str1 = [NSString stringWithFormat:@"乘车人:%@ (%@)",orderDetail.userName,type];
+        NSString *str1 = nil;
         
         NSString *str2 = nil;
         if (orderDetail.type == TicketMan) {

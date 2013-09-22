@@ -304,7 +304,7 @@
         [datePicker release];
     }
     datePicker = [[UIDatePicker alloc]init];
-    [datePicker setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"zh-CN"]];
+    [datePicker setLocale:[[[NSLocale alloc] initWithLocaleIdentifier:@"zh-CN"]autorelease]];
     datePicker.datePickerMode = UIDatePickerModeDate;
     datePicker.frame = CGRectMake(10, 40, self.view.frame.size.width - 35 - 20, 100);
     [alertView addSubview:datePicker];

@@ -43,14 +43,14 @@
     if (self) {
 //        reserve = NO;
         selected = NO;
-        self.name               = [data objectForKey:@"name"];
-        self.mobile             = [data objectForKey:@"mobile"];
-        self.certificateType    = [data objectForKey:@"certificateType"];
-        self.certificateNumber  = [data objectForKey:@"certificateNumber"];
-        self.birthDate          = [data objectForKey:@"birthDate"];
-        self.userId             = [[data objectForKey:@"userId"] integerValue];
-        self.passengerId        = [[data objectForKey:@"id"] integerValue];
-        self.type               = [[data objectForKey:@"type"] integerValue];
+        name               = [[data objectForKey:@"name"] retain];
+        mobile             = [[data objectForKey:@"mobile"] retain];
+        certificateType    = [[data objectForKey:@"certificateType"] retain];
+        certificateNumber  = [[data objectForKey:@"certificateNumber"] retain];
+        birthDate          = [[data objectForKey:@"birthDate"] retain];
+        userId             = [[data objectForKey:@"userId"] integerValue];
+        passengerId        = [[data objectForKey:@"id"] integerValue];
+        type               = [[data objectForKey:@"type"] integerValue];
     }
     
     return self;

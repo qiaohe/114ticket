@@ -113,7 +113,7 @@
     [dataSource removeAllObjects];
     NSArray *array = [[_string JSONValue] objectForKey:@"performResult"];
     for (NSDictionary *dic in array) {
-        TrainOrder *order = [[TrainOrder alloc]initWithPData:dic];
+        TrainOrder *order = [[[TrainOrder alloc]initWithPData:dic]autorelease];
         [dataSource addObject:order];
     }
     [theTableView reloadData];

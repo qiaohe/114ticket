@@ -63,7 +63,7 @@
     [returnBtn addTarget:self action:@selector(pressReturnButton:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:returnBtn];
     
-    UIImageView *iconImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 120, 100)];
+    UIImageView *iconImageView = [[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 120, 100)]autorelease];
     [iconImageView setBackgroundColor:[UIColor clearColor]];
     [iconImageView setImage:imageNameAndType(@"abouticon", @"png")];
     [iconImageView setCenter:CGPointMake(appFrame.size.width/2, 40 + 40 + 55)];

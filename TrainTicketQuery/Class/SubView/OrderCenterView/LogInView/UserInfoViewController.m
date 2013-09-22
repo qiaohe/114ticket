@@ -238,7 +238,7 @@
     [self.view addSubview:chooseSex];
     
     
-    UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(sex.frame.origin.x, sex.frame.origin.y + sex.frame.size.height + 20, sex.frame.size.width, sex.frame.size.height)];
+    UIImageView *imageView = [[[UIImageView alloc]initWithFrame:CGRectMake(sex.frame.origin.x, sex.frame.origin.y + sex.frame.size.height + 20, sex.frame.size.width, sex.frame.size.height)]autorelease];
     [imageView setBackgroundColor:[UIColor clearColor]];
     [imageView setImage:imageNameAndType(@"userlabel", @"png")];
     [self.view addSubview:imageView];
@@ -305,7 +305,7 @@
                                    [Utils NULLToEmpty:mailAddress.text],                            @"email",
                                     [Utils nilToNumber:[NSNumber numberWithInteger:[sex.text isEqualToString:@"男"]?0:1]],                                    @"sex",
                                    nil];
-    User *user = [[User alloc]initWithData:userDic];
+    User *user = [[[User alloc]initWithData:userDic]autorelease];
     
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
                             [Utils NULLToEmpty:[user JSONRepresentation]],          @"user",

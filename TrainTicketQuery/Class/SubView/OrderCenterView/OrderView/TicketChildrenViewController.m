@@ -72,7 +72,9 @@
     NSDictionary *dataDic = [_string JSONValue];
     if ([[dataDic objectForKey:@"performStatus"] isEqualToString:@"success"]) {
         [[Model shareModel] showPromptBoxWithText:[dataDic objectForKey:@"performResult"] modal:YES];
-        [self.delegate reloadData];
+        if (self.delegate) {
+            [self.delegate reloadData];
+        }
     }else{
         [[Model shareModel] showPromptBoxWithText:@"新增失败" modal:YES];
     }
@@ -204,7 +206,7 @@
         [datePicker release];
     }
     datePicker = [[UIDatePicker alloc]init];
-    [datePicker setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"zh-CN"]];
+    [datePicker setLocale:[[[NSLocale alloc] initWithLocaleIdentifier:@"zh-CN"]autorelease]];
     datePicker.datePickerMode = UIDatePickerModeDate;
     datePicker.frame = CGRectMake(10, 40, self.view.frame.size.width - 35 - 20, 100);
     [alertView addSubview:datePicker];

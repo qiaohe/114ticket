@@ -14,7 +14,7 @@
 
     #define         alipayFinished                              @"AlipayFinished"
 
-    #define         appScheme                                   @"OPENQUERYAPP"
+    #define         appScheme                                   @"OPEN114TICKETQUERY"
 
     #define         TrainOrderServiceURL                        @"http://www.114piaowu.com:8043/axis2/services/trainOrderService"
     #define         UserServiceURL                              @"http://www.114piaowu.com:8043/axis2/services/userService"

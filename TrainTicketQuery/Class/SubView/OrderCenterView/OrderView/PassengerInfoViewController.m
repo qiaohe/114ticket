@@ -127,13 +127,16 @@
             [dataSource removeAllObjects];
         }
         for (NSDictionary *dic in performResult) {
-            PassengerInfo *passenger = [[PassengerInfo alloc]initWithJSONData:dic];;
+            PassengerInfo *passenger = [[[PassengerInfo alloc]initWithJSONData:dic]autorelease];;
             
             [dataSource addObject:passenger];
         }
         [theTableView reloadData];
     }else if ([requestType isEqualToString:@"deletePassenger"]){
-        
+        NSDictionary *dataDic = [_string JSONValue];
+        if ([[dataDic objectForKey:@"performStatus"] isEqualToString:@"success"]) {
+            NSLog(@"perform = %@",dataDic);
+        }
     }
 }
 
@@ -197,7 +200,9 @@
     cell.selectImageView.highlighted = passenger.selected;
     
     if (passenger.selected) {
-        [selectPassengers addObject:passenger];
+        if (![selectPassengers containsObject:passenger]) {
+            [selectPassengers addObject:passenger];
+        }
     }else{
         if ([selectPassengers containsObject:passenger]) {
             [selectPassengers removeObject:passenger];
@@ -224,21 +229,32 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         PassengerInfo *passenger = [dataSource objectAtIndex:indexPath.row];
+        
+        NSLog(@"passengerId = %d",passenger.passengerId);
+        
+        NSInteger passengerId = 0;
+        if ([UserDefaults shareUserDefault].userId) {
+            passengerId = passenger.passengerId;
+        }
         [dataSource removeObjectAtIndex:indexPath.row];
         if ([selectPassengers containsObject:passenger]) {
             [selectPassengers removeObject:passenger];
         }
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        
+
         if (![UserDefaults shareUserDefault].userId) {
             [UserDefaults shareUserDefault].contacts = dataSource;
         }else{
             NSString *urlString = [NSString stringWithFormat:@"%@/deletePassenger",UserServiceURL];
+            
+            NSLog(@"id = %d",passengerId);
+            
             NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    [Utils nilToNumber:[NSNumber numberWithInteger:passenger.passengerId]],@"id",
+                                    [Utils nilToNumber:[NSNumber numberWithInteger:passengerId]],@"id",
                                     nil];
             NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
                                       @"deletePassenger",           @"requestType",
+                                      //indexPath,                    @"indexPath",
                                       nil];
             [self sendRequestWithURL:urlString params:params requestMethod:RequestGet userInfo:userInfo];
         }

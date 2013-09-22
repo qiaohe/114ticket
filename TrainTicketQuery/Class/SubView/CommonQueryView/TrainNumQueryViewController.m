@@ -105,7 +105,7 @@
     }
     QueryHistory *history = [queryHistoryArray objectAtIndex:indexPath.row];
     [cell.cityLabel setText:[NSString stringWithFormat:@"车次：%@",history.trainCode]];
-    [cell.dateLabel setText:[NSString stringWithFormat:@"%@出发",history.startDate]];
+    //[cell.dateLabel setText:[NSString stringWithFormat:@"%@出发",history.startDate]];
     cell.deleteButton.indexPath = indexPath;
     [cell.deleteButton removeTarget:self action:NULL forControlEvents:UIControlEventTouchUpInside];
     [cell.deleteButton addTarget:self action:@selector(deleteQueryHistory:) forControlEvents:UIControlEventTouchUpInside];
@@ -183,7 +183,7 @@
 #pragma mark - press search
 - (void)pressSearchBtn:(UIButton*)sender
 {
-    if ([Utils textIsEmpty:self.trainCode.text] || [Utils textIsEmpty:self.startDate.text]) {
+    if ([Utils textIsEmpty:self.trainCode.text]) {
         [[Model shareModel] showPromptBoxWithText:@"搜索参数为空" modal:YES];
     }else {
         QueryHistory *history = [[[QueryHistory alloc]initWithStartCity:nil endCity:nil startDate:self.startDate.text trainCode:self.trainCode.text queryType:QueryAllTrainCodeAndPrice]autorelease];
@@ -217,21 +217,22 @@
     [self.view addSubview:backGroundImage];
     
     [self setTrainCodeViewFrame];
-    [self setStartDateViewFrame];
+    //[self setStartDateViewFrame];
     [self setDataViewFrame];
 }
 
 - (void)setTrainCodeViewFrame
 {
-    UIImageView *imageView = [[[UIImageView alloc]initWithFrame:CGRectMake(18, 20, self.view.frame.size.width - 36, 50)]autorelease];
+    UIImageView *imageView = [[[UIImageView alloc]initWithFrame:CGRectMake(18, 20 + 50, self.view.frame.size.width - 36, 50)]autorelease];
     [imageView setImage:imageNameAndType(@"trainnum_label", @"png")];
     [self.view addSubview:imageView];
     
-    trainCode = [[UITextField alloc]initWithFrame:CGRectMake(imageView.frame.origin.x + 40 + 10, imageView.frame.origin.y + 10 + 4, imageView.frame.size.width - 40 - 80 - 10, imageView.frame.size.height - 10)];
+    trainCode = [[UITextField alloc]initWithFrame:CGRectMake(imageView.frame.origin.x + 40 + 10, imageView.frame.origin.y, imageView.frame.size.width - 40 - 80 - 10, imageView.frame.size.height)];
     trainCode.delegate = self;
     trainCode.keyboardType = UIKeyboardTypeEmailAddress;
     trainCode.returnKeyType = UIReturnKeyDone;
     trainCode.placeholder = @"输入车次";
+    trainCode.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     [self.view addSubview:trainCode];
     /*
     self.chooseStartDate = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -248,12 +249,13 @@
     [imageView setImage:imageNameAndType(@"date_btn", @"png")];
     [self.view addSubview:imageView];
     
-    startDate = [[UITextField alloc]initWithFrame:CGRectMake(imageView.frame.origin.x + 40 + 10, imageView.frame.origin.y + 10 + 4, imageView.frame.size.width - 40 - 80 - 10, imageView.frame.size.height - 10)];
+    startDate = [[UITextField alloc]initWithFrame:CGRectMake(imageView.frame.origin.x + 40 + 10, imageView.frame.origin.y, imageView.frame.size.width - 40 - 80 - 10, imageView.frame.size.height )];
     startDate.enabled = NO;
     startDate.delegate = self;
     [startDate setText:[self stringWithDate:[NSDate date]]];
     startDate.returnKeyType = UIReturnKeyDone;
     startDate.placeholder = @"出发日期";
+    startDate.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     [self.view addSubview:startDate];
     
     self.chooseStartDate = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -267,7 +269,7 @@
 - (void)setDataViewFrame
 {
     UIButton *searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    searchBtn.frame = CGRectMake(60, 220, 200, 45);
+    searchBtn.frame = CGRectMake(60, 180, 200, 45);
     [searchBtn setBackgroundImage:imageNameAndType(@"search_normal", @"png") forState:UIControlStateNormal];
     [searchBtn setBackgroundImage:imageNameAndType(@"search_press", @"png") forState:UIControlStateHighlighted];
     [searchBtn setTitle:@"搜索" forState:UIControlStateNormal];

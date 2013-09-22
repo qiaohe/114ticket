@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CE15F98917E6CACE00EE6D6A /* AlipayRsaLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE15F98817E6CACE00EE6D6A /* AlipayRsaLib.a */; };
 		CE491AE317CB0F1C00204FB9 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE491AE217CB0F1C00204FB9 /* CFNetwork.framework */; };
 		CE491AE517CB0F2300204FB9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE491AE417CB0F2300204FB9 /* SystemConfiguration.framework */; };
 		CE491AE717CB0F2B00204FB9 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE491AE617CB0F2B00204FB9 /* MobileCoreServices.framework */; };
 		CE491AE917CB0F4200204FB9 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CE491AE817CB0F4200204FB9 /* libz.1.2.5.dylib */; };
 		CE4E406517D88645000D9F72 /* filltextbackimage.png in Resources */ = {isa = PBXBuildFile; fileRef = CE4E406417D88644000D9F72 /* filltextbackimage.png */; };
+		CE4FBE0517EE81B500445208 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE4FBE0717EE81B500445208 /* InfoPlist.strings */; };
 		CE59B24417E690BC00FBB934 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = CE59B20A17E690BC00FBB934 /* ASIAuthenticationDialog.m */; };
 		CE59B24517E690BC00FBB934 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = CE59B20D17E690BC00FBB934 /* ASIDataCompressor.m */; };
 		CE59B24617E690BC00FBB934 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = CE59B20F17E690BC00FBB934 /* ASIDataDecompressor.m */; };
@@ -35,16 +35,6 @@
 		CE59B25717E690BC00FBB934 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = CE59B23717E690BC00FBB934 /* SBJsonUTF8Stream.m */; };
 		CE59B25817E690BC00FBB934 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE59B23917E690BC00FBB934 /* SBJsonWriter.m */; };
 		CE59B25917E690BC00FBB934 /* TdCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE59B23C17E690BC00FBB934 /* TdCalendarView.m */; };
-		CE59B36517E69E3700FBB934 /* libalixpay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE59B30217E69E3700FBB934 /* libalixpay.a */; };
-		CE59B36617E69E3700FBB934 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE59B30317E69E3700FBB934 /* libcrypto.a */; };
-		CE59B36717E69E3700FBB934 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE59B30417E69E3700FBB934 /* libssl.a */; };
-		CE59B36817E69E3700FBB934 /* AlixPayIPadDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE59B30617E69E3700FBB934 /* AlixPayIPadDemoViewController.xib */; };
-		CE59B36B17E69E3700FBB934 /* base64.m in Sources */ = {isa = PBXBuildFile; fileRef = CE59B35917E69E3700FBB934 /* base64.m */; };
-		CE59B36C17E69E3700FBB934 /* MD5DataSigner.m in Sources */ = {isa = PBXBuildFile; fileRef = CE59B35C17E69E3700FBB934 /* MD5DataSigner.m */; };
-		CE59B36D17E69E3700FBB934 /* NSDataEx.m in Sources */ = {isa = PBXBuildFile; fileRef = CE59B35E17E69E3700FBB934 /* NSDataEx.m */; };
-		CE59B36E17E69E3700FBB934 /* openssl_wrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CE59B36017E69E3700FBB934 /* openssl_wrapper.m */; };
-		CE59B36F17E69E3700FBB934 /* RSADataSigner.m in Sources */ = {isa = PBXBuildFile; fileRef = CE59B36217E69E3700FBB934 /* RSADataSigner.m */; };
-		CE59B37017E69E3700FBB934 /* RSADataVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = CE59B36417E69E3700FBB934 /* RSADataVerifier.m */; };
 		CE62FEF617C5CD0B003DD3BA /* subjoinviewbox.png in Resources */ = {isa = PBXBuildFile; fileRef = CE62FEF517C5CD0B003DD3BA /* subjoinviewbox.png */; };
 		CE62FEFA17C5CD4C003DD3BA /* SubjoinServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE62FEF817C5CD4C003DD3BA /* SubjoinServiceViewController.m */; };
 		CE62FEFB17C5CD4C003DD3BA /* SubjoinServiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE62FEF917C5CD4C003DD3BA /* SubjoinServiceViewController.xib */; };
@@ -95,7 +85,6 @@
 		CED0EFDF17D443F7007B9E20 /* orderfillin_contacts_press.png in Resources */ = {isa = PBXBuildFile; fileRef = CED0EFD617D443F7007B9E20 /* orderfillin_contacts_press.png */; };
 		CED0EFE017D443F7007B9E20 /* orderfillin_passenger.png in Resources */ = {isa = PBXBuildFile; fileRef = CED0EFD717D443F7007B9E20 /* orderfillin_passenger.png */; };
 		CED0EFE117D443F7007B9E20 /* orderfillin_prompt.png in Resources */ = {isa = PBXBuildFile; fileRef = CED0EFD817D443F7007B9E20 /* orderfillin_prompt.png */; };
-		CED0EFE217D443F7007B9E20 /* orderfillin_show.png in Resources */ = {isa = PBXBuildFile; fileRef = CED0EFD917D443F7007B9E20 /* orderfillin_show.png */; };
 		CED0EFE317D443F7007B9E20 /* orderfillin_traininfo.png in Resources */ = {isa = PBXBuildFile; fileRef = CED0EFDA17D443F7007B9E20 /* orderfillin_traininfo.png */; };
 		CED0EFE717D4445A007B9E20 /* OrderFillInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CED0EFE517D4445A007B9E20 /* OrderFillInViewController.m */; };
 		CED0EFE817D4445A007B9E20 /* OrderFillInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CED0EFE617D4445A007B9E20 /* OrderFillInViewController.xib */; };
@@ -104,7 +93,6 @@
 		CED2AD5017C32C7E00E6F0AA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED2AD4F17C32C7E00E6F0AA /* UIKit.framework */; };
 		CED2AD5217C32C7E00E6F0AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED2AD5117C32C7E00E6F0AA /* Foundation.framework */; };
 		CED2AD5417C32C7E00E6F0AA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED2AD5317C32C7E00E6F0AA /* CoreGraphics.framework */; };
-		CED2AD5A17C32C7F00E6F0AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CED2AD5817C32C7F00E6F0AA /* InfoPlist.strings */; };
 		CED2AD5C17C32C7F00E6F0AA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CED2AD5B17C32C7F00E6F0AA /* main.m */; };
 		CED2AD6017C32C7F00E6F0AA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CED2AD5F17C32C7F00E6F0AA /* AppDelegate.m */; };
 		CED2AD6217C32C7F00E6F0AA /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2AD6117C32C7F00E6F0AA /* Default.png */; };
@@ -156,13 +144,11 @@
 		CED2AE8C17C32CFF00E6F0AA /* home_ordercenter.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2ADEB17C32CFF00E6F0AA /* home_ordercenter.png */; };
 		CED2AE8D17C32CFF00E6F0AA /* home_trainquery.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2ADEC17C32CFF00E6F0AA /* home_trainquery.png */; };
 		CED2AE8E17C32CFF00E6F0AA /* homebackgroundimage.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2ADED17C32CFF00E6F0AA /* homebackgroundimage.png */; };
-		CED2AE8F17C32CFF00E6F0AA /* homeshowimage.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2ADEE17C32CFF00E6F0AA /* homeshowimage.png */; };
 		CED2AE9017C32CFF00E6F0AA /* image1.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2ADEF17C32CFF00E6F0AA /* image1.png */; };
 		CED2AE9117C32CFF00E6F0AA /* image2.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2ADF017C32CFF00E6F0AA /* image2.png */; };
 		CED2AE9217C32CFF00E6F0AA /* image3.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2ADF117C32CFF00E6F0AA /* image3.png */; };
 		CED2AE9317C32CFF00E6F0AA /* login_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2ADF517C32CFF00E6F0AA /* login_normal.png */; };
 		CED2AE9417C32CFF00E6F0AA /* login_press.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2ADF617C32CFF00E6F0AA /* login_press.png */; };
-		CED2AE9517C32CFF00E6F0AA /* logshijue.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2ADF717C32CFF00E6F0AA /* logshijue.png */; };
 		CED2AE9617C32CFF00E6F0AA /* member_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2ADF817C32CFF00E6F0AA /* member_normal.png */; };
 		CED2AE9717C32CFF00E6F0AA /* member_press.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2ADF917C32CFF00E6F0AA /* member_press.png */; };
 		CED2AE9817C32CFF00E6F0AA /* registered_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2ADFA17C32CFF00E6F0AA /* registered_normal.png */; };
@@ -178,12 +164,9 @@
 		CED2AEA217C32CFF00E6F0AA /* order_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2AE0517C32CFF00E6F0AA /* order_normal.png */; };
 		CED2AEA317C32CFF00E6F0AA /* order_select.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2AE0617C32CFF00E6F0AA /* order_select.png */; };
 		CED2AEA417C32CFF00E6F0AA /* orderarrow.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2AE0717C32CFF00E6F0AA /* orderarrow.png */; };
-		CED2AEA517C32CFF00E6F0AA /* ordercentershow.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2AE0817C32CFF00E6F0AA /* ordercentershow.png */; };
 		CED2AEA617C32CFF00E6F0AA /* orderinfo.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2AE0917C32CFF00E6F0AA /* orderinfo.png */; };
 		CED2AEA717C32CFF00E6F0AA /* takeout_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2AE0A17C32CFF00E6F0AA /* takeout_normal.png */; };
 		CED2AEA817C32CFF00E6F0AA /* takeout_press.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2AE0B17C32CFF00E6F0AA /* takeout_press.png */; };
-		CED2AEA917C32CFF00E6F0AA /* addchildrenshow.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2AE0D17C32CFF00E6F0AA /* addchildrenshow.png */; };
-		CED2AEAA17C32CFF00E6F0AA /* addmanshow.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2AE0E17C32CFF00E6F0AA /* addmanshow.png */; };
 		CED2AEAB17C32CFF00E6F0AA /* addpassenger_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2AE0F17C32CFF00E6F0AA /* addpassenger_normal.png */; };
 		CED2AEAC17C32CFF00E6F0AA /* addpassenger_press.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2AE1017C32CFF00E6F0AA /* addpassenger_press.png */; };
 		CED2AEAD17C32CFF00E6F0AA /* infoframe_deep.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2AE1117C32CFF00E6F0AA /* infoframe_deep.png */; };
@@ -191,7 +174,6 @@
 		CED2AEAF17C32CFF00E6F0AA /* jiantou.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2AE1317C32CFF00E6F0AA /* jiantou.png */; };
 		CED2AEB017C32CFF00E6F0AA /* passengerbackimage.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2AE1417C32CFF00E6F0AA /* passengerbackimage.png */; };
 		CED2AEB117C32CFF00E6F0AA /* passengerinfoimage.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2AE1517C32CFF00E6F0AA /* passengerinfoimage.png */; };
-		CED2AEB217C32CFF00E6F0AA /* passengerinfoshow.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2AE1617C32CFF00E6F0AA /* passengerinfoshow.png */; };
 		CED2AEB317C32CFF00E6F0AA /* passengerselect_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2AE1717C32CFF00E6F0AA /* passengerselect_normal.png */; };
 		CED2AEB417C32CFF00E6F0AA /* passengerselect_press.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2AE1817C32CFF00E6F0AA /* passengerselect_press.png */; };
 		CED2AEB517C32CFF00E6F0AA /* arrow_down.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2AE1A17C32CFF00E6F0AA /* arrow_down.png */; };
@@ -207,16 +189,13 @@
 		CED2AEBF17C32CFF00E6F0AA /* queryinfocell_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2AE2417C32CFF00E6F0AA /* queryinfocell_normal.png */; };
 		CED2AEC017C32CFF00E6F0AA /* queryinfocell_select.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2AE2517C32CFF00E6F0AA /* queryinfocell_select.png */; };
 		CED2AEC117C32CFF00E6F0AA /* selectline.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2AE2617C32CFF00E6F0AA /* selectline.png */; };
-		CED2AEC217C32CFF00E6F0AA /* shijue.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2AE2717C32CFF00E6F0AA /* shijue.png */; };
 		CED2AEC317C32CFF00E6F0AA /* start.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2AE2817C32CFF00E6F0AA /* start.png */; };
 		CED2AEC417C32CFF00E6F0AA /* subjoinimage.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2AE2917C32CFF00E6F0AA /* subjoinimage.png */; };
 		CED2AEC517C32CFF00E6F0AA /* wupiao.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2AE2A17C32CFF00E6F0AA /* wupiao.png */; };
 		CED2AEC617C32CFF00E6F0AA /* yuding.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2AE2B17C32CFF00E6F0AA /* yuding.png */; };
 		CED2AEC717C32CFF00E6F0AA /* zhankaikuang.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2AE2C17C32CFF00E6F0AA /* zhankaikuang.png */; };
-		CED2AEC817C32CFF00E6F0AA /* a.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2AE2E17C32CFF00E6F0AA /* a.png */; };
 		CED2AEC917C32CFF00E6F0AA /* arrow_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2AE2F17C32CFF00E6F0AA /* arrow_normal.png */; };
 		CED2AECA17C32CFF00E6F0AA /* arrow_press.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2AE3017C32CFF00E6F0AA /* arrow_press.png */; };
-		CED2AECB17C32CFF00E6F0AA /* b.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2AE3117C32CFF00E6F0AA /* b.png */; };
 		CED2AECC17C32CFF00E6F0AA /* backgroundimage.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2AE3217C32CFF00E6F0AA /* backgroundimage.png */; };
 		CED2AECD17C32CFF00E6F0AA /* citylabel_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2AE3317C32CFF00E6F0AA /* citylabel_btn.png */; };
 		CED2AECE17C32CFF00E6F0AA /* date_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2AE3417C32CFF00E6F0AA /* date_btn.png */; };
@@ -240,7 +219,6 @@
 		CED2AEE017C32CFF00E6F0AA /* cityimage.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2AE4717C32CFF00E6F0AA /* cityimage.png */; };
 		CED2AEE117C32CFF00E6F0AA /* detailbackimage.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2AE4817C32CFF00E6F0AA /* detailbackimage.png */; };
 		CED2AEE217C32CFF00E6F0AA /* tableheaderimage.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2AE4917C32CFF00E6F0AA /* tableheaderimage.png */; };
-		CED2AEE317C32CFF00E6F0AA /* trainCodeView.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2AE4A17C32CFF00E6F0AA /* trainCodeView.png */; };
 		CED2AEE417C32CFF00E6F0AA /* whitebackimage.png in Resources */ = {isa = PBXBuildFile; fileRef = CED2AE4B17C32CFF00E6F0AA /* whitebackimage.png */; };
 		CED2AEE517C32CFF00E6F0AA /* 火车票™资料.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CED2AE4C17C32CFF00E6F0AA /* 火车票™资料.rtf */; };
 		CED2AEE917C3555200E6F0AA /* AddNewContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CED2AEE717C3555200E6F0AA /* AddNewContactsViewController.m */; };
@@ -257,14 +235,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CE15F98517E6C9A900EE6D6A /* DataSigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSigner.h; sourceTree = "<group>"; };
-		CE15F98617E6C9A900EE6D6A /* DataVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataVerifier.h; sourceTree = "<group>"; };
-		CE15F98817E6CACE00EE6D6A /* AlipayRsaLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AlipayRsaLib.a; sourceTree = "<group>"; };
+		CE472CB317EE94A50034849D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		CE472CB417EE95B70034849D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		CE491AE217CB0F1C00204FB9 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		CE491AE417CB0F2300204FB9 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		CE491AE617CB0F2B00204FB9 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		CE491AE817CB0F4200204FB9 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		CE4E406417D88644000D9F72 /* filltextbackimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = filltextbackimage.png; sourceTree = "<group>"; };
+		CE4FBE0617EE81B500445208 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CE59B20917E690BC00FBB934 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		CE59B20A17E690BC00FBB934 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		CE59B20B17E690BC00FBB934 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -314,101 +292,6 @@
 		CE59B23917E690BC00FBB934 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		CE59B23B17E690BC00FBB934 /* TdCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TdCalendarView.h; sourceTree = "<group>"; };
 		CE59B23C17E690BC00FBB934 /* TdCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TdCalendarView.m; sourceTree = "<group>"; };
-		CE59B2FE17E69E3700FBB934 /* AlixPay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlixPay.h; sourceTree = "<group>"; };
-		CE59B2FF17E69E3700FBB934 /* AlixPayOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlixPayOrder.h; sourceTree = "<group>"; };
-		CE59B30017E69E3700FBB934 /* AlixPayResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlixPayResult.h; sourceTree = "<group>"; };
-		CE59B30217E69E3700FBB934 /* libalixpay.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libalixpay.a; sourceTree = "<group>"; };
-		CE59B30317E69E3700FBB934 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
-		CE59B30417E69E3700FBB934 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
-		CE59B30617E69E3700FBB934 /* AlixPayIPadDemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlixPayIPadDemoViewController.xib; sourceTree = "<group>"; };
-		CE59B30C17E69E3700FBB934 /* aes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aes.h; sourceTree = "<group>"; };
-		CE59B30D17E69E3700FBB934 /* asn1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = asn1.h; sourceTree = "<group>"; };
-		CE59B30E17E69E3700FBB934 /* asn1_mac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = asn1_mac.h; sourceTree = "<group>"; };
-		CE59B30F17E69E3700FBB934 /* asn1t.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = asn1t.h; sourceTree = "<group>"; };
-		CE59B31017E69E3700FBB934 /* bio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bio.h; sourceTree = "<group>"; };
-		CE59B31117E69E3700FBB934 /* blowfish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = blowfish.h; sourceTree = "<group>"; };
-		CE59B31217E69E3700FBB934 /* bn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bn.h; sourceTree = "<group>"; };
-		CE59B31317E69E3700FBB934 /* buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buffer.h; sourceTree = "<group>"; };
-		CE59B31417E69E3700FBB934 /* camellia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = camellia.h; sourceTree = "<group>"; };
-		CE59B31517E69E3700FBB934 /* cast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cast.h; sourceTree = "<group>"; };
-		CE59B31617E69E3700FBB934 /* cmac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cmac.h; sourceTree = "<group>"; };
-		CE59B31717E69E3700FBB934 /* cms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cms.h; sourceTree = "<group>"; };
-		CE59B31817E69E3700FBB934 /* comp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = comp.h; sourceTree = "<group>"; };
-		CE59B31917E69E3700FBB934 /* conf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = conf.h; sourceTree = "<group>"; };
-		CE59B31A17E69E3700FBB934 /* conf_api.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = conf_api.h; sourceTree = "<group>"; };
-		CE59B31B17E69E3700FBB934 /* crypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypto.h; sourceTree = "<group>"; };
-		CE59B31C17E69E3700FBB934 /* des.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = des.h; sourceTree = "<group>"; };
-		CE59B31D17E69E3700FBB934 /* des_old.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = des_old.h; sourceTree = "<group>"; };
-		CE59B31E17E69E3700FBB934 /* dh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dh.h; sourceTree = "<group>"; };
-		CE59B31F17E69E3700FBB934 /* dsa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dsa.h; sourceTree = "<group>"; };
-		CE59B32017E69E3700FBB934 /* dso.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dso.h; sourceTree = "<group>"; };
-		CE59B32117E69E3700FBB934 /* dtls1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dtls1.h; sourceTree = "<group>"; };
-		CE59B32217E69E3700FBB934 /* e_os2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = e_os2.h; sourceTree = "<group>"; };
-		CE59B32317E69E3700FBB934 /* ebcdic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ebcdic.h; sourceTree = "<group>"; };
-		CE59B32417E69E3700FBB934 /* ec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ec.h; sourceTree = "<group>"; };
-		CE59B32517E69E3700FBB934 /* ecdh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ecdh.h; sourceTree = "<group>"; };
-		CE59B32617E69E3700FBB934 /* ecdsa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ecdsa.h; sourceTree = "<group>"; };
-		CE59B32717E69E3700FBB934 /* engine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = engine.h; sourceTree = "<group>"; };
-		CE59B32817E69E3700FBB934 /* err.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = err.h; sourceTree = "<group>"; };
-		CE59B32917E69E3700FBB934 /* evp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = evp.h; sourceTree = "<group>"; };
-		CE59B32A17E69E3700FBB934 /* hmac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hmac.h; sourceTree = "<group>"; };
-		CE59B32B17E69E3700FBB934 /* idea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = idea.h; sourceTree = "<group>"; };
-		CE59B32C17E69E3700FBB934 /* krb5_asn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = krb5_asn.h; sourceTree = "<group>"; };
-		CE59B32D17E69E3700FBB934 /* kssl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kssl.h; sourceTree = "<group>"; };
-		CE59B32E17E69E3700FBB934 /* lhash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lhash.h; sourceTree = "<group>"; };
-		CE59B32F17E69E3700FBB934 /* md4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md4.h; sourceTree = "<group>"; };
-		CE59B33017E69E3700FBB934 /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md5.h; sourceTree = "<group>"; };
-		CE59B33117E69E3700FBB934 /* mdc2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mdc2.h; sourceTree = "<group>"; };
-		CE59B33217E69E3700FBB934 /* modes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = modes.h; sourceTree = "<group>"; };
-		CE59B33317E69E3700FBB934 /* obj_mac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = obj_mac.h; sourceTree = "<group>"; };
-		CE59B33417E69E3700FBB934 /* objects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = objects.h; sourceTree = "<group>"; };
-		CE59B33517E69E3700FBB934 /* ocsp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ocsp.h; sourceTree = "<group>"; };
-		CE59B33617E69E3700FBB934 /* opensslconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = opensslconf.h; sourceTree = "<group>"; };
-		CE59B33717E69E3700FBB934 /* opensslv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = opensslv.h; sourceTree = "<group>"; };
-		CE59B33817E69E3700FBB934 /* ossl_typ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ossl_typ.h; sourceTree = "<group>"; };
-		CE59B33917E69E3700FBB934 /* pem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pem.h; sourceTree = "<group>"; };
-		CE59B33A17E69E3700FBB934 /* pem2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pem2.h; sourceTree = "<group>"; };
-		CE59B33B17E69E3700FBB934 /* pkcs12.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pkcs12.h; sourceTree = "<group>"; };
-		CE59B33C17E69E3700FBB934 /* pkcs7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pkcs7.h; sourceTree = "<group>"; };
-		CE59B33D17E69E3700FBB934 /* pqueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pqueue.h; sourceTree = "<group>"; };
-		CE59B33E17E69E3700FBB934 /* rand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rand.h; sourceTree = "<group>"; };
-		CE59B33F17E69E3700FBB934 /* rc2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rc2.h; sourceTree = "<group>"; };
-		CE59B34017E69E3700FBB934 /* rc4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rc4.h; sourceTree = "<group>"; };
-		CE59B34117E69E3700FBB934 /* ripemd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ripemd.h; sourceTree = "<group>"; };
-		CE59B34217E69E3700FBB934 /* rsa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rsa.h; sourceTree = "<group>"; };
-		CE59B34317E69E3700FBB934 /* safestack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = safestack.h; sourceTree = "<group>"; };
-		CE59B34417E69E3700FBB934 /* seed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = seed.h; sourceTree = "<group>"; };
-		CE59B34517E69E3700FBB934 /* sha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha.h; sourceTree = "<group>"; };
-		CE59B34617E69E3700FBB934 /* srp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = srp.h; sourceTree = "<group>"; };
-		CE59B34717E69E3700FBB934 /* srtp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = srtp.h; sourceTree = "<group>"; };
-		CE59B34817E69E3700FBB934 /* ssl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ssl.h; sourceTree = "<group>"; };
-		CE59B34917E69E3700FBB934 /* ssl2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ssl2.h; sourceTree = "<group>"; };
-		CE59B34A17E69E3700FBB934 /* ssl23.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ssl23.h; sourceTree = "<group>"; };
-		CE59B34B17E69E3700FBB934 /* ssl3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ssl3.h; sourceTree = "<group>"; };
-		CE59B34C17E69E3700FBB934 /* stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stack.h; sourceTree = "<group>"; };
-		CE59B34D17E69E3700FBB934 /* symhacks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = symhacks.h; sourceTree = "<group>"; };
-		CE59B34E17E69E3700FBB934 /* tls1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tls1.h; sourceTree = "<group>"; };
-		CE59B34F17E69E3700FBB934 /* ts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ts.h; sourceTree = "<group>"; };
-		CE59B35017E69E3700FBB934 /* txt_db.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = txt_db.h; sourceTree = "<group>"; };
-		CE59B35117E69E3700FBB934 /* ui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ui.h; sourceTree = "<group>"; };
-		CE59B35217E69E3700FBB934 /* ui_compat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ui_compat.h; sourceTree = "<group>"; };
-		CE59B35317E69E3700FBB934 /* whrlpool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = whrlpool.h; sourceTree = "<group>"; };
-		CE59B35417E69E3700FBB934 /* x509.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = x509.h; sourceTree = "<group>"; };
-		CE59B35517E69E3700FBB934 /* x509_vfy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = x509_vfy.h; sourceTree = "<group>"; };
-		CE59B35617E69E3700FBB934 /* x509v3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = x509v3.h; sourceTree = "<group>"; };
-		CE59B35817E69E3700FBB934 /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
-		CE59B35917E69E3700FBB934 /* base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = base64.m; sourceTree = "<group>"; };
-		CE59B35A17E69E3700FBB934 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
-		CE59B35B17E69E3700FBB934 /* MD5DataSigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MD5DataSigner.h; sourceTree = "<group>"; };
-		CE59B35C17E69E3700FBB934 /* MD5DataSigner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MD5DataSigner.m; sourceTree = "<group>"; };
-		CE59B35D17E69E3700FBB934 /* NSDataEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDataEx.h; sourceTree = "<group>"; };
-		CE59B35E17E69E3700FBB934 /* NSDataEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDataEx.m; sourceTree = "<group>"; };
-		CE59B35F17E69E3700FBB934 /* openssl_wrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = openssl_wrapper.h; sourceTree = "<group>"; };
-		CE59B36017E69E3700FBB934 /* openssl_wrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = openssl_wrapper.m; sourceTree = "<group>"; };
-		CE59B36117E69E3700FBB934 /* RSADataSigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSADataSigner.h; sourceTree = "<group>"; };
-		CE59B36217E69E3700FBB934 /* RSADataSigner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSADataSigner.m; sourceTree = "<group>"; };
-		CE59B36317E69E3700FBB934 /* RSADataVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSADataVerifier.h; sourceTree = "<group>"; };
-		CE59B36417E69E3700FBB934 /* RSADataVerifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSADataVerifier.m; sourceTree = "<group>"; };
 		CE62FEF517C5CD0B003DD3BA /* subjoinviewbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = subjoinviewbox.png; sourceTree = "<group>"; };
 		CE62FEF717C5CD4C003DD3BA /* SubjoinServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubjoinServiceViewController.h; sourceTree = "<group>"; };
 		CE62FEF817C5CD4C003DD3BA /* SubjoinServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubjoinServiceViewController.m; sourceTree = "<group>"; };
@@ -477,7 +360,6 @@
 		CED0EFD617D443F7007B9E20 /* orderfillin_contacts_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orderfillin_contacts_press.png; sourceTree = "<group>"; };
 		CED0EFD717D443F7007B9E20 /* orderfillin_passenger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orderfillin_passenger.png; sourceTree = "<group>"; };
 		CED0EFD817D443F7007B9E20 /* orderfillin_prompt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orderfillin_prompt.png; sourceTree = "<group>"; };
-		CED0EFD917D443F7007B9E20 /* orderfillin_show.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orderfillin_show.png; sourceTree = "<group>"; };
 		CED0EFDA17D443F7007B9E20 /* orderfillin_traininfo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orderfillin_traininfo.png; sourceTree = "<group>"; };
 		CED0EFE417D4445A007B9E20 /* OrderFillInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderFillInViewController.h; sourceTree = "<group>"; };
 		CED0EFE517D4445A007B9E20 /* OrderFillInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderFillInViewController.m; sourceTree = "<group>"; };
@@ -490,7 +372,6 @@
 		CED2AD5117C32C7E00E6F0AA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CED2AD5317C32C7E00E6F0AA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		CED2AD5717C32C7E00E6F0AA /* TrainTicketQuery-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TrainTicketQuery-Info.plist"; sourceTree = "<group>"; };
-		CED2AD5917C32C7F00E6F0AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CED2AD5B17C32C7F00E6F0AA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CED2AD5D17C32C7F00E6F0AA /* TrainTicketQuery-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TrainTicketQuery-Prefix.pch"; sourceTree = "<group>"; };
 		CED2AD5E17C32C7F00E6F0AA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -569,13 +450,11 @@
 		CED2ADEB17C32CFF00E6F0AA /* home_ordercenter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_ordercenter.png; sourceTree = "<group>"; };
 		CED2ADEC17C32CFF00E6F0AA /* home_trainquery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_trainquery.png; sourceTree = "<group>"; };
 		CED2ADED17C32CFF00E6F0AA /* homebackgroundimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homebackgroundimage.png; sourceTree = "<group>"; };
-		CED2ADEE17C32CFF00E6F0AA /* homeshowimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homeshowimage.png; sourceTree = "<group>"; };
 		CED2ADEF17C32CFF00E6F0AA /* image1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image1.png; sourceTree = "<group>"; };
 		CED2ADF017C32CFF00E6F0AA /* image2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image2.png; sourceTree = "<group>"; };
 		CED2ADF117C32CFF00E6F0AA /* image3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image3.png; sourceTree = "<group>"; };
 		CED2ADF517C32CFF00E6F0AA /* login_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_normal.png; sourceTree = "<group>"; };
 		CED2ADF617C32CFF00E6F0AA /* login_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_press.png; sourceTree = "<group>"; };
-		CED2ADF717C32CFF00E6F0AA /* logshijue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logshijue.png; sourceTree = "<group>"; };
 		CED2ADF817C32CFF00E6F0AA /* member_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = member_normal.png; sourceTree = "<group>"; };
 		CED2ADF917C32CFF00E6F0AA /* member_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = member_press.png; sourceTree = "<group>"; };
 		CED2ADFA17C32CFF00E6F0AA /* registered_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = registered_normal.png; sourceTree = "<group>"; };
@@ -591,12 +470,9 @@
 		CED2AE0517C32CFF00E6F0AA /* order_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = order_normal.png; sourceTree = "<group>"; };
 		CED2AE0617C32CFF00E6F0AA /* order_select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = order_select.png; sourceTree = "<group>"; };
 		CED2AE0717C32CFF00E6F0AA /* orderarrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orderarrow.png; sourceTree = "<group>"; };
-		CED2AE0817C32CFF00E6F0AA /* ordercentershow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ordercentershow.png; sourceTree = "<group>"; };
 		CED2AE0917C32CFF00E6F0AA /* orderinfo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orderinfo.png; sourceTree = "<group>"; };
 		CED2AE0A17C32CFF00E6F0AA /* takeout_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = takeout_normal.png; sourceTree = "<group>"; };
 		CED2AE0B17C32CFF00E6F0AA /* takeout_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = takeout_press.png; sourceTree = "<group>"; };
-		CED2AE0D17C32CFF00E6F0AA /* addchildrenshow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addchildrenshow.png; sourceTree = "<group>"; };
-		CED2AE0E17C32CFF00E6F0AA /* addmanshow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addmanshow.png; sourceTree = "<group>"; };
 		CED2AE0F17C32CFF00E6F0AA /* addpassenger_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addpassenger_normal.png; sourceTree = "<group>"; };
 		CED2AE1017C32CFF00E6F0AA /* addpassenger_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addpassenger_press.png; sourceTree = "<group>"; };
 		CED2AE1117C32CFF00E6F0AA /* infoframe_deep.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = infoframe_deep.png; sourceTree = "<group>"; };
@@ -604,7 +480,6 @@
 		CED2AE1317C32CFF00E6F0AA /* jiantou.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jiantou.png; sourceTree = "<group>"; };
 		CED2AE1417C32CFF00E6F0AA /* passengerbackimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = passengerbackimage.png; sourceTree = "<group>"; };
 		CED2AE1517C32CFF00E6F0AA /* passengerinfoimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = passengerinfoimage.png; sourceTree = "<group>"; };
-		CED2AE1617C32CFF00E6F0AA /* passengerinfoshow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = passengerinfoshow.png; sourceTree = "<group>"; };
 		CED2AE1717C32CFF00E6F0AA /* passengerselect_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = passengerselect_normal.png; sourceTree = "<group>"; };
 		CED2AE1817C32CFF00E6F0AA /* passengerselect_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = passengerselect_press.png; sourceTree = "<group>"; };
 		CED2AE1A17C32CFF00E6F0AA /* arrow_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_down.png; sourceTree = "<group>"; };
@@ -620,16 +495,13 @@
 		CED2AE2417C32CFF00E6F0AA /* queryinfocell_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = queryinfocell_normal.png; sourceTree = "<group>"; };
 		CED2AE2517C32CFF00E6F0AA /* queryinfocell_select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = queryinfocell_select.png; sourceTree = "<group>"; };
 		CED2AE2617C32CFF00E6F0AA /* selectline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selectline.png; sourceTree = "<group>"; };
-		CED2AE2717C32CFF00E6F0AA /* shijue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shijue.png; sourceTree = "<group>"; };
 		CED2AE2817C32CFF00E6F0AA /* start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = start.png; sourceTree = "<group>"; };
 		CED2AE2917C32CFF00E6F0AA /* subjoinimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = subjoinimage.png; sourceTree = "<group>"; };
 		CED2AE2A17C32CFF00E6F0AA /* wupiao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wupiao.png; sourceTree = "<group>"; };
 		CED2AE2B17C32CFF00E6F0AA /* yuding.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yuding.png; sourceTree = "<group>"; };
 		CED2AE2C17C32CFF00E6F0AA /* zhankaikuang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zhankaikuang.png; sourceTree = "<group>"; };
-		CED2AE2E17C32CFF00E6F0AA /* a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = a.png; sourceTree = "<group>"; };
 		CED2AE2F17C32CFF00E6F0AA /* arrow_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_normal.png; sourceTree = "<group>"; };
 		CED2AE3017C32CFF00E6F0AA /* arrow_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_press.png; sourceTree = "<group>"; };
-		CED2AE3117C32CFF00E6F0AA /* b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = b.png; sourceTree = "<group>"; };
 		CED2AE3217C32CFF00E6F0AA /* backgroundimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundimage.png; sourceTree = "<group>"; };
 		CED2AE3317C32CFF00E6F0AA /* citylabel_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = citylabel_btn.png; sourceTree = "<group>"; };
 		CED2AE3417C32CFF00E6F0AA /* date_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = date_btn.png; sourceTree = "<group>"; };
@@ -653,7 +525,6 @@
 		CED2AE4717C32CFF00E6F0AA /* cityimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cityimage.png; sourceTree = "<group>"; };
 		CED2AE4817C32CFF00E6F0AA /* detailbackimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = detailbackimage.png; sourceTree = "<group>"; };
 		CED2AE4917C32CFF00E6F0AA /* tableheaderimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableheaderimage.png; sourceTree = "<group>"; };
-		CED2AE4A17C32CFF00E6F0AA /* trainCodeView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trainCodeView.png; sourceTree = "<group>"; };
 		CED2AE4B17C32CFF00E6F0AA /* whitebackimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whitebackimage.png; sourceTree = "<group>"; };
 		CED2AE4C17C32CFF00E6F0AA /* 火车票™资料.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = "火车票™资料.rtf"; path = "TrainTicketQuery/火车票™资料.rtf"; sourceTree = "<group>"; };
 		CED2AEE617C3555200E6F0AA /* AddNewContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewContactsViewController.h; sourceTree = "<group>"; };
@@ -689,10 +560,6 @@
 				CED76F1617C46B7A00D6B280 /* QuartzCore.framework in Frameworks */,
 				CED2AD5017C32C7E00E6F0AA /* UIKit.framework in Frameworks */,
 				CED2AD5217C32C7E00E6F0AA /* Foundation.framework in Frameworks */,
-				CE59B36517E69E3700FBB934 /* libalixpay.a in Frameworks */,
-				CE59B36617E69E3700FBB934 /* libcrypto.a in Frameworks */,
-				CE59B36717E69E3700FBB934 /* libssl.a in Frameworks */,
-				CE15F98917E6CACE00EE6D6A /* AlipayRsaLib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -702,7 +569,6 @@
 		CE59B1F717E690BC00FBB934 /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				CE59B28A17E69CE700FBB934 /* Alixpay */,
 				CE59B20817E690BC00FBB934 /* ASIHttpRequest */,
 				CE59B22017E690BC00FBB934 /* SBJson */,
 				CE59B23A17E690BC00FBB934 /* TdCalendar */,
@@ -789,151 +655,6 @@
 			path = TdCalendar;
 			sourceTree = "<group>";
 		};
-		CE59B28A17E69CE700FBB934 /* Alixpay */ = {
-			isa = PBXGroup;
-			children = (
-				CE59B2FD17E69E3700FBB934 /* include */,
-				CE59B30117E69E3700FBB934 /* libs */,
-				CE59B30517E69E3700FBB934 /* Utilities */,
-			);
-			path = Alixpay;
-			sourceTree = "<group>";
-		};
-		CE59B2FD17E69E3700FBB934 /* include */ = {
-			isa = PBXGroup;
-			children = (
-				CE59B2FE17E69E3700FBB934 /* AlixPay.h */,
-				CE59B2FF17E69E3700FBB934 /* AlixPayOrder.h */,
-				CE59B30017E69E3700FBB934 /* AlixPayResult.h */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		CE59B30117E69E3700FBB934 /* libs */ = {
-			isa = PBXGroup;
-			children = (
-				CE59B30217E69E3700FBB934 /* libalixpay.a */,
-				CE59B30317E69E3700FBB934 /* libcrypto.a */,
-				CE59B30417E69E3700FBB934 /* libssl.a */,
-			);
-			path = libs;
-			sourceTree = "<group>";
-		};
-		CE59B30517E69E3700FBB934 /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				CE15F98817E6CACE00EE6D6A /* AlipayRsaLib.a */,
-				CE15F98517E6C9A900EE6D6A /* DataSigner.h */,
-				CE15F98617E6C9A900EE6D6A /* DataVerifier.h */,
-				CE59B30617E69E3700FBB934 /* AlixPayIPadDemoViewController.xib */,
-				CE59B30B17E69E3700FBB934 /* openssl */,
-				CE59B35717E69E3700FBB934 /* src */,
-			);
-			path = Utilities;
-			sourceTree = "<group>";
-		};
-		CE59B30B17E69E3700FBB934 /* openssl */ = {
-			isa = PBXGroup;
-			children = (
-				CE59B30C17E69E3700FBB934 /* aes.h */,
-				CE59B30D17E69E3700FBB934 /* asn1.h */,
-				CE59B30E17E69E3700FBB934 /* asn1_mac.h */,
-				CE59B30F17E69E3700FBB934 /* asn1t.h */,
-				CE59B31017E69E3700FBB934 /* bio.h */,
-				CE59B31117E69E3700FBB934 /* blowfish.h */,
-				CE59B31217E69E3700FBB934 /* bn.h */,
-				CE59B31317E69E3700FBB934 /* buffer.h */,
-				CE59B31417E69E3700FBB934 /* camellia.h */,
-				CE59B31517E69E3700FBB934 /* cast.h */,
-				CE59B31617E69E3700FBB934 /* cmac.h */,
-				CE59B31717E69E3700FBB934 /* cms.h */,
-				CE59B31817E69E3700FBB934 /* comp.h */,
-				CE59B31917E69E3700FBB934 /* conf.h */,
-				CE59B31A17E69E3700FBB934 /* conf_api.h */,
-				CE59B31B17E69E3700FBB934 /* crypto.h */,
-				CE59B31C17E69E3700FBB934 /* des.h */,
-				CE59B31D17E69E3700FBB934 /* des_old.h */,
-				CE59B31E17E69E3700FBB934 /* dh.h */,
-				CE59B31F17E69E3700FBB934 /* dsa.h */,
-				CE59B32017E69E3700FBB934 /* dso.h */,
-				CE59B32117E69E3700FBB934 /* dtls1.h */,
-				CE59B32217E69E3700FBB934 /* e_os2.h */,
-				CE59B32317E69E3700FBB934 /* ebcdic.h */,
-				CE59B32417E69E3700FBB934 /* ec.h */,
-				CE59B32517E69E3700FBB934 /* ecdh.h */,
-				CE59B32617E69E3700FBB934 /* ecdsa.h */,
-				CE59B32717E69E3700FBB934 /* engine.h */,
-				CE59B32817E69E3700FBB934 /* err.h */,
-				CE59B32917E69E3700FBB934 /* evp.h */,
-				CE59B32A17E69E3700FBB934 /* hmac.h */,
-				CE59B32B17E69E3700FBB934 /* idea.h */,
-				CE59B32C17E69E3700FBB934 /* krb5_asn.h */,
-				CE59B32D17E69E3700FBB934 /* kssl.h */,
-				CE59B32E17E69E3700FBB934 /* lhash.h */,
-				CE59B32F17E69E3700FBB934 /* md4.h */,
-				CE59B33017E69E3700FBB934 /* md5.h */,
-				CE59B33117E69E3700FBB934 /* mdc2.h */,
-				CE59B33217E69E3700FBB934 /* modes.h */,
-				CE59B33317E69E3700FBB934 /* obj_mac.h */,
-				CE59B33417E69E3700FBB934 /* objects.h */,
-				CE59B33517E69E3700FBB934 /* ocsp.h */,
-				CE59B33617E69E3700FBB934 /* opensslconf.h */,
-				CE59B33717E69E3700FBB934 /* opensslv.h */,
-				CE59B33817E69E3700FBB934 /* ossl_typ.h */,
-				CE59B33917E69E3700FBB934 /* pem.h */,
-				CE59B33A17E69E3700FBB934 /* pem2.h */,
-				CE59B33B17E69E3700FBB934 /* pkcs12.h */,
-				CE59B33C17E69E3700FBB934 /* pkcs7.h */,
-				CE59B33D17E69E3700FBB934 /* pqueue.h */,
-				CE59B33E17E69E3700FBB934 /* rand.h */,
-				CE59B33F17E69E3700FBB934 /* rc2.h */,
-				CE59B34017E69E3700FBB934 /* rc4.h */,
-				CE59B34117E69E3700FBB934 /* ripemd.h */,
-				CE59B34217E69E3700FBB934 /* rsa.h */,
-				CE59B34317E69E3700FBB934 /* safestack.h */,
-				CE59B34417E69E3700FBB934 /* seed.h */,
-				CE59B34517E69E3700FBB934 /* sha.h */,
-				CE59B34617E69E3700FBB934 /* srp.h */,
-				CE59B34717E69E3700FBB934 /* srtp.h */,
-				CE59B34817E69E3700FBB934 /* ssl.h */,
-				CE59B34917E69E3700FBB934 /* ssl2.h */,
-				CE59B34A17E69E3700FBB934 /* ssl23.h */,
-				CE59B34B17E69E3700FBB934 /* ssl3.h */,
-				CE59B34C17E69E3700FBB934 /* stack.h */,
-				CE59B34D17E69E3700FBB934 /* symhacks.h */,
-				CE59B34E17E69E3700FBB934 /* tls1.h */,
-				CE59B34F17E69E3700FBB934 /* ts.h */,
-				CE59B35017E69E3700FBB934 /* txt_db.h */,
-				CE59B35117E69E3700FBB934 /* ui.h */,
-				CE59B35217E69E3700FBB934 /* ui_compat.h */,
-				CE59B35317E69E3700FBB934 /* whrlpool.h */,
-				CE59B35417E69E3700FBB934 /* x509.h */,
-				CE59B35517E69E3700FBB934 /* x509_vfy.h */,
-				CE59B35617E69E3700FBB934 /* x509v3.h */,
-			);
-			path = openssl;
-			sourceTree = "<group>";
-		};
-		CE59B35717E69E3700FBB934 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				CE59B35817E69E3700FBB934 /* base64.h */,
-				CE59B35917E69E3700FBB934 /* base64.m */,
-				CE59B35A17E69E3700FBB934 /* config.h */,
-				CE59B35B17E69E3700FBB934 /* MD5DataSigner.h */,
-				CE59B35C17E69E3700FBB934 /* MD5DataSigner.m */,
-				CE59B35D17E69E3700FBB934 /* NSDataEx.h */,
-				CE59B35E17E69E3700FBB934 /* NSDataEx.m */,
-				CE59B35F17E69E3700FBB934 /* openssl_wrapper.h */,
-				CE59B36017E69E3700FBB934 /* openssl_wrapper.m */,
-				CE59B36117E69E3700FBB934 /* RSADataSigner.h */,
-				CE59B36217E69E3700FBB934 /* RSADataSigner.m */,
-				CE59B36317E69E3700FBB934 /* RSADataVerifier.h */,
-				CE59B36417E69E3700FBB934 /* RSADataVerifier.m */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
 		CEC61B0A17C5A656007B3015 /* OrderDetailView */ = {
 			isa = PBXGroup;
 			children = (
@@ -970,7 +691,6 @@
 				CED0EFD617D443F7007B9E20 /* orderfillin_contacts_press.png */,
 				CED0EFD717D443F7007B9E20 /* orderfillin_passenger.png */,
 				CED0EFD817D443F7007B9E20 /* orderfillin_prompt.png */,
-				CED0EFD917D443F7007B9E20 /* orderfillin_show.png */,
 				CED0EFDA17D443F7007B9E20 /* orderfillin_traininfo.png */,
 			);
 			path = OrderFillInView;
@@ -1034,12 +754,12 @@
 				CE8BB99917E31AEF008CDFEE /* Icon-72@2x.png */,
 				CEAEBACF17E03E7100DD1252 /* abouticon.png */,
 				CED2AD5717C32C7E00E6F0AA /* TrainTicketQuery-Info.plist */,
-				CED2AD5817C32C7F00E6F0AA /* InfoPlist.strings */,
 				CED2AD5B17C32C7F00E6F0AA /* main.m */,
 				CED2AD5D17C32C7F00E6F0AA /* TrainTicketQuery-Prefix.pch */,
 				CED2AD6117C32C7F00E6F0AA /* Default.png */,
 				CED2AD6317C32C7F00E6F0AA /* Default@2x.png */,
 				CED2AD6517C32C7F00E6F0AA /* Default-568h@2x.png */,
+				CE4FBE0717EE81B500445208 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1290,7 +1010,6 @@
 				CED2ADEB17C32CFF00E6F0AA /* home_ordercenter.png */,
 				CED2ADEC17C32CFF00E6F0AA /* home_trainquery.png */,
 				CED2ADED17C32CFF00E6F0AA /* homebackgroundimage.png */,
-				CED2ADEE17C32CFF00E6F0AA /* homeshowimage.png */,
 				CED2ADEF17C32CFF00E6F0AA /* image1.png */,
 				CED2ADF017C32CFF00E6F0AA /* image2.png */,
 				CED2ADF117C32CFF00E6F0AA /* image3.png */,
@@ -1330,7 +1049,6 @@
 				CEBCD5E617DEC3210093315D /* usersetting_press.png */,
 				CED2ADF517C32CFF00E6F0AA /* login_normal.png */,
 				CED2ADF617C32CFF00E6F0AA /* login_press.png */,
-				CED2ADF717C32CFF00E6F0AA /* logshijue.png */,
 				CED2ADF817C32CFF00E6F0AA /* member_normal.png */,
 				CED2ADF917C32CFF00E6F0AA /* member_press.png */,
 				CED2ADFA17C32CFF00E6F0AA /* registered_normal.png */,
@@ -1353,7 +1071,6 @@
 				CED2AE0517C32CFF00E6F0AA /* order_normal.png */,
 				CED2AE0617C32CFF00E6F0AA /* order_select.png */,
 				CED2AE0717C32CFF00E6F0AA /* orderarrow.png */,
-				CED2AE0817C32CFF00E6F0AA /* ordercentershow.png */,
 				CED2AE0917C32CFF00E6F0AA /* orderinfo.png */,
 				CED2AE0A17C32CFF00E6F0AA /* takeout_normal.png */,
 				CED2AE0B17C32CFF00E6F0AA /* takeout_press.png */,
@@ -1364,8 +1081,6 @@
 		CED2AE0C17C32CFF00E6F0AA /* PassengerInfoImage */ = {
 			isa = PBXGroup;
 			children = (
-				CED2AE0D17C32CFF00E6F0AA /* addchildrenshow.png */,
-				CED2AE0E17C32CFF00E6F0AA /* addmanshow.png */,
 				CED2AE0F17C32CFF00E6F0AA /* addpassenger_normal.png */,
 				CED2AE1017C32CFF00E6F0AA /* addpassenger_press.png */,
 				CED2AE1117C32CFF00E6F0AA /* infoframe_deep.png */,
@@ -1373,7 +1088,6 @@
 				CED2AE1317C32CFF00E6F0AA /* jiantou.png */,
 				CED2AE1417C32CFF00E6F0AA /* passengerbackimage.png */,
 				CED2AE1517C32CFF00E6F0AA /* passengerinfoimage.png */,
-				CED2AE1617C32CFF00E6F0AA /* passengerinfoshow.png */,
 				CED2AE1717C32CFF00E6F0AA /* passengerselect_normal.png */,
 				CED2AE1817C32CFF00E6F0AA /* passengerselect_press.png */,
 			);
@@ -1398,7 +1112,6 @@
 				CED2AE2417C32CFF00E6F0AA /* queryinfocell_normal.png */,
 				CED2AE2517C32CFF00E6F0AA /* queryinfocell_select.png */,
 				CED2AE2617C32CFF00E6F0AA /* selectline.png */,
-				CED2AE2717C32CFF00E6F0AA /* shijue.png */,
 				CED2AE2817C32CFF00E6F0AA /* start.png */,
 				CED2AE2917C32CFF00E6F0AA /* subjoinimage.png */,
 				CED2AE2A17C32CFF00E6F0AA /* wupiao.png */,
@@ -1411,10 +1124,8 @@
 		CED2AE2D17C32CFF00E6F0AA /* QueryViewImage */ = {
 			isa = PBXGroup;
 			children = (
-				CED2AE2E17C32CFF00E6F0AA /* a.png */,
 				CED2AE2F17C32CFF00E6F0AA /* arrow_normal.png */,
 				CED2AE3017C32CFF00E6F0AA /* arrow_press.png */,
-				CED2AE3117C32CFF00E6F0AA /* b.png */,
 				CED2AE3217C32CFF00E6F0AA /* backgroundimage.png */,
 				CED2AE3317C32CFF00E6F0AA /* citylabel_btn.png */,
 				CED2AE3417C32CFF00E6F0AA /* date_btn.png */,
@@ -1445,7 +1156,6 @@
 				CED2AE4717C32CFF00E6F0AA /* cityimage.png */,
 				CED2AE4817C32CFF00E6F0AA /* detailbackimage.png */,
 				CED2AE4917C32CFF00E6F0AA /* tableheaderimage.png */,
-				CED2AE4A17C32CFF00E6F0AA /* trainCodeView.png */,
 				CED2AE4B17C32CFF00E6F0AA /* whitebackimage.png */,
 			);
 			path = TrainCodeInfoImage;
@@ -1486,6 +1196,8 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				"zh-Hans",
+				"zh-Hant",
 			);
 			mainGroup = CED2AD4317C32C7E00E6F0AA;
 			productRefGroup = CED2AD4D17C32C7E00E6F0AA /* Products */;
@@ -1502,7 +1214,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CED2AD5A17C32C7F00E6F0AA /* InfoPlist.strings in Resources */,
 				CED2AD6217C32C7F00E6F0AA /* Default.png in Resources */,
 				CED2AD6417C32C7F00E6F0AA /* Default@2x.png in Resources */,
 				CED2AD6617C32C7F00E6F0AA /* Default-568h@2x.png in Resources */,
@@ -1527,13 +1238,11 @@
 				CED2AE8C17C32CFF00E6F0AA /* home_ordercenter.png in Resources */,
 				CED2AE8D17C32CFF00E6F0AA /* home_trainquery.png in Resources */,
 				CED2AE8E17C32CFF00E6F0AA /* homebackgroundimage.png in Resources */,
-				CED2AE8F17C32CFF00E6F0AA /* homeshowimage.png in Resources */,
 				CED2AE9017C32CFF00E6F0AA /* image1.png in Resources */,
 				CED2AE9117C32CFF00E6F0AA /* image2.png in Resources */,
 				CED2AE9217C32CFF00E6F0AA /* image3.png in Resources */,
 				CED2AE9317C32CFF00E6F0AA /* login_normal.png in Resources */,
 				CED2AE9417C32CFF00E6F0AA /* login_press.png in Resources */,
-				CED2AE9517C32CFF00E6F0AA /* logshijue.png in Resources */,
 				CED2AE9617C32CFF00E6F0AA /* member_normal.png in Resources */,
 				CED2AE9717C32CFF00E6F0AA /* member_press.png in Resources */,
 				CED2AE9817C32CFF00E6F0AA /* registered_normal.png in Resources */,
@@ -1549,12 +1258,9 @@
 				CED2AEA217C32CFF00E6F0AA /* order_normal.png in Resources */,
 				CED2AEA317C32CFF00E6F0AA /* order_select.png in Resources */,
 				CED2AEA417C32CFF00E6F0AA /* orderarrow.png in Resources */,
-				CED2AEA517C32CFF00E6F0AA /* ordercentershow.png in Resources */,
 				CED2AEA617C32CFF00E6F0AA /* orderinfo.png in Resources */,
 				CED2AEA717C32CFF00E6F0AA /* takeout_normal.png in Resources */,
 				CED2AEA817C32CFF00E6F0AA /* takeout_press.png in Resources */,
-				CED2AEA917C32CFF00E6F0AA /* addchildrenshow.png in Resources */,
-				CED2AEAA17C32CFF00E6F0AA /* addmanshow.png in Resources */,
 				CED2AEAB17C32CFF00E6F0AA /* addpassenger_normal.png in Resources */,
 				CED2AEAC17C32CFF00E6F0AA /* addpassenger_press.png in Resources */,
 				CED2AEAD17C32CFF00E6F0AA /* infoframe_deep.png in Resources */,
@@ -1562,7 +1268,6 @@
 				CED2AEAF17C32CFF00E6F0AA /* jiantou.png in Resources */,
 				CED2AEB017C32CFF00E6F0AA /* passengerbackimage.png in Resources */,
 				CED2AEB117C32CFF00E6F0AA /* passengerinfoimage.png in Resources */,
-				CED2AEB217C32CFF00E6F0AA /* passengerinfoshow.png in Resources */,
 				CED2AEB317C32CFF00E6F0AA /* passengerselect_normal.png in Resources */,
 				CED2AEB417C32CFF00E6F0AA /* passengerselect_press.png in Resources */,
 				CED2AEB517C32CFF00E6F0AA /* arrow_down.png in Resources */,
@@ -1578,16 +1283,13 @@
 				CED2AEBF17C32CFF00E6F0AA /* queryinfocell_normal.png in Resources */,
 				CED2AEC017C32CFF00E6F0AA /* queryinfocell_select.png in Resources */,
 				CED2AEC117C32CFF00E6F0AA /* selectline.png in Resources */,
-				CED2AEC217C32CFF00E6F0AA /* shijue.png in Resources */,
 				CED2AEC317C32CFF00E6F0AA /* start.png in Resources */,
 				CED2AEC417C32CFF00E6F0AA /* subjoinimage.png in Resources */,
 				CED2AEC517C32CFF00E6F0AA /* wupiao.png in Resources */,
 				CED2AEC617C32CFF00E6F0AA /* yuding.png in Resources */,
 				CED2AEC717C32CFF00E6F0AA /* zhankaikuang.png in Resources */,
-				CED2AEC817C32CFF00E6F0AA /* a.png in Resources */,
 				CED2AEC917C32CFF00E6F0AA /* arrow_normal.png in Resources */,
 				CED2AECA17C32CFF00E6F0AA /* arrow_press.png in Resources */,
-				CED2AECB17C32CFF00E6F0AA /* b.png in Resources */,
 				CED2AECC17C32CFF00E6F0AA /* backgroundimage.png in Resources */,
 				CED2AECD17C32CFF00E6F0AA /* citylabel_btn.png in Resources */,
 				CED2AECE17C32CFF00E6F0AA /* date_btn.png in Resources */,
@@ -1611,7 +1313,6 @@
 				CED2AEE017C32CFF00E6F0AA /* cityimage.png in Resources */,
 				CED2AEE117C32CFF00E6F0AA /* detailbackimage.png in Resources */,
 				CED2AEE217C32CFF00E6F0AA /* tableheaderimage.png in Resources */,
-				CED2AEE317C32CFF00E6F0AA /* trainCodeView.png in Resources */,
 				CED2AEE417C32CFF00E6F0AA /* whitebackimage.png in Resources */,
 				CED2AEE517C32CFF00E6F0AA /* 火车票™资料.rtf in Resources */,
 				CED2AEEA17C3555200E6F0AA /* AddNewContactsViewController.xib in Resources */,
@@ -1634,7 +1335,6 @@
 				CED0EFDF17D443F7007B9E20 /* orderfillin_contacts_press.png in Resources */,
 				CED0EFE017D443F7007B9E20 /* orderfillin_passenger.png in Resources */,
 				CED0EFE117D443F7007B9E20 /* orderfillin_prompt.png in Resources */,
-				CED0EFE217D443F7007B9E20 /* orderfillin_show.png in Resources */,
 				CED0EFE317D443F7007B9E20 /* orderfillin_traininfo.png in Resources */,
 				CED0EFE817D4445A007B9E20 /* OrderFillInViewController.xib in Resources */,
 				CED0EFEA17D46CF4007B9E20 /* ordertitle_backimage.png in Resources */,
@@ -1654,7 +1354,7 @@
 				CE8BB99717E31787008CDFEE /* Icon.png in Resources */,
 				CE8BB99817E31787008CDFEE /* Icon@2x.png in Resources */,
 				CE8BB99A17E31AEF008CDFEE /* Icon-72@2x.png in Resources */,
-				CE59B36817E69E3700FBB934 /* AlixPayIPadDemoViewController.xib in Resources */,
+				CE4FBE0517EE81B500445208 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1739,22 +1439,18 @@
 				CE59B25717E690BC00FBB934 /* SBJsonUTF8Stream.m in Sources */,
 				CE59B25817E690BC00FBB934 /* SBJsonWriter.m in Sources */,
 				CE59B25917E690BC00FBB934 /* TdCalendarView.m in Sources */,
-				CE59B36B17E69E3700FBB934 /* base64.m in Sources */,
-				CE59B36C17E69E3700FBB934 /* MD5DataSigner.m in Sources */,
-				CE59B36D17E69E3700FBB934 /* NSDataEx.m in Sources */,
-				CE59B36E17E69E3700FBB934 /* openssl_wrapper.m in Sources */,
-				CE59B36F17E69E3700FBB934 /* RSADataSigner.m in Sources */,
-				CE59B37017E69E3700FBB934 /* RSADataVerifier.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		CED2AD5817C32C7F00E6F0AA /* InfoPlist.strings */ = {
+		CE4FBE0717EE81B500445208 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				CED2AD5917C32C7F00E6F0AA /* en */,
+				CE4FBE0617EE81B500445208 /* en */,
+				CE472CB317EE94A50034849D /* zh-Hans */,
+				CE472CB417EE95B70034849D /* zh-Hant */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1825,11 +1521,7 @@
 				GCC_PREFIX_HEADER = "TrainTicketQuery/TrainTicketQuery-Prefix.pch";
 				HEADER_SEARCH_PATHS = "${SDK_DIR}/usr/include/libxml2";
 				INFOPLIST_FILE = "TrainTicketQuery/TrainTicketQuery-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/TrainTicketQuery/Library/Alixpay/libs\"",
-					"\"$(SRCROOT)/TrainTicketQuery/Library/Alixpay/Utilities\"",
-				);
+				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
@@ -1845,11 +1537,7 @@
 				GCC_PREFIX_HEADER = "TrainTicketQuery/TrainTicketQuery-Prefix.pch";
 				HEADER_SEARCH_PATHS = "${SDK_DIR}/usr/include/libxml2";
 				INFOPLIST_FILE = "TrainTicketQuery/TrainTicketQuery-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/TrainTicketQuery/Library/Alixpay/libs\"",
-					"\"$(SRCROOT)/TrainTicketQuery/Library/Alixpay/Utilities\"",
-				);
+				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";

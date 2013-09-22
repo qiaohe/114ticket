@@ -31,7 +31,7 @@ const int	weekFontSize=12;
 	currentMonthDate.day=1;
 	currentSelectDate.year=0;
 	monthFlagArray=malloc(sizeof(int)*31);
-	[self clearAllDayFlag];	
+	[self clearAllDayFlag];
 }
 - (id)initWithCoder:(NSCoder *)coder {
     if (self = [super initWithCoder:coder]) {

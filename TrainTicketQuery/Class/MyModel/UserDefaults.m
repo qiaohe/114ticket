@@ -68,6 +68,7 @@ static UserDefaults *shareUserDefault;
     [self setEmail:nil];
     [self setSex:nil];
     [self setGetUserInfo:NO];
+    //[self setContacts:nil];
 }
 
 - (NSString *)userId
@@ -229,7 +230,7 @@ static UserDefaults *shareUserDefault;
 - (NSMutableArray *)contacts
 {
     if (!contacts) {
-        contacts = [[[NSUserDefaults standardUserDefaults] valueForKey:@"contacts"] retain];
+        contacts = [[NSMutableArray alloc]init];
     }
     return contacts;
 }
@@ -240,7 +241,7 @@ static UserDefaults *shareUserDefault;
         if (contacts) {
             [contacts release];
         }
-        [[NSUserDefaults standardUserDefaults] setValue:_contacts forKey:@"contacts"];
+        //[[NSUserDefaults standardUserDefaults] setValue:_contacts forKey:@"contacts"];
         contacts = [_contacts retain];
     }
 }

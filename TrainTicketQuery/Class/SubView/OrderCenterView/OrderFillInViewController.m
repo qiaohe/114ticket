@@ -488,7 +488,7 @@
     self.seatTypeAndPrice = [self getLabelWithFrame:CGRectMake(seatTypeAndPriceLabel.frame.origin.x + seatTypeAndPriceLabel.frame.size.width, seatTypeAndPriceLabel.frame.origin.y, trainInfoBackImage.frame.size.width - seatTypeAndPriceLabel.frame.size.width, seatTypeAndPriceLabel.frame.size.height) textAlignment:NSTextAlignmentLeft backGroundColor:[UIColor clearColor] textColor:[self getColor:@"ff6c00"] title:[NSString stringWithFormat:@"%@  ￥:%.2f",trainOrder.seatType,trainOrder.selectTicketPrice] font:[UIFont fontWithName:@"HelveticaNeue" size:12]];
     [self.view addSubview:seatTypeAndPrice];
     
-    UITextView *trainPrompt = [[UITextView alloc]initWithFrame:[Utils frameWithRect:CGRectMake(10, 140, 300, 40) adaptWidthOrHeight:adaptWidth]];//140
+    UITextView *trainPrompt = [[[UITextView alloc]initWithFrame:[Utils frameWithRect:CGRectMake(10, 140, 300, 40) adaptWidthOrHeight:adaptWidth]]autorelease];//140
     [trainPrompt setBackgroundColor:[UIColor clearColor]];
     [trainPrompt setTextColor:[UIColor darkGrayColor]];
     trainPrompt.editable = NO;
@@ -497,7 +497,7 @@
     trainPrompt.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:trainPrompt];
     
-    UIImageView *passengerBackImage = [[UIImageView alloc]initWithFrame:[Utils frameWithRect:CGRectMake(10, 195, 300, 110) adaptWidthOrHeight:adaptNone]];//255
+    UIImageView *passengerBackImage = [[[UIImageView alloc]initWithFrame:[Utils frameWithRect:CGRectMake(10, 195, 300, 110) adaptWidthOrHeight:adaptNone]]autorelease];//255
     [passengerBackImage setBackgroundColor:[UIColor clearColor]];
     [passengerBackImage setImage:imageNameAndType(@"orderfillin_passenger", @"png")];
     [self.view addSubview:passengerBackImage];
@@ -514,12 +514,12 @@
     [addPassenger setImage:imageNameAndType(@"orderfillin_addpassenger_press", @"png") forState:UIControlStateHighlighted];
     [self.view addSubview:addPassenger];
     
-    UIImageView *contactNameBackImage = [[UIImageView alloc]initWithFrame:CGRectMake(passengers.frame.origin.x + 15, passengers.frame.origin.y + passengers.frame.size.height + 2.5, passengers.frame.size.width - 15, passengers.frame.size.height - 10)];
+    UIImageView *contactNameBackImage = [[[UIImageView alloc]initWithFrame:CGRectMake(passengers.frame.origin.x + 15, passengers.frame.origin.y + passengers.frame.size.height + 2.5, passengers.frame.size.width - 15, passengers.frame.size.height - 10)]autorelease];
     [contactNameBackImage setImage:imageNameAndType(@"filltextbackimage", @"png")];
     [contactNameBackImage setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:contactNameBackImage];
     
-    self.contactName = [[UITextField alloc]initWithFrame:CGRectMake(contactNameBackImage.frame.origin.x + 10, contactNameBackImage.frame.origin.y, contactNameBackImage.frame.size.width, contactNameBackImage.frame.size.height)];
+    self.contactName = [[[UITextField alloc]initWithFrame:CGRectMake(contactNameBackImage.frame.origin.x + 10, contactNameBackImage.frame.origin.y, contactNameBackImage.frame.size.width, contactNameBackImage.frame.size.height)]autorelease];
     contactName.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     [contactName setBackgroundColor:[UIColor clearColor]];
     [contactName setText:[UserDefaults shareUserDefault].realName];
@@ -530,12 +530,12 @@
     [contactName setFont:[UIFont fontWithName:@"HelveticaNeue" size:12]];
     [self.view addSubview:contactName];
     
-    UIImageView *contactNumBackImage = [[UIImageView alloc]initWithFrame:CGRectMake(contactNameBackImage.frame.origin.x, contactNameBackImage.frame.origin.y + contactNameBackImage.frame.size.height + 1.5, contactNameBackImage.frame.size.width, contactNameBackImage.frame.size.height)];
+    UIImageView *contactNumBackImage = [[[UIImageView alloc]initWithFrame:CGRectMake(contactNameBackImage.frame.origin.x, contactNameBackImage.frame.origin.y + contactNameBackImage.frame.size.height + 1.5, contactNameBackImage.frame.size.width, contactNameBackImage.frame.size.height)]autorelease];
     [contactNumBackImage setImage:imageNameAndType(@"filltextbackimage", @"png")];
     [contactNumBackImage setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:contactNumBackImage];
     
-    self.contactNum = [[UITextField alloc]initWithFrame:CGRectMake(contactNumBackImage.frame.origin.x + 10, contactNumBackImage.frame.origin.y, contactNumBackImage.frame.size.width, contactNumBackImage.frame.size.height)];
+    self.contactNum = [[[UITextField alloc]initWithFrame:CGRectMake(contactNumBackImage.frame.origin.x + 10, contactNumBackImage.frame.origin.y, contactNumBackImage.frame.size.width, contactNumBackImage.frame.size.height)]autorelease];
     contactNum.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     [contactNum setBackgroundColor:[UIColor clearColor]];
     [contactNum setText:[UserDefaults shareUserDefault].mobile];
@@ -554,7 +554,7 @@
     [addressBook setImage:imageNameAndType(@"orderfillin_contacts_press", @"png") forState:UIControlStateHighlighted];
     [self.view addSubview:addressBook];
     
-    UIImageView *subjoinServiceBackImage = [[UIImageView alloc]initWithFrame:[Utils frameWithRect:CGRectMake(10, 305 + 10, 300, 40) adaptWidthOrHeight:adaptWidth]];
+    UIImageView *subjoinServiceBackImage = [[[UIImageView alloc]initWithFrame:[Utils frameWithRect:CGRectMake(10, 305 + 10, 300, 40) adaptWidthOrHeight:adaptWidth]]autorelease];
     [subjoinServiceBackImage setImage:imageNameAndType(@"queryinfocell_normal", @"png")];
     [self.view addSubview:subjoinServiceBackImage];
     
@@ -573,7 +573,7 @@
     [subjoinService addTarget:self action:@selector(pressSubjoinService:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:subjoinService];
     
-    UITextView *passengerPrompt = [[UITextView alloc]initWithFrame:[Utils frameWithRect:CGRectMake(10, 355, 300, 40) adaptWidthOrHeight:adaptWidth]];
+    UITextView *passengerPrompt = [[[UITextView alloc]initWithFrame:[Utils frameWithRect:CGRectMake(10, 355, 300, 40) adaptWidthOrHeight:adaptWidth]]autorelease];
     [passengerPrompt setBackgroundColor:[UIColor clearColor]];
     [passengerPrompt setTextColor:[UIColor darkGrayColor]];
     passengerPrompt.editable = NO;

@@ -347,13 +347,14 @@
         self.dataSource = [NSMutableArray array];
     }
     NSDictionary *dicData = [_string JSONValue];
+    NSLog(@"data = %@",dicData);
     if ([[dicData objectForKey:@"performStatus"] isEqualToString:@"success"]) {
         [dataSource removeAllObjects];
         NSDictionary *result = [dicData objectForKey:@"performResult"];
         [startCityLabel setText:[result objectForKey:@"beginStation"]];
         [endCityLabel setText:[result objectForKey:@"endStation"]];
         [startDateLabel setText:[result objectForKey:@"beginTime"]];
-        [endDateLabel setText:[result objectForKey:@"endStation"]];
+        [endDateLabel setText:[result objectForKey:@"endTime"]];
         [trainCodeLabel setText:[result objectForKey:@"trainCode"]];
         [distanceLabel setText:[NSString stringWithFormat:@"行程:%@公里",[result objectForKey:@"mile"]]];
         [costTimeLabel setText:[NSString stringWithFormat:@"花费时间:%@",[result objectForKey:@"elapsedTime"]]];
