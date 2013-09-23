@@ -106,12 +106,12 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0) {
-        return 1;
-    }else
+    /*if (section == 0) {
+        return 0;
+    }else*/
         return [hotCities count];
 }
-
+/*
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 2;
@@ -121,11 +121,11 @@
 {
     return 20.0f;
 }
-/*
+
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     
-}*/
+}
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
@@ -141,7 +141,7 @@
             break;
     }return nil;
 }
-
+*/
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *identifierStr = @"cell";
@@ -150,18 +150,18 @@
         cell = [[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifierStr]autorelease];
         [cell.textLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:15]];
     }
-    if (indexPath.section == 0) {
+    /*if (indexPath.section == 0) {
         [cell.textLabel setText:@"使用当前位置"];
-    }else if (indexPath.section == 1)
+    }else if (indexPath.section == 1)*/
         [cell.textLabel setText:[hotCities objectAtIndex:indexPath.row]];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0) {
+    /*if (indexPath.section == 0) {
         
-    }else if (indexPath.section == 1)
+    }else if (indexPath.section == 1)*/
         [self.delegate setDataWithParams:[hotCities objectAtIndex:indexPath.row] withPickType:pickType];
     BaseUIViewController *prevView = [[Model shareModel].viewControllers objectAtIndex:([[Model shareModel].viewControllers indexOfObject:self] - 1)];
     [[Model shareModel] pushView:prevView options:ViewTrasitionEffectMoveRight completion:^{
