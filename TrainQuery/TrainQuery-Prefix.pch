@@ -1,0 +1,28 @@
+//
+// Prefix header for all source files of the 'TrainQuery' target in the 'TrainQuery' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+
+    #define         alipayFinished                              @"AlipayFinished"
+
+    #define         appScheme                                   @"114TrainTicketQuery"
+
+    #define         TrainOrderServiceURL                        @"http://www.114piaowu.com:8043/axis2/services/trainOrderService"
+    #define         UserServiceURL                              @"http://www.114piaowu.com:8043/axis2/services/userService"
+    #define         NotificationAppConfigRecived                @"ReceiveAppConfig"
+    #define         NotificationAppConfigRecivedFailed          @"ReceiveAppConfigFailed"
+
+    #define         appFrame                    [[UIScreen mainScreen] applicationFrame]
+    #define         appBounds                   [[UIScreen mainScreen] bounds]
+    #define         imageNameAndType(a,b)       [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:a ofType:b]]
+
+#endif
