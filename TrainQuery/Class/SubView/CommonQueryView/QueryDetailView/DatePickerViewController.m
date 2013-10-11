@@ -8,6 +8,7 @@
 
 #import "DatePickerViewController.h"
 #import "Model.h"
+#import "Utils.h"
 
 @interface DatePickerViewController ()
 
@@ -72,6 +73,15 @@
 - (void) selectDateChanged:(CFGregorianDate) selectDate
 {
     NSString *_dateString = [NSString stringWithFormat:@"%ld-%ld-%ld",(long)selectDate.year,(long)selectDate.month,(long)selectDate.day];
+    NSDate *selectedDate    = [Utils dateWithString:_dateString withFormat:@"yyyy-MM-dd"];
+    NSDate *currentDate   = [NSDate date];
+    if ([selectedDate timeIntervalSince1970] < [currentDate timeIntervalSince1970]) {
+        [[Model shareModel] showPromptBoxWithText:@"不能定今天以前的票" modal:NO];
+        return;
+    }else if ([selectedDate timeIntervalSince1970] - [currentDate timeIntervalSince1970] > 20 * 24 * 60 * 60){
+        [[Model shareModel] showPromptBoxWithText:@"请选择20日以内的日期" modal:NO];
+        return;
+    }
     [self popViewControllerCompletion:^{
         if (self.delegate) {
             [self.delegate didSelectDate:_dateString];

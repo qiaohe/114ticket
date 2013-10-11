@@ -14,6 +14,7 @@
 #import "TrainQueryViewController.h"
 #import "OrderCenterViewController.h"
 #import "UserInfoViewController.h"
+#import "Utils.h"
 
 @interface RegisterAndLogInViewController ()
 
@@ -28,6 +29,8 @@
 @synthesize trainOrder;
 @synthesize codeAndPrice;
 @synthesize responseData;
+
+@synthesize tipView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -47,6 +50,9 @@
     [trainOrder              release];
     [codeAndPrice            release];
     [responseData            release];
+    if (tipView) {
+        [tipView             release];
+    }
     [super                   dealloc];
 }
 
@@ -150,7 +156,6 @@
     userName.keyboardType = UIKeyboardTypeEmailAddress;
     //userName.textAlignment = NSTextAlignmentCenter;
     [userName setBackgroundColor:[UIColor clearColor]];
-    [userName setText:@"15000609701"];
     userName.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     [userName setFont:[UIFont fontWithName:@"HelveticaNeue" size:15]];
     [self.view addSubview:userName];
@@ -168,7 +173,6 @@
     passWord.keyboardType = UIKeyboardTypeEmailAddress;
     //userName.textAlignment = NSTextAlignmentCenter;
     [passWord setBackgroundColor:[UIColor clearColor]];
-    [passWord setText:@"w5998991"];
     passWord.secureTextEntry = YES;
     passWord.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     [passWord setFont:[UIFont fontWithName:@"HelveticaNeue" size:15]];
@@ -226,6 +230,13 @@
 
 - (void)pressLogInButton:(UIButton*)sender
 {
+    if ([Utils textIsEmpty:userName.text]) {
+        [self displayTip:@"用户名不能为空" modal:NO];
+        return;
+    }else if ([Utils textIsEmpty:passWord.text ]){
+        [self displayTip:@"密码不能为空" modal:NO];
+        return;
+    }
     [self logIn];
 }
 
@@ -281,7 +292,7 @@
 - (void)parserStringFinished:(NSString *)_string request:(ASIHTTPRequest *)request
 {
     NSDictionary *dic = [_string JSONValue];
-    [[Model shareModel] showPromptBoxWithText:[dic objectForKey:@"performResult"] modal:YES];
+    [self displayTip:[dic objectForKey:@"performResult"] modal:NO];
     [trainOrder.trainOrderDetails removeAllObjects];
 
     if ([[dic objectForKey:@"performStatus"] isEqualToString:@"success"]) {
@@ -391,6 +402,64 @@
         }
     }
 }
+
+
+- (void)displayTip:(NSString *)tip modal:(BOOL)modal
+{
+    if (!tipView) {
+        self.tipView = [UIButton buttonWithType:UIButtonTypeCustom];
+        tipView.frame = CGRectMake(0, 0, appFrame.size.width*2/3, 65);
+        tipView.contentEdgeInsets = UIEdgeInsetsMake(0, 25, 0, 20);
+        //[tipView setBackgroundImage:imageNameAndType(@"alert_background@2x", @"png") forState:UIControlStateDisabled];
+        tipView.enabled = NO;
+        [tipView.titleLabel setNumberOfLines:0];
+        [tipView.titleLabel setLineBreakMode:NSLineBreakByWordWrapping];
+        [tipView.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:13]];
+        /*
+         tipView.titleLabel.adjustsFontSizeToFitWidth = YES;
+         tipView.titleLabel.adjustsLetterSpacingToFitWidth = YES;
+         tipView.titleLabel.baselineAdjustment = UIBaselineAdjustmentNone;
+         tipView.titleLabel.minimumScaleFactor = 0.5;*/
+    }
+    
+    CGSize size = [tip sizeWithFont:[UIFont fontWithName:@"HelveticaNeue" size:13] constrainedToSize:CGSizeMake(tipView.frame.size.width - 20, NSIntegerMax) lineBreakMode:NSLineBreakByWordWrapping];
+    CGFloat height = size.height + 35 >= 65?size.height + 35:65;
+    NSLog(@"size height = %f",size.height);
+    tipView.frame = CGRectMake(0, 0, tipView.frame.size.width, height);
+    tipView.center = CGPointMake(appFrame.size.width/2, appFrame.size.height/2);
+    
+    UIImage *image = imageNameAndType(@"alert_background@2x", @"png");
+    image = [image stretchableImageWithLeftCapWidth:image.size.width/2 topCapHeight:image.size.height/2];
+    [tipView setBackgroundImage:image forState:UIControlStateDisabled];
+    
+    [tipView setTitle:tip forState:UIControlStateNormal];
+    
+    if (!tipView.superview) {
+        [self.view addSubview:tipView];
+        tipView.alpha = 0.0f;
+        [UIView animateWithDuration:0.3f
+                         animations:^{
+                             tipView.alpha = 1.0f;
+                         }
+                         completion:^(BOOL finished){
+                             [self performSelector:@selector(tipHide:) withObject:[NSNumber numberWithBool:modal] afterDelay:1.5f];
+                         }];
+    }
+}
+
+- (void)tipHide:(NSNumber*)number
+{
+    [UIView animateWithDuration:0.5f
+                     animations:^{
+                         tipView.alpha = 0.0f;
+                     }
+                     completion:^(BOOL finished) {
+                         if (tipView.superview) {
+                             [tipView removeFromSuperview];
+                         }
+                     }];
+}
+
 
 - (void)didReceiveMemoryWarning
 {

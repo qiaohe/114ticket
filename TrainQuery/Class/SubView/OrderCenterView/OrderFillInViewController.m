@@ -158,11 +158,12 @@
 
 - (void)pressConfirmButton:(UIButton*)sender
 {
-    
-    if(![trainOrder.trainOrderDetails count]){
+    if([trainOrder.trainOrderDetails count] == 0){
         [[Model shareModel] showPromptBoxWithText:@"请选择购票人" modal:NO];
     }else if ([Utils textIsEmpty:contactName.text] || [Utils textIsEmpty:contactNum.text]) {
-        [[Model shareModel] showPromptBoxWithText:@"联系人和手机号不能为空" modal:NO];
+        [[Model shareModel] showPromptBoxWithText:@"联系人和电话不能为空" modal:NO];
+    }else if (![Utils isValidatePhoneNum:contactNum.text]){
+        [[Model shareModel] showPromptBoxWithText:@"电话号码格式不正确" modal:NO];
     }else{
         [self inviteTicketPriceWithTrainOrder:trainOrder];
         trainOrder.totalAmount    = [[NSString stringWithFormat:@"%.2lf",amount.totalAmount] doubleValue];
@@ -172,6 +173,11 @@
         trainOrder.userName       = contactName.text;
         trainOrder.userMobile     = contactNum.text;
                 
+        if (!selectedInsure) {
+            selectedInsure = [[[InSure alloc]init]autorelease];
+            [selectedInsure setInSureType:@"10"];
+        }
+        
         NSMutableArray *orderDetails = [NSMutableArray array];
         for (id passenger in trainOrder.trainOrderDetails) {
             if ([passenger isKindOfClass:[PassengerInfo class]]) {
@@ -190,8 +196,12 @@
             trainOrder.trainOrderDetails = orderDetails;
         }
         
-        NSString *jsonString = [trainOrder JSONRepresentation];
+        if ([UserDefaults shareUserDefault].userId) {
+            trainOrder.userId = [[UserDefaults shareUserDefault].userId integerValue];
+        }
         
+        NSString *jsonString = [trainOrder JSONRepresentation];
+                
         NSString *urlString = [NSString stringWithFormat:@"%@?trainOrderSync",TrainOrderServiceURL];
         NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
                                 jsonString,                 @"trainOrder",
@@ -218,15 +228,15 @@
 
 - (void)pressAddressBook:(UIButton*)sender
 {
-    /*
+    
     ABPeoplePickerNavigationController *peoplePicker = [[ABPeoplePickerNavigationController alloc]init];
     
     peoplePicker.peoplePickerDelegate = self;
     
     [self presentViewController:peoplePicker animated:YES completion:^{
         
-    }];*/
-    [[Model shareModel] showPromptBoxWithText:@"暂不支持从电话薄中添加" modal:NO];
+    }];
+    //[[Model shareModel] showPromptBoxWithText:@"暂不支持从电话薄中添加" modal:NO];
 }
 
 #pragma mark - addressbook delegate method
@@ -239,11 +249,52 @@
 
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person
 {
+    ABMultiValueRef phone = ABRecordCopyValue(person, kABPersonPhoneProperty);
+    int phoneCnt = ABMultiValueGetCount(phone);
+    if(phoneCnt>1)
+    {
+        CFRelease(phone);
+        return YES;
+    }
+    
+    NSString* personNumber = (NSString*)ABMultiValueCopyValueAtIndex(phone, 0);
+        
+    NSString *firstName = (NSString *)ABRecordCopyValue(person, kABPersonFirstNameProperty);
+    NSString *lastName  = (NSString *)ABRecordCopyValue(person, kABPersonLastNameProperty);
+    NSLog(@"person num = %@,first = %@,last = %@",personNumber,firstName,lastName);
+    
+    personNumber = [personNumber stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    
+    if (![Utils isValidatePhoneNum:personNumber]) {
+        UIAlertView *alertView = [[[UIAlertView alloc]initWithTitle:nil message:@"选择的联系人号码必须为手机号码" delegate:peoplePicker cancelButtonTitle:@"取消" otherButtonTitles:nil]autorelease];
+        [alertView show];
+        
+        return YES;
+    }
+        
+    [peoplePicker dismissViewControllerAnimated:YES completion:^{
+        [contactName setText:[NSString stringWithFormat:@"%@",lastName]];
+        [contactNum setText:personNumber];
+    }];
+    
     return NO;
 }
 
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier
 {
+    if (property == kABPersonPhoneProperty)
+    {
+        ABMutableMultiValueRef phone = ABRecordCopyValue(person, property);
+        int index = ABMultiValueGetIndexForIdentifier(phone, identifier);
+        
+        NSString* personNumber = (NSString*)ABMultiValueCopyValueAtIndex(phone, index);
+        
+        [peoplePicker dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+        [personNumber release];
+        CFRelease(phone);
+    }
     return NO;
 }
 
@@ -256,7 +307,7 @@
     if (selectedInsure) {
         amount.premiumAmount = [selectedInsure.inSureType doubleValue] * [order.trainOrderDetails count];
     }else{
-        amount.premiumAmount = 10.0f;
+        amount.premiumAmount = 10.0f * [order.trainOrderDetails count];
     }
     switch (codeAndPrice.selectSeatType) {
         case SeatTypeYZ:
@@ -279,11 +330,11 @@
             break;
             
         default:
-            amount.ticketAmount = 10.0;
+            amount.ticketAmount = 0.0;
             break;
     }
     
-    amount.alipayAmount = (amount.ticketAmount + 10.0 * [order.trainOrderDetails count])/100;
+    amount.alipayAmount = (amount.ticketAmount + amount.premiumAmount)/100;
     amount.totalAmount = amount.ticketAmount + amount.alipayAmount + amount.premiumAmount;
     
     return amount;
@@ -297,7 +348,7 @@
     if (selectedInsure) {
         amount.premiumAmount = [selectedInsure.inSureType doubleValue] * [order.trainOrderDetails count];
     }else{
-        amount.premiumAmount = 10.0f;
+        amount.premiumAmount = 10.0f * [order.trainOrderDetails count];
     }
     switch (codeAndPrice.selectSeatType) {
         case SeatTypeYZ:
@@ -325,7 +376,7 @@
     }
     amount.saleSiteAmount = 5.0  * [order.trainOrderDetails count];
     amount.expressAmount  = 30.0 * [order.trainOrderDetails count];
-    amount.alipayAmount = (amount.ticketAmount + amount.saleSiteAmount + amount.expressAmount + 10 * [order.trainOrderDetails count])/100;
+    amount.alipayAmount = (amount.ticketAmount + amount.saleSiteAmount + amount.expressAmount + amount.premiumAmount)/100;
     amount.totalAmount = amount.ticketAmount + amount.alipayAmount + amount.saleSiteAmount + amount.expressAmount + amount.premiumAmount;
     
     return amount;
@@ -551,7 +602,9 @@
     self.contactName = [[[UITextField alloc]initWithFrame:CGRectMake(contactNameBackImage.frame.origin.x + 10, contactNameBackImage.frame.origin.y, contactNameBackImage.frame.size.width, contactNameBackImage.frame.size.height)]autorelease];
     contactName.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     [contactName setBackgroundColor:[UIColor clearColor]];
-    [contactName setText:[UserDefaults shareUserDefault].realName];
+    if ([UserDefaults shareUserDefault].realName) {
+        [contactName setText:[UserDefaults shareUserDefault].realName];
+    }
     //[contactName setEnabled:NO];
     [contactName setDelegate:self];
     [contactName setReturnKeyType:UIReturnKeyDone];
@@ -567,7 +620,9 @@
     self.contactNum = [[[UITextField alloc]initWithFrame:CGRectMake(contactNumBackImage.frame.origin.x + 10, contactNumBackImage.frame.origin.y, contactNumBackImage.frame.size.width, contactNumBackImage.frame.size.height)]autorelease];
     contactNum.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     [contactNum setBackgroundColor:[UIColor clearColor]];
-    [contactNum setText:[UserDefaults shareUserDefault].mobile];
+    if ([UserDefaults shareUserDefault].mobile) {
+        [contactNum setText:[UserDefaults shareUserDefault].mobile];
+    }
     //[contactNum setEnabled:NO];
     [contactNum setDelegate:self];
     [contactNum setReturnKeyType:UIReturnKeyDone];

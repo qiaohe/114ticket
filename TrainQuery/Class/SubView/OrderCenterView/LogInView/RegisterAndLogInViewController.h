@@ -27,4 +27,6 @@
 @property (retain, nonatomic) TrainCodeAndPrice *codeAndPrice;
 @property (retain, nonatomic) NSMutableData     *responseData;
 
+@property (retain, nonatomic) UIButton          *tipView;
+
 @end

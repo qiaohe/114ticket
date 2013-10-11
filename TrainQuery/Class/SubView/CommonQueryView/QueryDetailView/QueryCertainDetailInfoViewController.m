@@ -336,14 +336,12 @@
 
 - (void)requestDone:(ASIHTTPRequest *)request
 {
-    NSLog(@"response = %@",request.responseString);
     [[Model shareModel] showActivityIndicator:NO frame:CGRectMake(0, 40, selfViewFrame.size.width, selfViewFrame.size.height - 40) belowView:nil enabled:YES];
     [self parserStringBegin:request];
 }
 
 - (void)parserStringFinished:(NSString *)_string request:(ASIHTTPRequest *)request
 {
-    NSLog(@"string = %@",_string);
     if (!dataSource) {
         self.dataSource = [NSMutableArray array];
     }

@@ -11,7 +11,6 @@
 		CE4AF84B17F950590026AB73 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4AF84A17F950590026AB73 /* CFNetwork.framework */; };
 		CE4AF84D17F950670026AB73 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4AF84C17F950670026AB73 /* SystemConfiguration.framework */; };
 		CE4AF84F17F9506E0026AB73 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4AF84E17F9506E0026AB73 /* MobileCoreServices.framework */; };
-		CE4AF85117F950770026AB73 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4AF85017F950770026AB73 /* AddressBookUI.framework */; };
 		CE4AF85317F950820026AB73 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4AF85217F950820026AB73 /* libz.1.2.5.dylib */; };
 		CE4AF85517F950890026AB73 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4AF85417F950890026AB73 /* Security.framework */; };
 		CE4AF8A817F951160026AB73 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4AF85917F951160026AB73 /* AboutViewController.m */; };
@@ -241,9 +240,15 @@
 		CE5BF44017F94F01000FFA9D /* detailbackimage.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5BF39617F94F01000FFA9D /* detailbackimage.png */; };
 		CE5BF44117F94F01000FFA9D /* tableheaderimage.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5BF39717F94F01000FFA9D /* tableheaderimage.png */; };
 		CE5BF44217F94F01000FFA9D /* whitebackimage.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5BF39817F94F01000FFA9D /* whitebackimage.png */; };
+		CE912E3D1807A25900D199B1 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CE912E3B1807A25900D199B1 /* Icon.png */; };
+		CE912E3E1807A25900D199B1 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE912E3C1807A25900D199B1 /* Icon@2x.png */; };
+		CE912E411807A2FD00D199B1 /* abouticon.png in Resources */ = {isa = PBXBuildFile; fileRef = CE912E3F1807A2FD00D199B1 /* abouticon.png */; };
+		CE912E421807A2FD00D199B1 /* Icon7.png in Resources */ = {isa = PBXBuildFile; fileRef = CE912E401807A2FD00D199B1 /* Icon7.png */; };
 		CE9A9B2018065FB8005FFEEF /* BirthdayChooseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9A9B1E18065FB7005FFEEF /* BirthdayChooseViewController.m */; };
 		CE9A9B2118065FB8005FFEEF /* BirthdayChooseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE9A9B1F18065FB8005FFEEF /* BirthdayChooseViewController.xib */; };
 		CE9AB04617F95F2E0091A874 /* alert_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE9AB04517F95F2E0091A874 /* alert_background@2x.png */; };
+		CEA053061807D21D0044FC53 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4AF85017F950770026AB73 /* AddressBookUI.framework */; };
+		CEA053081807D2230044FC53 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA053071807D2230044FC53 /* AddressBook.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -567,10 +572,15 @@
 		CE5BF39617F94F01000FFA9D /* detailbackimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = detailbackimage.png; sourceTree = "<group>"; };
 		CE5BF39717F94F01000FFA9D /* tableheaderimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableheaderimage.png; sourceTree = "<group>"; };
 		CE5BF39817F94F01000FFA9D /* whitebackimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whitebackimage.png; sourceTree = "<group>"; };
+		CE912E3B1807A25900D199B1 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		CE912E3C1807A25900D199B1 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		CE912E3F1807A2FD00D199B1 /* abouticon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = abouticon.png; sourceTree = "<group>"; };
+		CE912E401807A2FD00D199B1 /* Icon7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon7.png; sourceTree = "<group>"; };
 		CE9A9B1D18065FB6005FFEEF /* BirthdayChooseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirthdayChooseViewController.h; sourceTree = "<group>"; };
 		CE9A9B1E18065FB7005FFEEF /* BirthdayChooseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirthdayChooseViewController.m; sourceTree = "<group>"; };
 		CE9A9B1F18065FB8005FFEEF /* BirthdayChooseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BirthdayChooseViewController.xib; sourceTree = "<group>"; };
 		CE9AB04517F95F2E0091A874 /* alert_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alert_background@2x.png"; sourceTree = "<group>"; };
+		CEA053071807D2230044FC53 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -578,9 +588,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEA053081807D2230044FC53 /* AddressBook.framework in Frameworks */,
+				CEA053061807D21D0044FC53 /* AddressBookUI.framework in Frameworks */,
 				CE4AF85517F950890026AB73 /* Security.framework in Frameworks */,
 				CE4AF85317F950820026AB73 /* libz.1.2.5.dylib in Frameworks */,
-				CE4AF85117F950770026AB73 /* AddressBookUI.framework in Frameworks */,
 				CE4AF84F17F9506E0026AB73 /* MobileCoreServices.framework in Frameworks */,
 				CE4AF84D17F950670026AB73 /* SystemConfiguration.framework in Frameworks */,
 				CE4AF84B17F950590026AB73 /* CFNetwork.framework in Frameworks */,
@@ -766,6 +777,7 @@
 		CE5BF27D17F94E7B000FFA9D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CEA053071807D2230044FC53 /* AddressBook.framework */,
 				CE4AF85417F950890026AB73 /* Security.framework */,
 				CE4AF85217F950820026AB73 /* libz.1.2.5.dylib */,
 				CE4AF85017F950770026AB73 /* AddressBookUI.framework */,
@@ -793,6 +805,10 @@
 		CE5BF28517F94E7C000FFA9D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CE912E3F1807A2FD00D199B1 /* abouticon.png */,
+				CE912E401807A2FD00D199B1 /* Icon7.png */,
+				CE912E3B1807A25900D199B1 /* Icon.png */,
+				CE912E3C1807A25900D199B1 /* Icon@2x.png */,
 				CE5BF28617F94E7C000FFA9D /* TrainQuery-Info.plist */,
 				CE5BF28717F94E7C000FFA9D /* InfoPlist.strings */,
 				CE5BF28A17F94E7C000FFA9D /* main.m */,
@@ -1448,6 +1464,10 @@
 				CE5BF44217F94F01000FFA9D /* whitebackimage.png in Resources */,
 				CE9AB04617F95F2E0091A874 /* alert_background@2x.png in Resources */,
 				CE9A9B2118065FB8005FFEEF /* BirthdayChooseViewController.xib in Resources */,
+				CE912E3D1807A25900D199B1 /* Icon.png in Resources */,
+				CE912E3E1807A25900D199B1 /* Icon@2x.png in Resources */,
+				CE912E411807A2FD00D199B1 /* abouticon.png in Resources */,
+				CE912E421807A2FD00D199B1 /* Icon7.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

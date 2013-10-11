@@ -12,20 +12,24 @@
 #import "AlixPayOrder.h"
 #import "AlixPayResult.h"
 #import "Model.h"
+#import <AddressBookUI/AddressBookUI.h>
 
 @implementation AppDelegate
 
+@synthesize navigationController;
+
 - (void)dealloc
 {
-    [_window release];
-    [super dealloc];
+    [_window                 release];
+    [navigationController    release];
+    [super                   dealloc];
 }
 
 - (BOOL)isSingleTask{
 	struct utsname name;
 	uname(&name);
-	float version = [[UIDevice currentDevice].systemVersion floatValue];//判定系统版本。
-	if (version < 4.0 || strstr(name.machine, "iPod1,1") != 0 || strstr(name.machine, "iPod2,1") != 0) {
+	//float version = [[UIDevice currentDevice].systemVersion floatValue];//判定系统版本。
+	if (deviceVersion < 4.0 || strstr(name.machine, "iPod1,1") != 0 || strstr(name.machine, "iPod2,1") != 0) {
 		return YES;
 	}
 	else {
@@ -37,8 +41,9 @@
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     HomeViewController *viewController = [[[HomeViewController alloc]init]autorelease];
-    UINavigationController *navigationController = [[[UINavigationController alloc]initWithRootViewController:viewController]autorelease];
+    navigationController = [[UINavigationController alloc]initWithRootViewController:viewController];
     navigationController.navigationBarHidden = YES;
+    [Model shareModel].mainView = viewController;
     self.window.rootViewController = navigationController;
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
@@ -52,6 +57,29 @@
 		}
 	}
     
+    if (deviceVersion >= 6.0) {
+        ABAddressBookRef addressBook = NULL;
+        __block BOOL accessGranted = NO;
+        
+        if (ABAddressBookRequestAccessWithCompletion != NULL) { // we're on iOS 6
+            addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
+            dispatch_semaphore_t sema = dispatch_semaphore_create(0);
+            ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) {
+                accessGranted = granted;
+                dispatch_semaphore_signal(sema);
+            });
+            dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
+            dispatch_release(sema);
+        }
+        else { // we're on iOS 5 or older
+            accessGranted = YES;
+        }
+        
+        if (accessGranted) {
+            // Do whatever you want here.  
+        }
+    }
+        
     return YES;
 }
 
@@ -99,6 +127,17 @@
     }
 }
 
+- (void)requestFinished:(ASIHTTPRequest *)request
+{
+    if ([request.responseString isEqualToString:@"1"]) {
+        [[Model shareModel] showPromptBoxWithText:@"支付失败" modal:NO];
+    }else if ([request.responseString isEqualToString:@"2"]) {
+        [[Model shareModel] showPromptBoxWithText:@"支付成功" modal:NO];
+        [[NSNotificationCenter defaultCenter] postNotificationName:alipayFinished object:nil];
+    }else{
+        [[Model shareModel] showPromptBoxWithText:@"参数错误" modal:NO];
+    }
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

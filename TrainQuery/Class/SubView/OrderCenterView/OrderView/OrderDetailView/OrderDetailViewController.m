@@ -127,7 +127,6 @@
     if ([requestType isEqualToString:@"testAlix"]) {
         NSString *orderString = [request.responseString URLDecodedString];
 
-        NSLog(@"\norder = \n%@",orderString);
         AlixPay * alixpay = [AlixPay shared];
         int ret = [alixpay pay:orderString applicationScheme:appScheme];
         
@@ -192,7 +191,7 @@
 
 - (void)pressConfirmButton:(UIButton*)sender
 {
-    /*
+    
     NSDate *orderTime = [Utils dateWithString:trainOrder.orderTime withFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSDate *currentTime = [NSDate date];
     if ([currentTime timeIntervalSince1970] - [orderTime timeIntervalSince1970] >= 60 * 60) {
@@ -200,12 +199,19 @@
         return;
     }
     AlixPayOrder *order = [[AlixPayOrder alloc]init];
-    order.tradeNO       = trainOrder.orderNum;
+    
+    if (trainOrder.orderStatus == 4) {
+        NSString *payDate = [Utils stringWithDate:[NSDate date] withFormat:@"HHmm"];
+        order.tradeNO   = [NSString stringWithFormat:@"%@_%@",trainOrder.orderNum,payDate];
+        order.amount        = [NSString stringWithFormat:@"%.2f",trainOrder.totalAmount - trainOrder.paidAmount];
+    }else{
+        order.tradeNO       = trainOrder.orderNum;
+        order.amount        = [NSString stringWithFormat:@"%.2f",trainOrder.totalAmount];
+    }
     NSString *dateString = [Utils stringWithDate:[Utils dateWithString:trainOrder.trainStartTime withFormat:@"yyyy-MM-dd HH:mm"] withFormat:@"yyyy-MM-dd"];
     order.productName   = [NSString stringWithFormat:@"%@ - %@ %@ %@ - %@ %@ 数量:%d",trainOrder.orderNum,dateString,trainOrder.trainCode,trainOrder.startStation,trainOrder.endStation,trainOrder.seatType,trainOrder.totalTickets] ;
     order.productDescription  = [NSString stringWithFormat:@"%@ %@ %@ - %@ %@ 数量:%d %@",trainOrder.trainStartTime,trainOrder.trainCode,trainOrder.startStation,trainOrder.endStation,trainOrder.seatType,trainOrder.totalTickets,trainOrder.userMobile];
-    order.amount        = [NSString stringWithFormat:@"%.2f",trainOrder.totalAmount];
-    order.amount        = @"0.01";
+    //order.amount        = @"0.01";
     //order.productName   = @"可以显示多长可以显示多长可以显示多长可以显示多长可以显示多长可以显示多长";
     //order.productDescription = @"可以显示多长可以显示多长可以显示多长可以显示多长可以显示多长可以显示多长";
     
@@ -221,8 +227,8 @@
                               @"testAlix",                      @"requestType",
                               nil];
     [[Model shareModel] showActivityIndicator:YES frame:CGRectMake(0, 40.0f - 1.5f, self.view.frame.size.width, self.view.frame.size.height - 40.0f + 1.5f) belowView:nil enabled:NO];
-    [self sendRequestWithURL:urlString params:params requestMethod:RequestPost userInfo:userInfo];*/
-    [[Model shareModel] showPromptBoxWithText:@"暂不支持付款" modal:NO];
+    [self sendRequestWithURL:urlString params:params requestMethod:RequestPost userInfo:userInfo];
+    //[[Model shareModel] showPromptBoxWithText:@"暂不支持付款" modal:NO];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -244,7 +250,8 @@
         OrderCenterViewController *orderCenterView = [[[OrderCenterViewController alloc]init]autorelease];
         orderCenterView.orderDate   = OrderThreeMonth;
         orderCenterView.orderStatus = OrderProcess;
-        [self pushViewController:orderCenterView completion:^{
+        [self.navigationController popToRootViewControllerAnimated:NO];
+        [[Model shareModel].mainView pushViewController:orderCenterView completion:^{
             [orderCenterView threeMonthListShow];
         }];
     }
@@ -326,7 +333,7 @@
     [superView addSubview:dashLine];
     
     self.trainCode   = [self getLabelWithFrame:CGRectMake(dashLine.frame.origin.x, dashLine.frame.origin.y + dashLine.frame.size.height, dashLine.frame.size.width, orderNum.frame.size.height) textAlignment:NSTextAlignmentLeft backGroundColor:[UIColor clearColor] textColor:nil title:nil font:[UIFont fontWithName:@"HelveticaNeue" size:14]];
-    [trainCode setText:[NSString stringWithFormat:@"车次:%@",trainOrder.trainCode]];
+    [trainCode setText:[NSString stringWithFormat:@"车次:    %@",trainOrder.trainCode]];
     [superView addSubview:trainCode];
     
     self.route       = [self getLabelWithFrame:CGRectMake(trainCode.frame.origin.x, trainCode.frame.origin.y + trainCode.frame.size.height, trainCode.frame.size.width, trainCode.frame.size.height) textAlignment:NSTextAlignmentLeft backGroundColor:[UIColor clearColor] textColor:nil title:nil font:[UIFont fontWithName:@"HelveticaNeue" size:16]];
@@ -405,19 +412,37 @@
     [superView addSubview:contactsNum];
     
     NSString *string = trainOrder.orderStatus == 4?@"支付差额:":@"支付金额:";
+    double payAmount;
+    if (trainOrder.orderStatus == 4) {
+        payAmount = trainOrder.totalAmount - trainOrder.paidAmount;
+        string    = @"支付差额:";
+    }else if (trainOrder.orderStatus == 2 || trainOrder.orderStatus == 7){
+        payAmount = trainOrder.paidAmount;
+        string    = @"已付金额:";
+    }else{
+        payAmount = trainOrder.totalAmount;
+        string    = @"支付金额:";
+    }
     
     UILabel *leftLabel = [self getLabelWithFrame:CGRectMake(contactsNum.frame.origin.x, contactsNum.frame.origin.y + contactsNum.frame.size.height, contactsNum.frame.size.width*2/3, contactsNum.frame.size.height) textAlignment:NSTextAlignmentRight backGroundColor:[UIColor clearColor] textColor:nil title:string font:[UIFont fontWithName:@"HelveticaNeue" size:14]];
     [superView addSubview:leftLabel];
     
+    
     self.paymentAmount = [self getLabelWithFrame:CGRectMake(leftLabel.frame.origin.x + leftLabel.frame.size.width, leftLabel.frame.origin.y, contactsNum.frame.size.width/3, contactsNum.frame.size.height) textAlignment:NSTextAlignmentCenter backGroundColor:[UIColor clearColor] textColor:nil title:nil font:[UIFont fontWithName:@"HelveticaNeue" size:14]];
-    [paymentAmount setText:[NSString stringWithFormat:@"%.2f元",trainOrder.totalAmount]];
+    [paymentAmount setText:[NSString stringWithFormat:@"%.2f元",payAmount]];
     [self.paymentAmount setTextColor:[self getColor:@"ff6c00"]];
     [superView addSubview:paymentAmount];
     
     
     if (trainOrder.amount) {
+        NSString *payDetailText = nil;
+        if (trainOrder.orderStatus == 4) {
+            payDetailText = [NSString stringWithFormat:@"（需付 %.2lf 已付 %.2lf 手续费 %@）",trainOrder.totalAmount,trainOrder.paidAmount,trainOrder.amount.alipayAmount?@"1%":@"0"];
+        }else{
+            payDetailText = [NSString stringWithFormat:@"（票价 %.2lf × %d张 服务价 %.2lf 手续费 %@）",trainOrder.amount.ticketAmount,trainOrder.totalTickets,trainOrder.amount.premiumAmount,trainOrder.amount.alipayAmount?@"1%":@"0"];
+        }
         self.payDetail = [self getLabelWithFrame:CGRectMake(leftLabel.frame.origin.x, leftLabel.frame.origin.y + leftLabel.frame.size.height, contactsNum.frame.size.width, contactsNum.frame.size.height) textAlignment:NSTextAlignmentRight backGroundColor:[UIColor clearColor] textColor:nil title:nil font:[UIFont fontWithName:@"HelveticaNeue" size:14]];
-        [payDetail setText:[NSString stringWithFormat:@"（票价 %.2lf × %d张 + 服务价 %.2lf + 手续费 %@）",trainOrder.amount.ticketAmount,trainOrder.totalTickets,trainOrder.amount.premiumAmount,trainOrder.amount.alipayAmount?@"1%":@"0"]];
+        [payDetail setText:payDetailText];
         payDetail.adjustsFontSizeToFitWidth = YES;
         payDetail.adjustsLetterSpacingToFitWidth = YES;
         payDetail.baselineAdjustment = UIBaselineAdjustmentNone;

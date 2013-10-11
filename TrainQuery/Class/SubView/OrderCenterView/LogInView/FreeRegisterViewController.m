@@ -22,6 +22,8 @@
 @synthesize textView;
 @synthesize performResult;
 
+@synthesize tipView;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -38,6 +40,9 @@
     [againPassWord release];
     [textView      release];
     [performResult release];
+    if (tipView) {
+        [tipView   release];
+    }
     [super         dealloc];
 }
 - (void)viewDidLoad
@@ -95,14 +100,12 @@
     userName = [[UITextField alloc]initWithFrame:CGRectMake(label1.frame.origin.x + label1.frame.size.width + 10, label1.frame.origin.y, baseImage1.frame.size.width - label1.frame.size.width - 10, label1.frame.size.height)];
     userName.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     [userName setPlaceholder:@"请输入用户名"];
-    //userName.text = @"18211913910";
     userName.clearButtonMode = UITextFieldViewModeWhileEditing;
     [self.view addSubview:userName];
     
     passWord = [[UITextField alloc]initWithFrame:CGRectMake(label2.frame.origin.x + label2.frame.size.width + 10, label2.frame.origin.y, baseImage2.frame.size.width - label2.frame.size.width - 10, label2.frame.size.height)];
     passWord.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     [passWord setPlaceholder:@"请输入密码"];
-    //passWord.text = @"w5998991";
     passWord.secureTextEntry = YES;
     passWord.clearButtonMode = UITextFieldViewModeWhileEditing;
     [self.view addSubview:passWord];
@@ -110,7 +113,6 @@
     againPassWord = [[UITextField alloc]initWithFrame:CGRectMake(label3.frame.origin.x + label3.frame.size.width + 10, label3.frame.origin.y, baseImage3.frame.size.width - label3.frame.size.width - 10, label3.frame.size.height)];
     againPassWord.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     [againPassWord setPlaceholder:@"请确认密码"];
-    //againPassWord.text = @"w5998991";
     againPassWord.secureTextEntry = YES;
     againPassWord.clearButtonMode = UITextFieldViewModeWhileEditing;
     [self.view addSubview:againPassWord];
@@ -148,11 +150,11 @@
 - (void)freeRegister
 {
     if (![Utils isValidatePhoneNum:userName.text]) {
-        [[Model shareModel] showPromptBoxWithText:@"用户名不正确" modal:NO];
+        [self displayTip:@"用户名不正确" modal:NO];
     }else if (![passWord.text isEqualToString:againPassWord.text]){
-        [[Model shareModel] showPromptBoxWithText:@"两次密码不同" modal:NO];
+        [self displayTip:@"两次密码不同" modal:NO];
     }else if (!(passWord.text.length <= 20 && passWord.text.length >= 6)){
-        [[Model shareModel] showPromptBoxWithText:@"密码格式不正确" modal:NO];
+        [self displayTip:@"密码格式不正确" modal:NO];
     }else{
         [[Model shareModel] showActivityIndicator:YES frame:CGRectMake(0, 40.0f - 1.50f, selfViewFrame.size.width, selfViewFrame.size.height - 40.0f + 1.50f) belowView:nil enabled:NO];
         NSString *urlString = [NSString stringWithFormat:@"%@/register",UserServiceURL];
@@ -175,7 +177,7 @@
 - (void)parserStringFinished:(NSString *)_string request:(ASIHTTPRequest *)request
 {
     NSDictionary *dic = [_string JSONValue];
-    [[Model shareModel] showPromptBoxWithText:[dic objectForKey:@"performResult"] modal:YES];
+    [self displayTip:[dic objectForKey:@"performResult"] modal:NO];
     if ([[dic objectForKey:@"performStatus"] isEqualToString:@"success"]) {
         [self popViewControllerCompletion:nil];
     }
@@ -184,7 +186,7 @@
 - (void)requestError:(ASIHTTPRequest *)request
 {
     [[Model shareModel] showActivityIndicator:NO frame:CGRectMake(0, 0, 0, 0) belowView:nil enabled:YES];
-    [[Model shareModel] showPromptBoxWithText:@"请求失败" modal:NO];
+    [self displayTip:@"请求失败" modal:NO];
 }
 
 #pragma mark - clear blackboard handle
@@ -270,6 +272,65 @@
         }
     }
 }
+
+
+- (void)displayTip:(NSString *)tip modal:(BOOL)modal
+{
+    if (!tipView) {
+        self.tipView = [UIButton buttonWithType:UIButtonTypeCustom];
+        tipView.frame = CGRectMake(0, 0, appFrame.size.width*2/3, 65);
+        tipView.contentEdgeInsets = UIEdgeInsetsMake(0, 25, 0, 20);
+        //[tipView setBackgroundImage:imageNameAndType(@"alert_background@2x", @"png") forState:UIControlStateDisabled];
+        tipView.enabled = NO;
+        [tipView.titleLabel setNumberOfLines:0];
+        [tipView.titleLabel setLineBreakMode:NSLineBreakByWordWrapping];
+        [tipView.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:13]];
+        /*
+         tipView.titleLabel.adjustsFontSizeToFitWidth = YES;
+         tipView.titleLabel.adjustsLetterSpacingToFitWidth = YES;
+         tipView.titleLabel.baselineAdjustment = UIBaselineAdjustmentNone;
+         tipView.titleLabel.minimumScaleFactor = 0.5;*/
+    }
+    
+    CGSize size = [tip sizeWithFont:[UIFont fontWithName:@"HelveticaNeue" size:13] constrainedToSize:CGSizeMake(tipView.frame.size.width - 20, NSIntegerMax) lineBreakMode:NSLineBreakByWordWrapping];
+    CGFloat height = size.height + 35 >= 65?size.height + 35:65;
+    NSLog(@"size height = %f",size.height);
+    tipView.frame = CGRectMake(0, 0, tipView.frame.size.width, height);
+    tipView.center = CGPointMake(appFrame.size.width/2, appFrame.size.height/2);
+    
+    UIImage *image = imageNameAndType(@"alert_background@2x", @"png");
+    image = [image stretchableImageWithLeftCapWidth:image.size.width/2 topCapHeight:image.size.height/2];
+    [tipView setBackgroundImage:image forState:UIControlStateDisabled];
+    
+    [tipView setTitle:tip forState:UIControlStateNormal];
+    
+    if (!tipView.superview) {
+        [self.view addSubview:tipView];
+        tipView.alpha = 0.0f;
+        [UIView animateWithDuration:0.3f
+                         animations:^{
+                             tipView.alpha = 1.0f;
+                         }
+                         completion:^(BOOL finished){
+                             [self performSelector:@selector(tipHide:) withObject:[NSNumber numberWithBool:modal] afterDelay:1.5f];
+                         }];
+    }
+}
+
+- (void)tipHide:(NSNumber*)number
+{
+    [UIView animateWithDuration:0.5f
+                     animations:^{
+                         tipView.alpha = 0.0f;
+                     }
+                     completion:^(BOOL finished) {
+                         if (tipView.superview) {
+                             [tipView removeFromSuperview];
+                         }
+                     }];
+}
+
+
 
 - (void)didReceiveMemoryWarning
 {

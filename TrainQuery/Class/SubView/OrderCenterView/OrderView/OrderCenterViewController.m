@@ -110,10 +110,14 @@
         emptyMsg  = @"";
     }
     pageNO = 1;
+    NSInteger size = pageSize;
+    if (date == OrderThreeMonth && (status == OrderWaitPay || status == OrderProcess)) {
+        size = NSIntegerMax;
+    }
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
                             [Utils NULLToEmpty:[UserDefaults shareUserDefault].userId],         @"userId",
                             [Utils nilToNumber:[NSNumber numberWithInteger:pageNO]],            @"pageNo",
-                            [Utils nilToNumber:[NSNumber numberWithInteger:pageSize]],          @"pageSize",
+                            [Utils nilToNumber:[NSNumber numberWithInteger:size]],          @"pageSize",
                             nil];
     NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
                               @"requestOrderList",                  @"requestType",
@@ -201,7 +205,11 @@
             [dataArray addObject:order];
         }
         if ([dataArray count] == pageSize) {
-            loadMoreView.haveMoreData = YES;
+            if (orderDate == OrderThreeMonth && (orderStatus == OrderWaitPay || orderStatus == OrderProcess)) {
+                loadMoreView.haveMoreData = NO;
+            }else{
+                loadMoreView.haveMoreData = YES;
+            }
         }else{
             loadMoreView.haveMoreData = NO;
         }
@@ -270,7 +278,7 @@
     [cell.orderCode setText:[NSString stringWithFormat:@"订单号:%@",order.orderNum]];
     [cell.routeLabel setText:[NSString stringWithFormat:@"行程：%@-%@  %@",order.startStation,order.endStation,order.trainCode]];
     [cell.scheduleLabel setText:[NSString stringWithFormat:@"日期：%@",order.trainStartTime]];
-    [cell.totalPrice setText:[NSString stringWithFormat:@"总价：%lf元",order.totalAmount]];
+    [cell.totalPrice setText:[NSString stringWithFormat:@"总价：%.2lf元",order.totalAmount]];
     [cell.reserveDate setText:[NSString stringWithFormat:@"下单时间：%@",order.orderTime]];
     return cell;
 }

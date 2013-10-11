@@ -89,10 +89,8 @@
 #pragma mark - other method
 - (void)pressReserveBtn:(UIButton*)sender
 {
-    if (![self checkNumberLegal:idCardNum.text]) {
-        [[Model shareModel] showPromptBoxWithText:@"身份证不合法" modal:NO];
-        return;
-    }
+    
+    
     if (addOrUpdate == PassengerAdd) {
         PassengerInfo *superPassenger = [self.delegate getSuperPassengerInfo];
         passenger.name                = superPassenger.name;
@@ -101,22 +99,23 @@
     passenger.birthDate           = birthDay.titleLabel.text;
     passenger.type                = 2;
     
-    if (!passenger.name) {
+    if ([Utils textIsEmpty:passenger.name]) {
         [[Model shareModel] showPromptBoxWithText:@"姓名不能为空" modal:NO];
         return;
-    }
-
-    if ([Utils textIsEmpty:idCardNum.text]) {
+    }else if ([Utils textIsEmpty:idCardNum.text]) {
         [[Model shareModel] showPromptBoxWithText:@"身份证号码不能为空" modal:NO];
         return;
-    }
-    passenger.certificateType = [self checkIdCardTypeWithString:idCardType.titleLabel.text];
-    passenger.certificateNumber = idCardNum.text;
-    
-    if (!passenger.birthDate) {
+    }else if (![self checkNumberLegal:idCardNum.text]) {
+        [[Model shareModel] showPromptBoxWithText:@"身份证不合法" modal:NO];
+        return;
+    }else if ([Utils textIsEmpty:birthDay.titleLabel.text] || [birthDay.titleLabel.text isEqualToString:@"出生日期"]){
         [[Model shareModel] showPromptBoxWithText:@"请选择出生日期" modal:NO];
         return;
     }
+
+    passenger.certificateType = [self checkIdCardTypeWithString:idCardType.titleLabel.text];
+    passenger.certificateNumber = idCardNum.text;
+    
     if (![UserDefaults shareUserDefault].userId) {
         if (addOrUpdate == PassengerAdd){
             [[UserDefaults shareUserDefault].contacts addObject:passenger];

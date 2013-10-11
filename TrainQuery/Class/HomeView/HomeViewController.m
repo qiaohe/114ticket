@@ -76,6 +76,16 @@
     [self setBullentTrainQueryViewFrame];
     [self setOrderCenterViewFrame];
     
+    [NSTimer scheduledTimerWithTimeInterval:2.50f target:self selector:@selector(scrollTheImage:) userInfo:nil repeats:YES];
+}
+
+- (void)scrollTheImage:(id)sender
+{
+    CGPoint point = CGPointMake(topShowView.contentOffset.x + topShowView.frame.size.width, topShowView.contentOffset.y);
+    if (point.x >= topShowView.contentSize.width) {
+        point.x = 0;
+    }
+    [topShowView setContentOffset:point animated:YES];
 }
 
 - (void)setTopViewFrame

@@ -116,11 +116,11 @@
     passenger.userId            = [[UserDefaults shareUserDefault].userId integerValue];
     passenger.birthDate          = birthDay.titleLabel.text;
     
-    if (!passenger.name) {
+    if ([Utils textIsEmpty:passenger.name]) {
         [[Model shareModel] showPromptBoxWithText:@"姓名不能为空" modal:NO];
         return;
     }
-    if (!passenger.birthDate) {
+    if ([Utils textIsEmpty:birthDay.titleLabel.text] || [birthDay.titleLabel.text isEqualToString:@"出生日期"]) {
         [[Model shareModel] showPromptBoxWithText:@"请选择出生日期" modal:NO];
         return;
     }

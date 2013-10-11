@@ -96,7 +96,7 @@
     [topImageView setImage:imageNameAndType(@"topbar_image", @"png")];
     [self.view addSubview:topImageView];
     
-    UILabel *titleLabel = [self getLabelWithFrame:CGRectMake(80, 0, 160, 40) textAlignment:NSTextAlignmentCenter backGroundColor:[UIColor clearColor] textColor:[UIColor whiteColor] title:@"保险说明" font:nil];
+    UILabel *titleLabel = [self getLabelWithFrame:CGRectMake(80, 0, 160, 40) textAlignment:NSTextAlignmentCenter backGroundColor:[UIColor clearColor] textColor:[UIColor whiteColor] title:@"服务说明" font:nil];
     [self.view addSubview:titleLabel];
     
     UIButton *returnBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -108,6 +108,7 @@
     [self.view addSubview:returnBtn];
     
     textView = [[UITextView alloc]initWithFrame:CGRectMake(10, topImageView.frame.size.height, self.view.frame.size.width - 20, self.view.frame.size.height - topImageView.frame.size.height)];
+    [textView setEditable:NO];
     [textView setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:textView];
 }

@@ -60,6 +60,29 @@
     return self;
 }
 
+- (void)pressReturnTicket:(UIButton*)sender
+{
+    [[Model shareModel] showActivityIndicator:YES frame:CGRectMake(0, 40.0f - 1.5f, self.view.frame.size.width, self.view.frame.size.height - 40.0f + 1.5f) belowView:nil enabled:NO];
+    NSMutableString *orderDetailIds = [NSMutableString string];
+    for (TrainOrderDetail *orderDetail in selectDataSource) {
+        [orderDetailIds appendFormat:@"%d",orderDetail.orderDetailId];
+        if (orderDetail != [selectDataSource lastObject]) {
+            [orderDetailIds appendString:@"|"];
+        }
+    }
+    NSString *urlString = [NSString stringWithFormat:@"%@/updateOrderStatusToReturn",TrainOrderServiceURL];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            trainOrder.orderNum,                @"orderId",
+                            orderDetailIds,                                                                     @"orderDetailIds",
+                            @"ios",                                                                             @"returnTicketCause",
+                            nil];
+    NSLog(@"\nurlString = %@\nparams = %@",urlString,params);
+    NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+                              @"returnTicket",              @"requestType",
+                              nil];
+    [self sendRequestWithURL:urlString params:params requestMethod:RequestPost userInfo:userInfo];
+}
+
 - (void)getTrainOrderDetails
 {
     [[Model shareModel] showActivityIndicator:YES frame:CGRectMake(0, 40.0f - 1.5f, self.view.frame.size.width, self.view.frame.size.height - 40.0f + 1.5f) belowView:nil enabled:NO];
@@ -84,9 +107,10 @@
 - (void)parserStringFinished:(NSString *)_string request:(ASIHTTPRequest *)request
 {
     NSDictionary *dic = [_string JSONValue];
+    NSLog(@"return data = %@",dic);
     NSString *requestType = [request.userInfo objectForKey:@"requestType"];
     if ([[dic objectForKey:@"performStatus"] isEqualToString:@"success"]) {
-        [[Model shareModel] showPromptBoxWithText:[dic objectForKey:@"performStatus"] modal:YES];
+        //[[Model shareModel] showPromptBoxWithText:[dic objectForKey:@"performStatus"] modal:YES];
 
         if ([requestType isEqualToString:@"getOrderDetails"]) {
             NSDictionary *dataDic = [dic objectForKey:@"performResult"];
@@ -96,7 +120,12 @@
                 self.dataSource = order.trainOrderDetails;
             }
             [self reloadData];
+        }else if ([requestType isEqualToString:@"returnTicket"]){
+            NSLog(@"return response = %@",dic);
         }
+    }else{
+        [[Model shareModel] showPromptBoxWithText:[dic objectForKey:@"performResult"] modal:YES];
+        [self getTrainOrderDetails];
     }
 }
 
@@ -115,7 +144,7 @@
 - (void)reloadData
 {
     CGFloat tableViewHeight = 60*[dataSource count]<selfViewFrame.size.height - startDate.frame.origin.y - startDate.frame.size.height - 90?60*[dataSource count]:selfViewFrame.size.height - startDate.frame.origin.y - startDate.frame.size.height - 100;
-    [theTableView setFrame:CGRectMake(0, startDate.frame.origin.y + startDate.frame.size.height, selfViewFrame.size.width, tableViewHeight + 8)];
+    [theTableView setFrame:CGRectMake(0, startDate.frame.origin.y + startDate.frame.size.height + 2.0f, selfViewFrame.size.width, tableViewHeight + 8)];
     [theTableView reloadData];
     [orderCode  setText:[NSString stringWithFormat:@"%@",trainOrder.orderNum]];
     [totalPrice setText:[NSString stringWithFormat:@"%.2f",trainOrder.totalAmount]];
@@ -248,7 +277,7 @@
     [topImageView setImage:imageNameAndType(@"topbar_image", @"png")];
     [self.view addSubview:topImageView];
     
-    UILabel *titleLabel = [self getLabelWithFrame:CGRectMake(80, 0, 160, 40) textAlignment:NSTextAlignmentCenter backGroundColor:[UIColor clearColor] textColor:[UIColor whiteColor] title:@"附加服务" font:nil];
+    UILabel *titleLabel = [self getLabelWithFrame:CGRectMake(80, 0, 160, 40) textAlignment:NSTextAlignmentCenter backGroundColor:[UIColor clearColor] textColor:[UIColor whiteColor] title:@"申请退票" font:nil];
     [self.view addSubview:titleLabel];
     
     UIButton *returnBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -315,6 +344,7 @@
     returnTicket.frame = CGRectMake(0, 0, selfViewFrame.size.width*2/3, 50);
     returnTicket.center = CGPointMake(selfViewFrame.size.width/2, selfViewFrame.size.height - 30 - returnTicket.frame.size.height/2);
     [returnTicket setTitle:@"申请退票" forState:UIControlStateNormal];
+    [returnTicket addTarget:self action:@selector(pressReturnTicket:) forControlEvents:UIControlEventTouchUpInside];
     [returnTicket setBackgroundImage:imageNameAndType(@"search_normal", @"png") forState:UIControlStateNormal];
     [returnTicket setBackgroundImage:imageNameAndType(@"search_press", @"png") forState:UIControlStateSelected];
     [returnTicket setBackgroundImage:imageNameAndType(@"search_press", @"png") forState:UIControlStateHighlighted];

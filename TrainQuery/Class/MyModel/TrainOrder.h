@@ -20,6 +20,7 @@
 @property (retain, nonatomic) NSString          *payDateTime;                       //订单支付时间
 @property (assign, nonatomic) NSInteger         totalTickets;                       //此订单总张数
 @property (assign, nonatomic) double            totalAmount;                        //票价中金额:票价*张数(元)
+@property (assign, nonatomic) double            paidAmount;                         //已支付金额
 @property (assign, nonatomic) NSInteger         refundTickets;                      //退票总张数
 @property (assign, nonatomic) double            refundAmount;                       //退款总金额
 @property (assign, nonatomic) NSInteger         postType;                           //火车票送票方式,1:快递,2:自取(默认)

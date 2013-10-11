@@ -179,19 +179,33 @@ static Model *shareModel;
 {
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     UIViewController *viewController = appDelegate.window.rootViewController;
+        
     if (!tipView) {
         self.tipView = [UIButton buttonWithType:UIButtonTypeCustom];
         tipView.frame = CGRectMake(0, 0, appFrame.size.width*2/3, 65);
         tipView.contentEdgeInsets = UIEdgeInsetsMake(0, 25, 0, 20);
-        tipView.center = CGPointMake(appFrame.size.width/2, appFrame.size.height/2);
-        [tipView setBackgroundImage:imageNameAndType(@"alert_background@2x", @"png") forState:UIControlStateDisabled];
+        //[tipView setBackgroundImage:imageNameAndType(@"alert_background@2x", @"png") forState:UIControlStateDisabled];
         tipView.enabled = NO;
-        [tipView.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:15]];
+        [tipView.titleLabel setNumberOfLines:0];
+        [tipView.titleLabel setLineBreakMode:NSLineBreakByWordWrapping];
+        [tipView.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:13]];
+        /*
         tipView.titleLabel.adjustsFontSizeToFitWidth = YES;
         tipView.titleLabel.adjustsLetterSpacingToFitWidth = YES;
         tipView.titleLabel.baselineAdjustment = UIBaselineAdjustmentNone;
-        tipView.titleLabel.minimumScaleFactor = 0.5;
+        tipView.titleLabel.minimumScaleFactor = 0.5;*/
     }
+    
+    CGSize size = [tip sizeWithFont:[UIFont fontWithName:@"HelveticaNeue" size:13] constrainedToSize:CGSizeMake(tipView.frame.size.width - 20, NSIntegerMax) lineBreakMode:NSLineBreakByWordWrapping];
+    CGFloat height = size.height + 35 >= 65?size.height + 35:65;
+    NSLog(@"size height = %f",size.height);
+    tipView.frame = CGRectMake(0, 0, tipView.frame.size.width, height);
+    tipView.center = CGPointMake(appFrame.size.width/2, appFrame.size.height/2);
+    
+    UIImage *image = imageNameAndType(@"alert_background@2x", @"png");
+    image = [image stretchableImageWithLeftCapWidth:image.size.width/2 topCapHeight:image.size.height/2];
+    [tipView setBackgroundImage:image forState:UIControlStateDisabled];
+    
     [tipView setTitle:tip forState:UIControlStateNormal];
     
     if (!tipView.superview) {

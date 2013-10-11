@@ -98,6 +98,21 @@
     [commonQuestionButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
     [commonQuestionButton setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:commonQuestionButton];
+    
+    UIImageView *aboutUsImage = [self getImageViewWithFrame:CGRectMake(commonQuestionImage.frame.origin.x, commonQuestionImage.frame.origin.y + commonQuestionImage.frame.size.height - 1, commonQuestionImage.frame.size.width, commonQuestionImage.frame.size.height) image:imageNameAndType(@"userlabel", @"png") highLightImage:nil backGroundColor:[UIColor clearColor]];
+    [self.view addSubview:aboutUsImage];
+    
+    UIButton *aboutUsButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [aboutUsButton setFrame:aboutUsImage.frame];
+    [aboutUsButton setBackgroundImage:imageNameAndType(@"userarrow", @"png") forState:UIControlStateNormal];
+    [aboutUsButton setTitle:@"关于我们" forState:UIControlStateNormal];
+    [aboutUsButton.titleLabel setFont:[UIFont systemFontOfSize:14]];
+    [aboutUsButton setContentEdgeInsets:UIEdgeInsetsMake(0, 15, 0, 0)];
+    [aboutUsButton addTarget:self action:@selector(pressAboutUsButton:) forControlEvents:UIControlEventTouchUpInside];
+    [aboutUsButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+    [aboutUsButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
+    [aboutUsButton setBackgroundColor:[UIColor clearColor]];
+    [self.view addSubview:aboutUsButton];
 }
 
 - (void)pressUserProtocolButton:(UIButton*)sender
@@ -116,9 +131,12 @@
     }];
 }
 
-- (void)pressMarkImageButton:(UIButton*)sender
+- (void)pressAboutUsButton:(UIButton*)sender
 {
-    
+    promptViewController *promptView = [[[promptViewController alloc]initWithPromptType:ShowAboutUs]autorelease];
+    [self pushViewController:promptView completion:^{
+        [promptView getPrompt];
+    }];
 }
 
 - (void)pressReturnButton:(UIButton*)sender

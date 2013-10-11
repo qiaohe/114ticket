@@ -18,4 +18,6 @@
 @property (retain, nonatomic) UITextView  *textView;
 @property (retain, nonatomic) NSMutableString *performResult;
 
+@property (retain, nonatomic) UIButton          *tipView;
+
 @end

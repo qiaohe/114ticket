@@ -19,6 +19,7 @@
 @synthesize payType;
 @synthesize payDateTime;
 @synthesize totalTickets;
+@synthesize paidAmount;
 @synthesize totalAmount;
 @synthesize refundTickets;
 @synthesize refundAmount;
@@ -153,6 +154,7 @@
         payDateTime     = [[data objectForKey:@"payDateTime"] retain];
         totalTickets    = [[data objectForKey:@"totalTickets"] integerValue];
         totalAmount     = [[data objectForKey:@"totalAmount"] doubleValue];
+        paidAmount      = [[data objectForKey:@"paidAmount"] doubleValue];
         refundTickets   = [[data objectForKey:@"refundTickets"] integerValue];
         refundAmount    = [[data objectForKey:@"refundAmount"] doubleValue];
         postType        = [[data objectForKey:@"postType"] integerValue];
@@ -215,6 +217,7 @@
                           [Utils NULLToEmpty:payDateTime],                                  @"payDateTime",
                           [Utils nilToNumber:[NSNumber numberWithInteger:totalTickets]],    @"totalTickets",
                           [Utils nilToNumber:[NSNumber numberWithDouble:totalAmount]],      @"totalAmount",
+                          [Utils nilToNumber:[NSNumber numberWithDouble:paidAmount]],       @"paidAmount",
                           [Utils nilToNumber:[NSNumber numberWithInteger:refundTickets]],   @"refundTickets",
                           [Utils nilToNumber:[NSNumber numberWithDouble:refundAmount]],     @"refundAmount",
                           [Utils nilToNumber:[NSNumber numberWithInteger:postType]],        @"postType",

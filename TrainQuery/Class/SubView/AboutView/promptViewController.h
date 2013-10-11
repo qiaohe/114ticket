@@ -10,7 +10,8 @@
 
 typedef NS_OPTIONS(NSInteger, promptType){
     ShowUserProtocol,
-    ShowCommonQuestion
+    ShowCommonQuestion,
+    ShowAboutUs
 };
 
 @interface promptViewController : BaseUIViewController<UIWebViewDelegate>

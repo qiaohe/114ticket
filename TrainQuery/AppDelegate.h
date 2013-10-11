@@ -14,8 +14,9 @@ typedef NS_OPTIONS(NSInteger, VerifyResult){
     VerifySuccess
 };
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate,ASIHTTPRequestDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) UINavigationController *navigationController;
 
 @end

@@ -61,6 +61,9 @@
     }else if (self.type == ShowCommonQuestion){
         [titleLabel setText:@"常见问题"];
         urlString = [NSString stringWithFormat:@"%@/getFaq",TrainOrderServiceURL];
+    }else if (self.type == ShowAboutUs){
+        [titleLabel setText:@"关于我们"];
+        urlString = [NSString stringWithFormat:@"%@/getAboutMe",TrainOrderServiceURL];
     }
     
 //    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
