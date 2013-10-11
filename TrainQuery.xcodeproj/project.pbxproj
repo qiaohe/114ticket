@@ -252,6 +252,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE2F216D1807FB5400CF4EF6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		CE4AF84817F950420026AB73 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CE4AF84A17F950590026AB73 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		CE4AF84C17F950670026AB73 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -337,7 +338,6 @@
 		CE5BF28017F94E7B000FFA9D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CE5BF28217F94E7B000FFA9D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		CE5BF28617F94E7C000FFA9D /* TrainQuery-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TrainQuery-Info.plist"; sourceTree = "<group>"; };
-		CE5BF28817F94E7C000FFA9D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CE5BF28A17F94E7C000FFA9D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CE5BF28C17F94E7C000FFA9D /* TrainQuery-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TrainQuery-Prefix.pch"; sourceTree = "<group>"; };
 		CE5BF28D17F94E7C000FFA9D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1299,6 +1299,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				"zh-Hans",
 			);
 			mainGroup = CE5BF27217F94E7B000FFA9D;
 			productRefGroup = CE5BF27C17F94E7B000FFA9D /* Products */;
@@ -1564,7 +1565,7 @@
 		CE5BF28717F94E7C000FFA9D /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				CE5BF28817F94E7C000FFA9D /* en */,
+				CE2F216D1807FB5400CF4EF6 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
