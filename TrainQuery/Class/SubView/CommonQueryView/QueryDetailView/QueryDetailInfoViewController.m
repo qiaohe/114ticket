@@ -234,11 +234,11 @@
     self.queryType = _type;
     switch (_type) {
         case TrainQueryCommon:{
-            [[Model shareModel] showActivityIndicator:YES frame:CGRectMake(0, 40, selfViewFrame.size.width, selfViewFrame.size.height - 40) belowView:nil enabled:NO];
+            [[Model shareModel] showActivityIndicator:YES frame:CGRectMake(0, -20, selfViewFrame.size.width, selfViewFrame.size.height + 20) belowView:nil enabled:NO];
             [self getAllTrainCodeAndPriceWithParams:history withUserInfo:nil];
             break;
         }case TrainQueryHighSpeed:{
-            [[Model shareModel] showActivityIndicator:YES frame:CGRectMake(0, 40, selfViewFrame.size.width, selfViewFrame.size.height - 40) belowView:nil enabled:NO];
+            [[Model shareModel] showActivityIndicator:YES frame:CGRectMake(0, -20, selfViewFrame.size.width, selfViewFrame.size.height - 20) belowView:nil enabled:NO];
             [self getAllGaotieTrainCodeAndPriceWithParams:history withUserInfo:nil];
             break;
         }
@@ -326,7 +326,9 @@
                     fillInView.codeAndPrice = codeAndPrice;
                     //fillInView.trainOrder = self.trainOrder;
                     fillInView.trainOrder.userId = [[UserDefaults shareUserDefault].userId integerValue];
-                    [self pushViewController:fillInView completion:nil];
+                    [self pushViewController:fillInView completion:^{
+                        [fillInView getInsureType];
+                    }];
                 }
             }else{
                 [[Model shareModel] showPromptBoxWithText:@"此票种已售完" modal:NO];

@@ -294,7 +294,6 @@
     
     CGSize size = [tip sizeWithFont:[UIFont fontWithName:@"HelveticaNeue" size:13] constrainedToSize:CGSizeMake(tipView.frame.size.width - 20, NSIntegerMax) lineBreakMode:NSLineBreakByWordWrapping];
     CGFloat height = size.height + 35 >= 65?size.height + 35:65;
-    NSLog(@"size height = %f",size.height);
     tipView.frame = CGRectMake(0, 0, tipView.frame.size.width, height);
     tipView.center = CGPointMake(appFrame.size.width/2, appFrame.size.height/2);
     

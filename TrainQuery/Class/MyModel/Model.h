@@ -20,7 +20,7 @@
 @property (retain, nonatomic) NSMutableArray          *allQueryHistory;
 @property (retain, nonatomic) NSMutableArray          *trainCodeQueryHistory;
 @property (retain, nonatomic) NSMutableArray          *viewData;
-@property (nonatomic, retain) UIButton               *tipView;
+@property (nonatomic, retain) UIButton                *tipView;
 
 - (BaseUIViewController*)getMainViewController;
 - (UIColor *)getColor:(NSString *)stringToConvert;

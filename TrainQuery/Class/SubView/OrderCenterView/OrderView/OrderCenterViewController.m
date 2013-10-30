@@ -88,7 +88,7 @@
 #pragma mark - request handle
 - (void)requestOrderListWithDate:(OrderDate)date status:(OrderStatus)status
 {
-    [[Model shareModel] showActivityIndicator:YES frame:CGRectMake(0, 40 - 2.0f, self.view.frame.size.width, self.view.frame.size.height - 40 + 2.0f) belowView:nil enabled:NO];
+    [[Model shareModel] showActivityIndicator:YES frame:CGRectMake(0, -20, self.view.frame.size.width, self.view.frame.size.height + 20.0f) belowView:nil enabled:NO];
     NSString *urlString = nil;
     NSString *emptyMsg  = nil;
     if (date == OrderThreeMonthAgo) {
@@ -375,6 +375,14 @@
             ReturnTicketViewController *returnTicketView = [[[ReturnTicketViewController alloc]initWithTrainOrder:order]autorelease];
             [self pushViewController:returnTicketView completion:^{
                 [returnTicketView getTrainOrderDetails];
+            }];
+            break;
+        }case -1:{
+            OrderDetailViewController *orderDetailView = [[[OrderDetailViewController alloc]initWithOrder:order]autorelease];
+            orderDetailView.superDate = orderDate;
+            orderDetailView.superStatus = orderStatus;
+            [self pushViewController:orderDetailView completion:^{
+                [orderDetailView getTrainOrderDetails];
             }];
             break;
         }

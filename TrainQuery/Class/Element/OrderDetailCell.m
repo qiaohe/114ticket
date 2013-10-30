@@ -189,7 +189,9 @@
         case 12://退票完成
             titleStatus = @"退票完成";
             break;
-            
+        case -1://支付超时
+            titleStatus = @"支付超时";
+            break;
         default:
             titleStatus = @"";
             break;

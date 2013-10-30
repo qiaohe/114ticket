@@ -137,7 +137,12 @@ static Model *shareModel;
 - (void)showCoverView:(BOOL)show frame:(CGRect)frame belowView:(UIView*)view enabled:(BOOL)enabled
 {
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    UIViewController *viewController = appDelegate.window.rootViewController;
+    UIViewController *viewController = nil;
+    if (appDelegate.window.rootViewController.presentedViewController) {
+        viewController = appDelegate.window.rootViewController.presentedViewController;
+    }else{
+        viewController = appDelegate.window.rootViewController;
+    }
     
     if (!activityIndicatorView) {
         self.activityIndicatorView = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -151,7 +156,12 @@ static Model *shareModel;
     if (!show) {
         [activityIndicatorView removeTarget:nil action:NULL forControlEvents:UIControlEventTouchUpInside];
     }
-    activityIndicatorView.frame = frame;
+    if ([viewController isMemberOfClass:[UIViewController class]]) {
+        activityIndicatorView.frame = CGRectMake(frame.origin.x, frame.origin.y - 20, frame.size.width, frame.size.height + 20);
+    }else if ([viewController isMemberOfClass:[UINavigationController class]]){
+        activityIndicatorView.frame = frame;
+    }else
+        activityIndicatorView.frame = frame;
     activityIndicatorView.enabled = enabled;
     if (show) {
         if (activityIndicatorView.superview) {
@@ -178,8 +188,14 @@ static Model *shareModel;
 - (void)displayTip:(NSString *)tip modal:(BOOL)modal
 {
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    UIViewController *viewController = appDelegate.window.rootViewController;
-        
+    UIViewController *viewController = nil;
+    if (appDelegate.window.rootViewController.presentedViewController) {
+        viewController = appDelegate.window.rootViewController.presentedViewController;
+    }else{
+        viewController = appDelegate.window.rootViewController;
+    }
+    
+    
     if (!tipView) {
         self.tipView = [UIButton buttonWithType:UIButtonTypeCustom];
         tipView.frame = CGRectMake(0, 0, appFrame.size.width*2/3, 65);
@@ -189,6 +205,10 @@ static Model *shareModel;
         [tipView.titleLabel setNumberOfLines:0];
         [tipView.titleLabel setLineBreakMode:NSLineBreakByWordWrapping];
         [tipView.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:13]];
+        
+        UIImage *image = imageNameAndType(@"alert_background@2x", @"png");
+        image = [image stretchableImageWithLeftCapWidth:image.size.width/2 topCapHeight:image.size.height/2];
+        [tipView setBackgroundImage:image forState:UIControlStateDisabled];
         /*
         tipView.titleLabel.adjustsFontSizeToFitWidth = YES;
         tipView.titleLabel.adjustsLetterSpacingToFitWidth = YES;
@@ -198,22 +218,17 @@ static Model *shareModel;
     
     CGSize size = [tip sizeWithFont:[UIFont fontWithName:@"HelveticaNeue" size:13] constrainedToSize:CGSizeMake(tipView.frame.size.width - 20, NSIntegerMax) lineBreakMode:NSLineBreakByWordWrapping];
     CGFloat height = size.height + 35 >= 65?size.height + 35:65;
-    NSLog(@"size height = %f",size.height);
     tipView.frame = CGRectMake(0, 0, tipView.frame.size.width, height);
     tipView.center = CGPointMake(appFrame.size.width/2, appFrame.size.height/2);
     
-    UIImage *image = imageNameAndType(@"alert_background@2x", @"png");
-    image = [image stretchableImageWithLeftCapWidth:image.size.width/2 topCapHeight:image.size.height/2];
-    [tipView setBackgroundImage:image forState:UIControlStateDisabled];
-    
     [tipView setTitle:tip forState:UIControlStateNormal];
-    
     if (!tipView.superview) {
         [viewController.view addSubview:tipView];
-        tipView.alpha = 0.0f;
+        [viewController.view bringSubviewToFront:tipView];
         [UIView animateWithDuration:0.3f
                          animations:^{
                              tipView.alpha = 1.0f;
+                             
                          }
                          completion:^(BOOL finished){
                              [self performSelector:@selector(tipHide:) withObject:[NSNumber numberWithBool:modal] afterDelay:1.5f];

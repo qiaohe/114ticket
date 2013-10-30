@@ -7,6 +7,7 @@
 //
 
 #import "UserDefaults.h"
+#import "Model.h"
 
 static UserDefaults *shareUserDefault;
 
@@ -224,7 +225,5 @@ static UserDefaults *shareUserDefault;
         sex = [_sex retain];
     }
 }
-
-
 
 @end

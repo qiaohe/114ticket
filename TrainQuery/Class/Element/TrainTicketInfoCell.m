@@ -120,7 +120,7 @@
 {
     BOOL hasTicket = NO;
     if (params.isOk == 0) {
-        if (params.yzOk == 0 || params.rzOk == 0 || params.ywsOk == 0 || params.ywzOk == 0 || params.ywxOk == 0 || params.rwsOk == 0 || params.rwxOk == 0 || params.rz1Ok == 0 || params.rz2Ok == 0) {
+        if (params.yzOk == 0 || params.rzOk == 0 || params.ywsOk == 0 || params.ywzOk == 0 || params.ywxOk == 0 || params.rwsOk == 0 || params.rwxOk == 0 || params.rz1Ok == 0 || params.rz2Ok == 0 || params.wzOk == 0) {
             hasTicket = YES;
         }
     }

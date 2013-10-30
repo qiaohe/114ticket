@@ -73,7 +73,7 @@
     [super viewDidLoad];
     self.queryHistoryArray = [Model shareModel].allQueryHistory;
     
-    self.view.frame = subViewFrame;
+    //self.view.frame = subViewFrame;
     [self initView];
     // Do any additional setup after loading the view from its nib.
 }

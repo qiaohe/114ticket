@@ -156,6 +156,7 @@
     userName.keyboardType = UIKeyboardTypeEmailAddress;
     //userName.textAlignment = NSTextAlignmentCenter;
     [userName setBackgroundColor:[UIColor clearColor]];
+    [userName setText:@"15000609705"];
     userName.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     [userName setFont:[UIFont fontWithName:@"HelveticaNeue" size:15]];
     [self.view addSubview:userName];
@@ -173,6 +174,7 @@
     passWord.keyboardType = UIKeyboardTypeEmailAddress;
     //userName.textAlignment = NSTextAlignmentCenter;
     [passWord setBackgroundColor:[UIColor clearColor]];
+    [passWord setText:@"w5998991"];
     passWord.secureTextEntry = YES;
     passWord.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     [passWord setFont:[UIFont fontWithName:@"HelveticaNeue" size:15]];
@@ -212,7 +214,9 @@
         //fillInView.trainOrder = self.trainOrder;
         [fillInView.trainOrder setUserId:[[UserDefaults shareUserDefault].userId integerValue]];
         [self dismissViewControllerAnimated:YES completion:^{
-            [self.delegate pushToViewController:fillInView completion:nil];
+            [self.delegate pushToViewController:fillInView completion:^{
+                [fillInView getInsureType];
+            }];
         }];
     }else{
         TrainQueryViewController *trainQueryView = [[[TrainQueryViewController alloc]initWithTrainType:TrainQueryCommon]autorelease];
@@ -254,6 +258,24 @@
                               nil];
     [self sendRequestWithURL:urlString params:params requestMethod:RequestLogIn userInfo:userInfo];
 }
+
+
+- (void)getUserInfo:(NSInteger)userId
+{
+    if (![UserDefaults shareUserDefault].getUserInfo) {
+       [[Model shareModel] showActivityIndicator:YES frame:CGRectMake(0, 0, selfViewFrame.size.width, selfViewFrame.size.height) belowView:nil enabled:NO];
+        NSString *urlString = [NSString stringWithFormat:@"%@/getUser",UserServiceURL];
+        NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                       [Utils nilToNumber:[NSNumber numberWithInteger:userId]],  @"userId",
+                                       nil];
+        NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+                                  @"getUser",                      @"requestType",
+                                  nil];
+        
+        [self sendRequestWithURL:urlString params:params requestMethod:RequestGet userInfo:userInfo];
+    }
+}
+
 /*
 - (void)pressLogOutBtn:(UIButton *)sender
 {
@@ -291,32 +313,56 @@
 
 - (void)parserStringFinished:(NSString *)_string request:(ASIHTTPRequest *)request
 {
+    id requestType = [request.userInfo objectForKey:@"requestType"];
+    
     NSDictionary *dic = [_string JSONValue];
-    [self displayTip:[dic objectForKey:@"performResult"] modal:NO];
     [trainOrder.trainOrderDetails removeAllObjects];
 
     if ([[dic objectForKey:@"performStatus"] isEqualToString:@"success"]) {
-        [UserDefaults shareUserDefault].userName = self.userName.text;
-        [UserDefaults shareUserDefault].passWord = self.passWord.text;
-        [UserDefaults shareUserDefault].userId   = [dic objectForKey:@"userId"];
-
-        if (codeAndPrice) {
-            OrderFillInViewController *fillInView = [[OrderFillInViewController alloc]initWithTrainOrder:trainOrder];
-            fillInView.codeAndPrice = codeAndPrice;
-            [self dismissViewControllerAnimated:YES completion:^{
-                if (self.delegate) {
-                    [self.delegate pushToViewController:fillInView completion:nil];
-                }
-            }];
-        }else{
-            OrderCenterViewController *orderCenterView = [[[OrderCenterViewController alloc]init]autorelease];
-            [self dismissViewControllerAnimated:YES completion:^{
-                if (self.delegate) {
-                    [self.delegate pushToViewController:orderCenterView completion:^{
-                        [orderCenterView threeMonthListShow];
+        if ([requestType isKindOfClass:[NSString class]]) {
+            if([requestType isEqualToString:@"getUser"]){
+                User* user = [[[User alloc]initWithData:[dic objectForKey:@"performResult"]]autorelease];
+                [userName setText:user.realName];
+                
+                [UserDefaults shareUserDefault].realName = user.realName;
+                [UserDefaults shareUserDefault].mobile   = user.mobile;
+                [UserDefaults shareUserDefault].email    = user.email;
+                [UserDefaults shareUserDefault].sex      = [NSString stringWithFormat:@"%d",user.sex];
+                [UserDefaults shareUserDefault].mobile   = user.mobile;
+                
+                [UserDefaults shareUserDefault].getUserInfo = YES;
+                
+                [[Model shareModel] showPromptBoxWithText:@"获取用户信息成功" modal:YES];
+                
+                if (codeAndPrice) {
+                    OrderFillInViewController *fillInView = [[OrderFillInViewController alloc]initWithTrainOrder:trainOrder];
+                    fillInView.codeAndPrice = codeAndPrice;
+                    [self dismissViewControllerAnimated:YES completion:^{
+                        if (self.delegate) {
+                            [self.delegate pushToViewController:fillInView completion:^{
+                                [fillInView getInsureType];
+                            }];
+                        }
+                    }];
+                }else{
+                    OrderCenterViewController *orderCenterView = [[[OrderCenterViewController alloc]init]autorelease];
+                    [self dismissViewControllerAnimated:YES completion:^{
+                        if (self.delegate) {
+                            [self.delegate pushToViewController:orderCenterView completion:^{
+                                [orderCenterView threeMonthListShow];
+                            }];
+                        }
                     }];
                 }
-            }];
+            }
+        }else{
+            [self displayTip:[dic objectForKey:@"performResult"] modal:NO];
+
+            [UserDefaults shareUserDefault].userName = self.userName.text;
+            [UserDefaults shareUserDefault].passWord = self.passWord.text;
+            [UserDefaults shareUserDefault].userId   = [dic objectForKey:@"userId"];
+            [self getUserInfo:[[UserDefaults shareUserDefault].userId integerValue]];
+
         }
     }
 }
@@ -424,7 +470,6 @@
     
     CGSize size = [tip sizeWithFont:[UIFont fontWithName:@"HelveticaNeue" size:13] constrainedToSize:CGSizeMake(tipView.frame.size.width - 20, NSIntegerMax) lineBreakMode:NSLineBreakByWordWrapping];
     CGFloat height = size.height + 35 >= 65?size.height + 35:65;
-    NSLog(@"size height = %f",size.height);
     tipView.frame = CGRectMake(0, 0, tipView.frame.size.width, height);
     tipView.center = CGPointMake(appFrame.size.width/2, appFrame.size.height/2);
     

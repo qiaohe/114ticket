@@ -76,7 +76,6 @@
                             orderDetailIds,                                                                     @"orderDetailIds",
                             @"ios",                                                                             @"returnTicketCause",
                             nil];
-    NSLog(@"\nurlString = %@\nparams = %@",urlString,params);
     NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
                               @"returnTicket",              @"requestType",
                               nil];
@@ -107,7 +106,6 @@
 - (void)parserStringFinished:(NSString *)_string request:(ASIHTTPRequest *)request
 {
     NSDictionary *dic = [_string JSONValue];
-    NSLog(@"return data = %@",dic);
     NSString *requestType = [request.userInfo objectForKey:@"requestType"];
     if ([[dic objectForKey:@"performStatus"] isEqualToString:@"success"]) {
         //[[Model shareModel] showPromptBoxWithText:[dic objectForKey:@"performStatus"] modal:YES];

@@ -194,8 +194,13 @@
     if ([searchBar canResignFirstResponder]) {
         [searchBar resignFirstResponder];
     }
+    [self performSelector:@selector(setSuperViewCityName:) withObject:searchBar afterDelay:0.35f];
+}
+
+- (void)setSuperViewCityName:(UISearchBar*)searchBar
+{
     [self popViewControllerCompletion:^{
-        [self.delegate setDataWithParams:cityName.text withPickType:pickType];
+        [self.delegate setDataWithParams:searchBar.text withPickType:pickType];
     }];
 }
 
@@ -208,7 +213,7 @@
 
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
 {
-    [[Model shareModel] showCoverView:YES frame:CGRectMake(0, cityName.frame.origin.y + cityName.frame.size.height, selfViewFrame.size.width, selfViewFrame.size.height - cityName.frame.origin.y - cityName.frame.size.height) belowView:cityName enabled:YES];
+    [[Model shareModel] showCoverView:YES frame:CGRectMake(0, controlYLength(searchBar), selfViewFrame.size.width, selfViewFrame.size.height - cityName.frame.origin.y - cityName.frame.size.height) belowView:cityName enabled:YES];
     [[Model shareModel].activityIndicatorView removeTarget:self action:NULL forControlEvents:UIControlEventTouchUpInside];
     [[Model shareModel].activityIndicatorView addTarget:self action:@selector(clearBoard:) forControlEvents:UIControlEventTouchUpInside];
     if (!searchBar.showsCancelButton) {

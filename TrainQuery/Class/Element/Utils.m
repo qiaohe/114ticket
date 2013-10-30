@@ -65,11 +65,11 @@
     return CGRectMake((rect.origin.x  * appFrame.size.width/ footScreenSize.width), (rect.origin.y  * appFrame.size.height/footScreenSize.height), width, height);
 }
 
-+ (float) heightForTextView: (UITextView *)textView WithText: (NSString *) strText{
++ (float)heightForWidth:(CGFloat)textViewWidth text:(NSString *)strText font:(UIFont*)font{
     float fPadding = 16.0; // 8.0px x 2
-    CGSize constraint = CGSizeMake(textView.contentSize.width - fPadding, CGFLOAT_MAX);
+    CGSize constraint = CGSizeMake(textViewWidth - fPadding, CGFLOAT_MAX);
     
-    CGSize size = [strText sizeWithFont: textView.font constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
+    CGSize size = [strText sizeWithFont:font constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
     
     float fHeight = size.height + 16.0;
     

@@ -23,6 +23,8 @@
 @property (retain, nonatomic)                                           NSMutableArray  *contacts;
 @property (assign, nonatomic)                                           BOOL            getUserInfo;
 
+@property (retain, nonatomic)                                           NSMutableArray  *subService;
+
 - (void)clearDefaults;
 
 @end

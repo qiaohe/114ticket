@@ -61,9 +61,11 @@
 {
     stationQueryView  = [[StationQueryViewController alloc]init];
     stationQueryView.delegate = self;
+    [stationQueryView.view setFrame:subViewFrame];
     stationQueryView.trainType = trainType;
     trainNumQueryView = [[TrainNumQueryViewController alloc]init];
     trainNumQueryView.delegate = self;
+    [trainNumQueryView.view setFrame:subViewFrame];
     trainNumQueryView.trainType = trainType;
     //[self.view addSubview:stationQueryView.view];
     //[self.view addSubview:trainNumQueryView.view];

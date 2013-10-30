@@ -46,6 +46,7 @@
 {
     UIImageView *backImageView = [[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)]autorelease];
     [backImageView setImage:imageNameAndType(@"backgroundimage", @"png")];
+    
     [self.view addSubview:backImageView];
     
     UIImageView *topImageView = [[[UIImageView alloc]initWithFrame:CGRectMake(0, -1, self.view.frame.size.width, 40 + 1)]autorelease];

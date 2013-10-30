@@ -154,7 +154,6 @@
     if ([requestType isEqualToString:@"testAlix"]) {
     }else{
         NSDictionary *dic = [[_string JSONValue] objectForKey:@"performResult"];
-        NSLog(@"dic = %@",dic);
         TrainOrder *order = [[[TrainOrder alloc]initWithPData:dic]autorelease];
         
         if ([order.trainOrderDetails count] != 0) {
@@ -222,7 +221,6 @@
                             order.amount,                   @"total_fee",
                             order.tradeNO,                  @"out_trade_no",
                             nil];
-    NSLog(@"params = %@",params);
     NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
                               @"testAlix",                      @"requestType",
                               nil];
@@ -416,7 +414,7 @@
     if (trainOrder.orderStatus == 4) {
         payAmount = trainOrder.totalAmount - trainOrder.paidAmount;
         string    = @"支付差额:";
-    }else if (trainOrder.orderStatus == 2 || trainOrder.orderStatus == 7){
+    }else if (trainOrder.orderStatus == 7){
         payAmount = trainOrder.paidAmount;
         string    = @"已付金额:";
     }else{

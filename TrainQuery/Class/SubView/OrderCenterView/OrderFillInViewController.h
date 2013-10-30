@@ -30,5 +30,6 @@
 @property (retain, nonatomic) InSure            *selectedInsure;
 
 - (id)initWithTrainOrder:(TrainOrder*)order;
+- (void)getInsureType;
 
 @end

@@ -65,7 +65,6 @@
         birthdate       =   [[data objectForKey:@"birthdate"] retain];
         type            =   [[data objectForKey:@"type"] integerValue];
         childrenName    =   [[data objectForKey:@"childrenName"] retain];
-        NSLog(@"seatType = %@",seatType);
         if ([seatType isEqualToString:@"11"] || [seatType isEqualToString:@"12"]) {
             canReturnTicket =   NO;
         }else{

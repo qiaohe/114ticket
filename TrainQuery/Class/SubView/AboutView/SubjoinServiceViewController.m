@@ -120,10 +120,15 @@
 
 - (void)getInsureType
 {
-    [[Model shareModel] showActivityIndicator:YES frame:CGRectMake(0, 40.0f - 1.5f, selfViewFrame.size.width, selfViewFrame.size.height + 1.5f) belowView:nil enabled:NO];
-    NSString *urlString = nil;
-    urlString = [NSString stringWithFormat:@"%@/getInsureType",TrainOrderServiceURL];
-    [self sendRequestWithURL:urlString params:nil requestMethod:RequestGet userInfo:nil];
+    if ([[UserDefaults shareUserDefault].subService count] == 0) {
+        [[Model shareModel] showActivityIndicator:YES frame:CGRectMake(0, 40.0f - 1.5f, selfViewFrame.size.width, selfViewFrame.size.height + 1.5f) belowView:nil enabled:NO];
+        NSString *urlString = nil;
+        urlString = [NSString stringWithFormat:@"%@/getInsureType",TrainOrderServiceURL];
+        [self sendRequestWithURL:urlString params:nil requestMethod:RequestGet userInfo:nil];
+    }else{
+        self.dataSource = [UserDefaults shareUserDefault].subService;
+        [theTableView reloadData];
+    }
 }
 
 #pragma mark - request handle
@@ -136,6 +141,7 @@
 - (void)parserStringFinished:(NSString *)_string request:(ASIHTTPRequest *)request
 {
     self.dataSource = [NSMutableArray arrayWithArray:[InSure getInSureTypeListWithData:[_string JSONValue]]];
+    [UserDefaults shareUserDefault].subService = self.dataSource;
     [theTableView reloadData];
 }
 

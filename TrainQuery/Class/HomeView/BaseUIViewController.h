@@ -17,6 +17,14 @@
 #import "XMLParser.h"
 
 @class QueryHistory;
+@class BaseContentView;
+
+@protocol BaseContentViewDelegate <NSObject>
+
+@optional
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
+
+@end
 
 #define         subViewFrame                CGRectMake(0, 80, appFrame.size.width, appFrame.size.height - 80)
 #define         selfViewFrame               self.view.frame
@@ -74,9 +82,10 @@ typedef NS_OPTIONS(NSInteger, TrainQueryType){
 
 @end
 
-@interface BaseUIViewController : UIViewController<NSXMLParserDelegate,ASIHTTPRequestDelegate>
+@interface BaseUIViewController : UIViewController<NSXMLParserDelegate,ASIHTTPRequestDelegate,BaseContentViewDelegate>
 
-@property (retain, nonatomic) NSMutableString *dataString;
+@property (retain, nonatomic) NSMutableString       *dataString;
+@property (strong, nonatomic) BaseContentView       *contentView;
 
 - (void)setUp;
 - (void)saveViewData;
@@ -133,3 +142,21 @@ typedef NS_OPTIONS(NSInteger, TrainQueryType){
 - (void)pushToViewController:(BaseUIViewController*)viewController completion:(void (^) (void))completionhandler;
 
 @end
+
+
+
+@interface BaseContentView : UIScrollView
+
+@property (assign, nonatomic) id <BaseContentViewDelegate>      superResponder;
+@property (assign, nonatomic) CGRect                            baseRect;
+@property (strong, nonatomic) UIView                            *largeWidth;
+@property (strong, nonatomic) UIView                            *largeHeight;
+
+- (void)removeSubview:(UIView*)subview;
+- (void)removeAllSubview;
+
+- (void)resetContentSize;
+
+@end
+
+

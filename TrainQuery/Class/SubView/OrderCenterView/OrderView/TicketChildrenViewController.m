@@ -95,7 +95,16 @@
             [self.delegate reloadData];
         }
     }else{
-        [[Model shareModel] showPromptBoxWithText:@"新增失败" modal:YES];
+        switch (addOrUpdate) {
+            case PassengerAdd:
+                [[Model shareModel] showPromptBoxWithText:@"新增失败" modal:YES];
+                break;
+            case PassengerUpdate:
+                [[Model shareModel] showPromptBoxWithText:@"更新信息失败" modal:YES];
+                break;
+            default:
+                break;
+        }
     }
 }
 
@@ -215,11 +224,36 @@
     [birthDay setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
     [self.view addSubview:birthDay];
     
+    UIImageView *promptBackImage = [[[UIImageView alloc]initWithFrame:CGRectMake(label1.frame.origin.x, controlYLength(birthDay) + 10, controlXLength(birthDay) - label1.frame.origin.x, 40)]autorelease];
+    [promptBackImage setBackgroundColor:[UIColor clearColor]];
+    [promptBackImage setImage:imageNameAndType(@"orderfillin_prompt", @"png")];
+    [self.view addSubview:promptBackImage];
+    
+    UIImageView *promptLeftImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 20, 20)];
+    [promptLeftImage setCenter:CGPointMake(15, promptBackImage.frame.size.height/2)];
+    [promptLeftImage setImage:imageNameAndType(@"icons", @"png")];
+    [promptLeftImage setBackgroundColor:[UIColor clearColor]];
+    [promptBackImage addSubview:promptLeftImage];
+    
+    UILabel *promptLabel = [[[UILabel alloc]initWithFrame:CGRectMake(controlXLength(promptLeftImage), 0, promptBackImage.frame.size.width - controlXLength(promptLeftImage), promptBackImage.frame.size.height)]autorelease];
+    [promptLabel setBackgroundColor:[UIColor clearColor]];
+    [promptLabel setTextColor:[UIColor darkGrayColor]];
+    [promptLabel setFont:[UIFont systemFontOfSize:13]];
+    [promptLabel setNumberOfLines:0];
+    [promptLabel setLineBreakMode:NSLineBreakByWordWrapping];
+    promptLabel.adjustsFontSizeToFitWidth = YES;
+    promptLabel.adjustsLetterSpacingToFitWidth = YES;
+    promptLabel.baselineAdjustment = UIBaselineAdjustmentAlignBaselines;
+    promptLabel.minimumScaleFactor = 0.7;
+    [promptLabel setText:@"温馨提醒：为确保儿童出行安全，儿童票需跟成人票一起购买，且使用同行成人证件购买。"];
+    promptLabel.textAlignment = NSTextAlignmentCenter;
+    [promptBackImage addSubview:promptLabel];
+    
     UIButton *reserveBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     reserveBtn.frame = CGRectMake(label1.frame.origin.x, label1.frame.origin.y, selfViewFrame.size.width*2/3, 50);
     [reserveBtn setTitle:@"保存" forState:UIControlStateNormal];
     [reserveBtn addTarget:self action:@selector(pressReserveBtn:) forControlEvents:UIControlEventTouchUpInside];
-    reserveBtn.center = CGPointMake(selfViewFrame.size.width/2, (selfViewFrame.size.height + label1.frame.origin.y + label1.frame.size.height)/2);
+    reserveBtn.center = CGPointMake(selfViewFrame.size.width/2, (selfViewFrame.size.height + controlYLength(promptBackImage))/2);
     [reserveBtn setBackgroundImage:imageNameAndType(@"search_normal", @"png") forState:UIControlStateNormal];
     [reserveBtn setBackgroundImage:imageNameAndType(@"search_press", @"png") forState:UIControlStateSelected];
     [reserveBtn setBackgroundImage:imageNameAndType(@"search_press", @"png") forState:UIControlStateHighlighted];

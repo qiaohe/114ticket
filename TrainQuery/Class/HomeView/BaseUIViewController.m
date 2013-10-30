@@ -59,21 +59,47 @@
     return self;
 }
 
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        [self.view setFrame:appFrame];
+        _contentView = [[BaseContentView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        _contentView.superResponder = self;
+        _contentView.hidden = YES;
+        [self.view addSubview:_contentView];
+        
+    }
+    return self;
+}
+
 - (void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillChangeFrameNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardWillShowNotification
+                                                  object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardWillHideNotification
+                                                  object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardWillChangeFrameNotification
+                                                  object:nil];
     if (dataString)  [dataString      release];
-    [super                       dealloc];
+    [super                            dealloc];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyBoardWillShow:)
+                                                 name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyBoardWillHide:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyBoardChangeFrame:)
+                                                 name:UIKeyboardWillChangeFrameNotification object:nil];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -222,7 +248,9 @@
         case 12://退票完成
             status = @"退票完成";
             break;
-            
+        case -1:
+            status = @"支付超时";
+            break;
         default:
             status = nil;
             break;
@@ -331,7 +359,6 @@
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
                             _history.trainCode,     @"trainCode",
                             nil];
-    NSLog(@"train code = %@",_history.trainCode);
     [self sendRequestWithURL:urlString params:params requestMethod:RequestPost userInfo:userInfo];
 }
 
@@ -548,5 +575,142 @@
     [self pushViewController:viewController completion:completionhandler];
 }
 
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [super touchesEnded:touches withEvent:event];
+}
 
 @end
+
+#pragma mark - base content view
+@implementation BaseContentView
+
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        _baseRect = frame;
+    }
+    return self;
+}
+
+- (void)addSubview:(UIView *)view
+{
+    [super addSubview:view];
+    UIView *largeHeight = _largeHeight;
+    UIView *largeWidth  = _largeWidth;
+    if (!_largeHeight ) {
+        largeHeight = self;
+    }if (!_largeWidth) {
+        largeWidth = self;
+    }
+    if (controlXLength(largeWidth) < controlXLength(view)) {
+        [self setXSize];
+    }if (controlYLength(largeHeight) < controlYLength(view)) {
+        [self setYSize];
+    }
+}
+
+- (void)removeSubview:(UIView*)subview
+{
+    [subview removeFromSuperview];
+    [self resetContentSize];
+}
+
+- (void)removeAllSubview
+{
+    for (UIView *subview in self.subviews) {
+        [subview removeFromSuperview];
+    }
+    [self resetContentSize];
+}
+
+- (void)resetContentSize
+{
+    [self setXSize];
+    [self setYSize];
+}
+
+- (void)setXSize
+{
+    if ([self.subviews count] != 0) {
+        NSComparator cmptr = ^(UIView *obj1, UIView *obj2){
+            if (controlXLength(obj1) >= controlXLength(obj2)) {
+                return (NSComparisonResult)NSOrderedDescending;
+            }
+            
+            if (controlXLength(obj1) < controlXLength(obj2)) {
+                return (NSComparisonResult)NSOrderedAscending;
+            }
+            return (NSComparisonResult)NSOrderedSame;
+        };
+        NSArray *array = [self.subviews sortedArrayUsingComparator:cmptr];
+        
+        self.largeWidth = [array lastObject];
+        
+        CGFloat contentWidth = controlXLength(_largeWidth) > self.frame.size.width?controlXLength(_largeWidth) + 10:self.frame.size.width;
+        
+        [self setContentSize:CGSizeMake(contentWidth,self.contentSize.height)];
+    }else{
+        [self setContentSize:CGSizeMake(self.frame.size.width, self.frame.size.height)];
+    }
+}
+
+- (void)setYSize
+{
+    if ([self.subviews count] != 0) {
+        NSComparator cmptr = ^(UIView *obj1, UIView *obj2){
+            if (controlYLength(obj1) >= controlYLength(obj2)) {
+                return (NSComparisonResult)NSOrderedDescending;
+            }
+            
+            if (controlYLength(obj1) < controlYLength(obj2)) {
+                return (NSComparisonResult)NSOrderedAscending;
+            }
+            return (NSComparisonResult)NSOrderedSame;
+        };
+        NSArray *array = [self.subviews sortedArrayUsingComparator:cmptr];
+        
+        _largeHeight = [array lastObject];
+        
+        CGFloat contentHeight = controlYLength(_largeHeight) > self.frame.size.width?controlYLength(_largeHeight) + 15:self.frame.size.width;
+        
+        [self setContentSize:CGSizeMake(self.contentSize.width, contentHeight)];
+    }else{
+        [self setContentSize:CGSizeMake(self.frame.size.width, self.frame.size.height)];
+    }
+}
+
+- (NSInteger)getXPageNum:(UIView*)view
+{
+    CGFloat pageNum = controlXLength(view)/self.frame.size.width;
+    NSInteger integerNum = [[NSString stringWithFormat:@"%.0f",pageNum] integerValue];
+    integerNum = pageNum > integerNum ? integerNum + 1 : integerNum;
+    
+    return integerNum > 0?integerNum:1;
+}
+
+- (NSInteger)getYPageNum:(UIView*)view
+{
+    CGFloat pageNum = controlYLength(view)/self.frame.size.width;
+    NSInteger integerNum = [[NSString stringWithFormat:@"%.0f",pageNum] integerValue];
+    integerNum = pageNum > integerNum ? integerNum + 1 : integerNum;
+    
+    return integerNum > 0?integerNum:1;
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.superResponder touchesEnded:touches withEvent:event];
+}
+
+- (void)dealloc
+{
+    self.superResponder     = nil;
+    [_largeWidth            release];
+    [_largeHeight           release];
+    [super                  dealloc];
+}
+
+@end
+

@@ -50,7 +50,7 @@
 - (id)init
 {
     if (self = [super init]) {
-        self.view.frame = appBounds;
+        //self.view.frame = appBounds;
         [self initView];
         [PlistProxy sharePlistProxy];
     }

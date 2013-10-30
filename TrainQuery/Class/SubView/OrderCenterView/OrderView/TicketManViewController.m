@@ -148,25 +148,39 @@
         [[Model shareModel] showPromptBoxWithText:[dataDic objectForKey:@"performResult"] modal:YES];
         [self.delegate reloadData];
     }else{
-        [[Model shareModel] showPromptBoxWithText:@"新增失败" modal:YES];
+        switch (addOrUpdate) {
+            case PassengerAdd:
+                [[Model shareModel] showPromptBoxWithText:@"新增失败" modal:YES];
+                break;
+            case PassengerUpdate:
+                [[Model shareModel] showPromptBoxWithText:@"更新信息失败" modal:YES];
+                break;
+            default:
+                break;
+        }
     }
 }
 
 - (void)requestError:(ASIHTTPRequest *)request
 {
-    [[Model shareModel] showPromptBoxWithText:@"新增失败" modal:YES];
+    switch (addOrUpdate) {
+        case PassengerAdd:
+            [[Model shareModel] showPromptBoxWithText:@"新增失败" modal:YES];
+            break;
+        case PassengerUpdate:
+            [[Model shareModel] showPromptBoxWithText:@"更新信息失败" modal:YES];
+            break;
+        default:
+            break;
+    }
     [[Model shareModel] showActivityIndicator:NO frame:CGRectMake(0, 0, 0, 0) belowView:nil enabled:YES];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [super touchesEnded:touches withEvent:event];
-    if ([idCardType canResignFirstResponder]) {
-        [idCardType resignFirstResponder];
-    }if ([idCardNum canResignFirstResponder]) {
+    if ([idCardNum canResignFirstResponder]) {
         [idCardNum resignFirstResponder];
-    }if ([birthDay canResignFirstResponder]) {
-        [birthDay resignFirstResponder];
     }
 }
 
@@ -196,12 +210,8 @@
 - (void)keyBoardShow:(CGRect)frame animationDuration:(NSTimeInterval)duration
 {
     UITextField *responder = nil;
-    if ([idCardType isFirstResponder]) {
-        //responder = idCardType;
-    }if ([idCardNum isFirstResponder]) {
+    if ([idCardNum isFirstResponder]) {
         responder = idCardNum;
-    }if ([birthDay isFirstResponder]) {
-        //responder = birthDay;
     }
     if (responder) {
         if (responder.frame.origin.y + responder.frame.size.height  + manBaseYValue > frame.origin.y - 40) {
@@ -216,12 +226,8 @@
 - (void)keyBoardHide:(CGRect)frame animationDuration:(NSTimeInterval)duration
 {
     UITextField *responder = nil;
-    if ([idCardType isFirstResponder]) {
-        //responder = idCardType;
-    }if ([idCardNum isFirstResponder]) {
+    if ([idCardNum isFirstResponder]) {
         responder = idCardNum;
-    }if ([birthDay isFirstResponder]) {
-        //responder = birthDay;
     }
     if (responder) {
         if (responder.frame.origin.y + responder.frame.size.height < frame.origin.y) {
@@ -232,13 +238,27 @@
 
 - (void)clearKeyboard
 {
-    if ([idCardType canResignFirstResponder]) {
-        [idCardType resignFirstResponder];
-    }if ([idCardNum canResignFirstResponder]) {
+    if ([idCardNum canResignFirstResponder]) {
         [idCardNum resignFirstResponder];
-    }if ([birthDay canResignFirstResponder]) {
-        [birthDay resignFirstResponder];
     }
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
+{
+    if (textField == idCardNum) {
+        if ([idCardType.titleLabel.text isEqualToString: @"身份证"]) {
+            if (idCardNum.text.length == 18) {
+                NSString *string = [idCardNum.text substringWithRange:NSMakeRange(6, 8)];
+                NSDate   *date   = [Utils dateWithString:string withFormat:@"yyyyMMdd"];
+                NSString *dateString = [Utils stringWithDate:date withFormat:@"yyyy-MM-dd"];
+                [birthDay setTitle:dateString forState:UIControlStateNormal];
+            }else{
+                [birthDay setTitle:nil forState:UIControlStateNormal];
+                [birthDay setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            }
+        }
+    }
+    return YES;
 }
 
 #pragma mark - view init

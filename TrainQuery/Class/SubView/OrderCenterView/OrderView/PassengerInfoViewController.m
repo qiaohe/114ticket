@@ -240,11 +240,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([selectPassengers count] == 5) {
-        [[Model shareModel] showPromptBoxWithText:@"每次最多购5张票" modal:NO];
-        return;
-    }
+    
     PassengerInfo *passenger = [dataSource objectAtIndex:indexPath.row];
+    if ([selectPassengers count] == 5) {
+        if (!passenger.selected) {
+            [[Model shareModel] showPromptBoxWithText:@"每次最多购5张票" modal:NO];
+            return;
+        }
+    }
 
     passenger.selected = passenger.selected?NO:YES;
     

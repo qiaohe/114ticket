@@ -29,6 +29,6 @@ typedef NS_OPTIONS(NSInteger, adaptType){
 +(NSString *)stringWithDate:(NSDate*)date withFormat:(NSString*)format;
 +(NSDate*)dateWithString:(NSString *)date withFormat:(NSString*)format;
 +(CGRect)frameWithRect:(CGRect)rect adaptWidthOrHeight:(adaptType)adapt;
-+ (float)heightForTextView:(UITextView *)textView WithText:(NSString *)strText;
++ (float)heightForWidth:(CGFloat)textViewWidth text:(NSString *)strText font:(UIFont*)font;
 
 @end
