@@ -316,7 +316,7 @@
         
     NSString *firstName = (NSString *)ABRecordCopyValue(person, kABPersonFirstNameProperty);
     NSString *lastName  = (NSString *)ABRecordCopyValue(person, kABPersonLastNameProperty);
-    NSLog(@"person num = %@,first = %@,last = %@",personNumber,firstName,lastName);
+    //NSLog(@"person num = %@,first = %@,last = %@",personNumber,firstName,lastName);
     
     personNumber = [personNumber stringByReplacingOccurrencesOfString:@"-" withString:@""];
     
@@ -326,9 +326,12 @@
         
         return YES;
     }
-        
+    
+    NSString *name = [[Utils NULLToEmpty:lastName] stringByAppendingString:[Utils NULLToEmpty:firstName]];
+    
+    //NSLog(@"name = %@",name);
     [peoplePicker dismissViewControllerAnimated:YES completion:^{
-        [contactName setText:[NSString stringWithFormat:@"%@",lastName]];
+        [contactName setText:[NSString stringWithFormat:@"%@",name]];
         [contactNum setText:personNumber];
     }];
     
