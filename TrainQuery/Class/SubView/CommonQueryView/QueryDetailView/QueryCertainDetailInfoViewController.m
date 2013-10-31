@@ -330,7 +330,7 @@
 
 - (void)getTrainCodeAndPrice
 {
-    [[Model shareModel] showActivityIndicator:YES frame:CGRectMake(0, 40 - 2.0f, selfViewFrame.size.width, selfViewFrame.size.height - 40 + 2.0f) belowView:nil enabled:NO];
+    [[Model shareModel] showActivityIndicator:YES frame:CGRectMake(0, 40 - 2.0f, selfViewFrame.size.width, selfViewFrame.size.height + 40 + 2.0f) belowView:nil enabled:NO];
      [self getTrainCodeAndPriceWithParams:history withUserInfo:nil];
 }
 

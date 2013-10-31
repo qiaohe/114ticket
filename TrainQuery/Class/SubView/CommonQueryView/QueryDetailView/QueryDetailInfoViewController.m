@@ -238,7 +238,7 @@
             [self getAllTrainCodeAndPriceWithParams:history withUserInfo:nil];
             break;
         }case TrainQueryHighSpeed:{
-            [[Model shareModel] showActivityIndicator:YES frame:CGRectMake(0, -20, selfViewFrame.size.width, selfViewFrame.size.height - 20) belowView:nil enabled:NO];
+            [[Model shareModel] showActivityIndicator:YES frame:CGRectMake(0, -20, selfViewFrame.size.width, selfViewFrame.size.height + 20) belowView:nil enabled:NO];
             [self getAllGaotieTrainCodeAndPriceWithParams:history withUserInfo:nil];
             break;
         }
