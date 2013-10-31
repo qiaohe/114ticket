@@ -156,7 +156,7 @@
     userName.keyboardType = UIKeyboardTypeEmailAddress;
     //userName.textAlignment = NSTextAlignmentCenter;
     [userName setBackgroundColor:[UIColor clearColor]];
-    [userName setText:@"15000609705"];
+    //[userName setText:@"15000609705"];
     userName.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     [userName setFont:[UIFont fontWithName:@"HelveticaNeue" size:15]];
     [self.view addSubview:userName];
@@ -174,7 +174,7 @@
     passWord.keyboardType = UIKeyboardTypeEmailAddress;
     //userName.textAlignment = NSTextAlignmentCenter;
     [passWord setBackgroundColor:[UIColor clearColor]];
-    [passWord setText:@"w5998991"];
+    //[passWord setText:@"w5998991"];
     passWord.secureTextEntry = YES;
     passWord.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     [passWord setFont:[UIFont fontWithName:@"HelveticaNeue" size:15]];

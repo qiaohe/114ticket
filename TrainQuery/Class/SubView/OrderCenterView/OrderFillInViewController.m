@@ -532,11 +532,12 @@
         responder = contactNum;
     }
     if (responder) {
-        if (responder.frame.origin.y + responder.frame.size.height > frame.origin.y - 40) {
-            CGFloat changeY = responder.frame.origin.y + responder.frame.size.height - (frame.origin.y - 40.0f);
+        UIView *passengerBack = [self.contentView viewWithTag:300];
+        if (controlYLength(passengerBack) + controlYLength(responder) > frame.origin.y - 40.0f) {
+            CGFloat changeY = controlYLength(passengerBack) + controlYLength(responder) - (frame.origin.y - 40.0f);
             [UIView animateWithDuration:duration
                              animations:^{
-                                 self.view.frame = CGRectMake(self.view.frame.origin.x, 0 - changeY, self.view.frame.size.width, self.view.frame.size.height);
+                                 self.contentView.frame = CGRectMake(self.view.frame.origin.x, 0 - changeY, self.view.frame.size.width, self.view.frame.size.height);
                              }
                              completion:^(BOOL finished){
                                  
@@ -557,7 +558,7 @@
         if (responder.frame.origin.y + responder.frame.size.height < frame.origin.y) {
             [UIView animateWithDuration:duration
                              animations:^{
-                                 self.view.frame = CGRectMake(self.view.frame.origin.x, 0, self.view.frame.size.width, self.view.frame.size.height);
+                                 self.contentView.frame = CGRectMake(0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height);
                              }
                              completion:^(BOOL finished){
                                  
@@ -655,7 +656,7 @@
     [self.contentView addSubview:passengerBackImage];
     
     self.passengers = [self getLabelWithFrame:CGRectMake(passengerBackImage.frame.origin.x + 10, passengerBackImage.frame.origin.y, passengerBackImage.frame.size.width - 20, passengerBackImage.frame.size.height) textAlignment:NSTextAlignmentLeft backGroundColor:[UIColor clearColor] textColor:nil title:nil font:[UIFont fontWithName:@"HelveticaNeue" size:13]];
-    [self.passengers setText:@"请添加乘客"];
+    [self.passengers setText:@"乘客:"];
     [self.passengers setNumberOfLines:0];
     [self.passengers setLineBreakMode:NSLineBreakByWordWrapping];
     [self.contentView addSubview:passengers];
@@ -854,7 +855,7 @@
 
     [UIView animateWithDuration:0.35
                      animations:^{
-                         [passengers setText:[Utils textIsEmpty:str]?@"请添加乘客":str];
+                         [passengers setText:[Utils textIsEmpty:str]?@"乘客:":str];
 
                          [passengerBack setFrame:CGRectMake(passengerBack.frame.origin.x, passengerBack.frame.origin.y, passengerBack.frame.size.width, height)];
                          [passengers setFrame:CGRectMake(passengers.frame.origin.x, passengers.frame.origin.y, passengers.frame.size.width, height)];
