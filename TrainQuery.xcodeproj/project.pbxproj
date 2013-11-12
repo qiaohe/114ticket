@@ -1630,6 +1630,8 @@
 		CE5BF29917F94E7C000FFA9D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: mobiledaily(shanghai)Co.,Ltd (29Q88M4YM8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: mobiledaily(shanghai)Co.,Ltd (29Q88M4YM8)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TrainQuery/TrainQuery-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1644,6 +1646,8 @@
 				);
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "A34C0C68-85B9-437C-8B41-6CB86FF4928E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A34C0C68-85B9-437C-8B41-6CB86FF4928E";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1651,6 +1655,8 @@
 		CE5BF29A17F94E7C000FFA9D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: mobiledaily(shanghai)Co.,Ltd (29Q88M4YM8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: mobiledaily(shanghai)Co.,Ltd (29Q88M4YM8)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TrainQuery/TrainQuery-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1665,6 +1671,8 @@
 				);
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "A34C0C68-85B9-437C-8B41-6CB86FF4928E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A34C0C68-85B9-437C-8B41-6CB86FF4928E";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -16,10 +16,13 @@
 
     #define         appScheme                                   @"TrainTicketQuery114"
 
-    #define         TrainOrderServiceURL                        @"http://www.114piaowu.com:8043/axis2/services/trainOrderService"
-    #define         UserServiceURL                              @"http://www.114piaowu.com:8043/axis2/services/userService"
-//    #define         TrainOrderServiceURL                        @"http://61.147.77.18:8043/axis2/services/trainOrderService"
-//    #define         UserServiceURL                              @"http://61.147.77.18:8043/axis2/services/userService"
+//    #define         TrainOrderServiceURL                        @"http://www.114piaowu.com:8043/axis2/services/trainOrderService"
+//    #define         UserServiceURL                              @"http://www.114piaowu.com:8043/axis2/services/userService"
+    #define         TrainOrderServiceURL                        @"http://61.147.77.18:8043/axis2/services/trainOrderService"
+    #define         UserServiceURL                              @"http://61.147.77.18:8043/axis2/services/userService"
+    #define         TrainWapServiceURL                          @"http://61.147.77.18:8043/axis2/alipay_wap/alipayapi.jsp"
+    #define         TrainRSATradeURL                            @"http://www.114piaowu.com:8043/axis2/RSATrade"
+    #define         TrainRSACallBackURL                         @"http://www.114piaowu.com:8043/axis2/RSACallBack"
     #define         NotificationAppConfigRecived                @"ReceiveAppConfig"
     #define         NotificationAppConfigRecivedFailed          @"ReceiveAppConfigFailed"
     #define         deviceVersion                               [[[UIDevice currentDevice] systemVersion] floatValue]

@@ -29,4 +29,6 @@
 
 @property (retain, nonatomic) UIButton          *tipView;
 
+- (id)initWithObject:(id)object;
+
 @end

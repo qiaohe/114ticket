@@ -56,6 +56,18 @@
     [super                   dealloc];
 }
 
+- (id)initWithObject:(id)object
+{
+    self = [super init];
+    if (self) {
+        if ([object isKindOfClass:[TrainCodeAndPrice class]]) {
+            self.codeAndPrice = (TrainCodeAndPrice*)object;
+        }
+        [self initView];
+    }
+    return self;
+}
+
 - (void)setUp
 {
     [super setUp];
@@ -317,6 +329,7 @@
     
     NSDictionary *dic = [_string JSONValue];
     [trainOrder.trainOrderDetails removeAllObjects];
+    NSLog(@"dic = %@",dic);
 
     if ([[dic objectForKey:@"performStatus"] isEqualToString:@"success"]) {
         if ([requestType isKindOfClass:[NSString class]]) {
@@ -363,6 +376,11 @@
             [UserDefaults shareUserDefault].userId   = [dic objectForKey:@"userId"];
             [self getUserInfo:[[UserDefaults shareUserDefault].userId integerValue]];
 
+        }
+    }else{
+        NSString *prompt = [dic objectForKey:@"performResult"];
+        if (prompt) {
+            [[Model shareModel] showPromptBoxWithText:prompt modal:YES];
         }
     }
 }

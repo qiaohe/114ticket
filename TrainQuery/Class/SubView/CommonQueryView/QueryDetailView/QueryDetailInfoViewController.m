@@ -313,7 +313,7 @@
             }
             if (hasTicket) {
                 if (![UserDefaults shareUserDefault].userId) {
-                    RegisterAndLogInViewController *registerAndLog = [[[RegisterAndLogInViewController alloc]init]autorelease];
+                    RegisterAndLogInViewController *registerAndLog = [[[RegisterAndLogInViewController alloc]initWithObject:codeAndPrice]autorelease];
                     registerAndLog.delegate = self;
                     registerAndLog.codeAndPrice = codeAndPrice;
                     registerAndLog.trainOrder = self.trainOrder;

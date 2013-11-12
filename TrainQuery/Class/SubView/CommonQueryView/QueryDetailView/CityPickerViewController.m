@@ -87,6 +87,7 @@
     cityName = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 40, self.view.frame.size.width, 40)];
     //cityName.bounds = CGRectMake(0, 0, self.view.frame.size.width, 10);
     [cityName setPlaceholder:nil];
+    [cityName setKeyboardType:UIKeyboardTypeDefault];
     //cityName.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     for (UIView *e in cityName.subviews) {
         if ([e isKindOfClass:[UITextField class]]) {

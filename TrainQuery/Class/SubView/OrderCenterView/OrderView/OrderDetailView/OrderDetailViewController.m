@@ -151,30 +151,38 @@
 - (void)parserStringFinished:(NSString *)_string request:(ASIHTTPRequest *)request
 {
     NSString *requestType = [request.userInfo objectForKey:@"requestType"];
-    if ([requestType isEqualToString:@"testAlix"]) {
+    NSLog(@"finished = %@",_string);
+    
+    if ([[[_string JSONValue] objectForKey:@"performStatus"] isEqualToString:@"success"]) {
+        if ([requestType isEqualToString:@"testAlixTest"]) {
+            
+        }else{
+            NSDictionary *dic = [[_string JSONValue] objectForKey:@"performResult"];
+            TrainOrder *order = [[[TrainOrder alloc]initWithPData:dic]autorelease];
+            
+            if ([order.trainOrderDetails count] != 0) {
+                [order.trainOrderDetails removeAllObjects];
+            }
+            NSArray *dataArray = [dic objectForKey:@"trainOrderDetails"];
+            for (NSDictionary *pData in dataArray) {
+                TrainOrderDetail *orderDetail = [[[TrainOrderDetail alloc]initWithPData:pData]autorelease];
+                [order.trainOrderDetails addObject:orderDetail];
+            }
+            order.amount = trainOrder.amount;
+            self.trainOrder = order;
+            self.dataSource = order.trainOrderDetails;
+            order.amount = [[[TotalAmount alloc]initWithPData:dic]autorelease];
+            [self loadDetailView];
+        }
     }else{
-        NSDictionary *dic = [[_string JSONValue] objectForKey:@"performResult"];
-        TrainOrder *order = [[[TrainOrder alloc]initWithPData:dic]autorelease];
-        
-        if ([order.trainOrderDetails count] != 0) {
-            [order.trainOrderDetails removeAllObjects];
-        }
-        NSArray *dataArray = [dic objectForKey:@"trainOrderDetails"];
-        for (NSDictionary *pData in dataArray) {
-            TrainOrderDetail *orderDetail = [[[TrainOrderDetail alloc]initWithPData:pData]autorelease];
-            [order.trainOrderDetails addObject:orderDetail];
-        }
-        order.amount = trainOrder.amount;
-        self.trainOrder = order;
-        self.dataSource = order.trainOrderDetails;
-        order.amount = [[[TotalAmount alloc]initWithPData:dic]autorelease];
-        [self loadDetailView];
+        [[Model shareModel] showPromptBoxWithText:@"操作失败" modal:YES];
     }
 }
 
 - (void)requestError:(ASIHTTPRequest *)request
 {
     [[Model shareModel] showActivityIndicator:NO frame:CGRectMake(0, 0, 0, 0) belowView:nil enabled:YES];
+    [[Model shareModel] showPromptBoxWithText:@"操作失败" modal:YES];
 }
 
 #pragma mark - response method
@@ -210,19 +218,19 @@
     NSString *dateString = [Utils stringWithDate:[Utils dateWithString:trainOrder.trainStartTime withFormat:@"yyyy-MM-dd HH:mm"] withFormat:@"yyyy-MM-dd"];
     order.productName   = [NSString stringWithFormat:@"%@ - %@ %@ %@ - %@ %@ 数量:%d",trainOrder.orderNum,dateString,trainOrder.trainCode,trainOrder.startStation,trainOrder.endStation,trainOrder.seatType,trainOrder.totalTickets] ;
     order.productDescription  = [NSString stringWithFormat:@"%@ %@ %@ - %@ %@ 数量:%d %@",trainOrder.trainStartTime,trainOrder.trainCode,trainOrder.startStation,trainOrder.endStation,trainOrder.seatType,trainOrder.totalTickets,trainOrder.userMobile];
-    //order.amount        = @"0.01";
+    order.amount        = @"0.01";
     //order.productName   = @"可以显示多长可以显示多长可以显示多长可以显示多长可以显示多长可以显示多长";
     //order.productDescription = @"可以显示多长可以显示多长可以显示多长可以显示多长可以显示多长可以显示多长";
     
-    NSString *urlString = @"http://www.114piaowu.com:8043/axis2/RSATrade";
+    NSString *urlString  = TrainWapServiceURL;
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            order.productName,              @"subject",
-                            order.productDescription,       @"body",
-                            order.amount,                   @"total_fee",
-                            order.tradeNO,                  @"out_trade_no",
+                            order.productName,              @"WIDsubject",
+                            //order.productDescription,       @"body",
+                            order.amount,                   @"WIDtotal_fee",
+                            order.tradeNO,                  @"WIDout_trade_no",
                             nil];
     NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-                              @"testAlix",                      @"requestType",
+                              @"testAlixTest",                      @"requestType",
                               nil];
     [[Model shareModel] showActivityIndicator:YES frame:CGRectMake(0, 40.0f - 1.5f, self.view.frame.size.width, self.view.frame.size.height - 40.0f + 1.5f) belowView:nil enabled:NO];
     [self sendRequestWithURL:urlString params:params requestMethod:RequestPost userInfo:userInfo];
